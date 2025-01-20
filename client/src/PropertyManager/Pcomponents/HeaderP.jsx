@@ -58,14 +58,14 @@ export default function HeaderP() {
   );
  
   return (
-    <Navbar className="mx-auto w-full px-4 py-2 lg:px-8 lg:py-4 bg-blue-900">
-      <div className="container mx-auto flex flex-wrap items-center justify-between text-blue-gray-900">
+    <Navbar className="mx-auto max-w-full px-4 py-2 lg:px-8 lg:py-4">
+      <div className="container mx-auto flex flex-wrap items-center justify-between">
         <Typography
           as="a"
           href="#"
-          className="mr-4 cursor-pointer py-1.5 font-medium"
+          className="mr-4 cursor-pointer py-1.5 font-bold text-4xl text-blue-700"
         >
-          Material Tailwind
+          EasePms <sub className="text-sm">By DigiPants</sub>
         </Typography>
         <div className="hidden items-center gap-x-2 lg:flex">
           <div className="relative flex w-full gap-2 md:w-max">
@@ -102,7 +102,7 @@ export default function HeaderP() {
               </svg>
             </div>
           </div>
-          <Button size="md" className="rounded-lg ">
+          <Button size="md" className="rounded-lg bg-blue-700">
             Search
           </Button>
         </div>
