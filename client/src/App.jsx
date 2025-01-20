@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import { RecoilRoot } from "recoil";
 import MainPage from "./PropertyManager/Ppages/MainPage";
 import Dashboard from "./PropertyManager/Ppages/DashBoard";
+import Reservations from "./PropertyManager/Ppages/Reservations";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,6 +19,7 @@ function App() {
           <Route path="/LoginPage" element={<LoginPage />} />
           <Route path="/mainpage" element={<MainPage />}>
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="reservations" element={<Reservations />} />
           </Route>
         </Routes>
       </RecoilRoot>

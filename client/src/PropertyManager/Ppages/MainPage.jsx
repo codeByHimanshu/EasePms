@@ -1,11 +1,13 @@
 import React from 'react'
 import { NavLink,Outlet} from 'react-router-dom'
+import HeaderP from '../Pcomponents/HeaderP'
 function MainPage() {
   return(
     <div>
       <div>
         <div class="">
-          <NavLink to="dashboard">Dashboard</NavLink>
+          <HeaderP />
+          
           
         </div>
         <Outlet />

@@ -8,8 +8,9 @@ import {
   Input,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { NavLink } from "react-router-dom";
  
-export function NavbarWithSubmenu() {
+export default function HeaderP() {
   const [openNav, setOpenNav] = React.useState(false);
  
   React.useEffect(() => {
@@ -26,18 +27,14 @@ export function NavbarWithSubmenu() {
         variant="small"
         className="p-1 font-medium text-gray-600"
       >
-        <a href="#" className="flex items-center">
-          Sales
-        </a>
+      <NavLink to="dashboard">Dashboard</NavLink>
       </Typography>
       <Typography
         as="li"
         variant="small"
         className="p-1 font-medium text-gray-600"
       >
-        <a href="#" className="flex items-center">
-          New In
-        </a>
+       <NavLink to="reservations">Reservations</NavLink>
       </Typography>
       <Typography
         as="li"
@@ -61,7 +58,7 @@ export function NavbarWithSubmenu() {
   );
  
   return (
-    <Navbar className="mx-auto max-w-screen-xl px-4 py-2 lg:px-8 lg:py-4">
+    <Navbar className="mx-auto w-full px-4 py-2 lg:px-8 lg:py-4 bg-blue-900">
       <div className="container mx-auto flex flex-wrap items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
