@@ -1,7 +1,7 @@
 // Import necessary libraries and dependencies
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {useRecoilValue} from 'recoil'
+import {useRecoilState, useRecoilValue} from 'recoil'
 import { adminEmail } from '../states/state';
 
 
@@ -12,16 +12,13 @@ const dummyLogin = {
 };
 
 function Login() {
-  const [email] = useRecoilValue(adminEmail);
+  const [email,setEmail] = useRecoilState(adminEmail);
   const [password, setPassword] = useState('12345');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  setEmail(dummyLogin.email)
+  setEmail(email)
   console.log(email);
   console.log(adminEmail);
-  
-  
-//   setPassword(dummyLogin.password)
 
   const handleLogin = () => {
     if (email === dummyLogin.email && password === dummyLogin.password) {
@@ -48,8 +45,8 @@ return (
                     id="email"
                     type="email"
                     className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4"
-                    value={email}
-              
+                    // value={email}
+                    onChange={(e)=> setEmail(e.target.value)}              
                     />
 
                 <label className="block text-gray-700 mb-2" htmlFor="password">
@@ -60,6 +57,7 @@ return (
                     type="password"
                     className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4"
                     value={password}
+                    onChange={(e)=> setPassword(e.target.value)}
                     
                     />
 

@@ -14,7 +14,7 @@ console.log(email + "emaaillllll");
           Logged in as : <span className="text-blue-500 font-semibold">{email}</span>
         </p>
         <p className="text-gray-500 text-sm">Please choose your desired action below:</p>
-      </div>
+      </div>        
 
       {/* Right Section: Action Buttons */}
       <div className="w-3/5 bg-gradient-to-br from-blue-500 to-blue-700 text-white flex flex-col justify-center items-start px-16">
