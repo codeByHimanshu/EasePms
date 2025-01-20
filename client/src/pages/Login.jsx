@@ -1,16 +1,12 @@
-// Import necessary libraries and dependencies
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {useRecoilState, useRecoilValue} from 'recoil'
 import { adminEmail } from '../states/state';
 
-
-
 const dummyLogin = {
   email: 'himanshu@pms.com',
   password: '12345',
 };
-
 function Login() {
   const [email,setEmail] = useRecoilState(adminEmail);
   const [password, setPassword] = useState('12345');
@@ -29,7 +25,7 @@ function Login() {
     }
   };
 
-return (
+  return (
     <div className="flex h-screen">
         {/* Left Section: Login Form */}
         <div className="w-2/5 bg-white flex flex-col justify-center items-center shadow-lg px-8">
@@ -61,38 +57,59 @@ return (
                     
                     />
 
-                {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+            {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
-                <button
-                    className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-all duration-300"
-                    onClick={handleLogin}
-                    >
-                    Sign In
-                </button>
-            </div>
-                    </form>
+            <button
+              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-all duration-300"
+              onClick={handleLogin}
+            >
+              Sign In
+            </button>
+          </div>
+        </form>
+      </div>
+      <div className="w-3/5 bg-gradient-to-br from-blue-500 to-blue-700 text-white flex flex-col justify-center items-start px-16">
+        <h1 className="text-5xl font-bold mb-6">Welcome to the Hotel PMS</h1>
+        <p className="text-lg mb-8">
+          Streamline your hotel management with our powerful PMS. Simplify operations,
+          enhance guest satisfaction, and boost your business performance.
+        </p>
+        <h2 className="text-3xl font-bold mb-4">Our Partners</h2>
+        <div className="flex space-x-4">
+          <img
+            src="https://via.placeholder.com/80"
+            alt="Partner 1"
+            className="w-20 h-20 rounded-full shadow-lg"
+          />
+          <img
+            src="https://via.placeholder.com/80"
+            alt="Partner 2"
+            className="w-20 h-20 rounded-full shadow-lg"
+          />
+          <img
+            src="https://via.placeholder.com/80"
+            alt="Partner 3"
+            className="w-20 h-20 rounded-full shadow-lg"
+          />
+          <img
+            src="https://via.placeholder.com/80"
+            alt="Partner 4"
+            className="w-20 h-20 rounded-full shadow-lg"
+          />
+          <img
+            src="https://via.placeholder.com/80"
+            alt="Partner 5"
+            className="w-20 h-20 rounded-full shadow-lg"
+          />
+          <img
+            src="https://via.placeholder.com/80"
+            alt="Partner 6"
+            className="w-20 h-20 rounded-full shadow-lg"
+          />
         </div>
-
-        {/* Right Section: Information and Logos */}
-        <div className="w-3/5 bg-gradient-to-br from-blue-500 to-blue-700 text-white flex flex-col justify-center items-start px-16">
-            <h1 className="text-5xl font-bold mb-6">Welcome to the Hotel PMS</h1>
-            <p className="text-lg mb-8">
-                Streamline your hotel management with our powerful PMS. Simplify operations,
-                enhance guest satisfaction, and boost your business performance.
-            </p>
-            <h2 className="text-3xl font-bold mb-4">Our Partners</h2>
-            <div className="flex space-x-4">
-                {/* Add logos of partners here */}
-                <img src="https://via.placeholder.com/80" alt="Partner 1" className="w-20 h-20 rounded-full shadow-lg" />
-                <img src="https://via.placeholder.com/80" alt="Partner 2" className="w-20 h-20 rounded-full shadow-lg" />
-                <img src="https://via.placeholder.com/80" alt="Partner 3" className="w-20 h-20 rounded-full shadow-lg" />
-                <img src="https://via.placeholder.com/80" alt="Partner 4" className="w-20 h-20 rounded-full shadow-lg" />
-                <img src="https://via.placeholder.com/80" alt="Partner 5" className="w-20 h-20 rounded-full shadow-lg" />
-                <img src="https://via.placeholder.com/80" alt="Partner 6" className="w-20 h-20 rounded-full shadow-lg" />
-            </div>
-        </div>
+      </div>
     </div>
-);
+  );
 }
 
 export default Login;
