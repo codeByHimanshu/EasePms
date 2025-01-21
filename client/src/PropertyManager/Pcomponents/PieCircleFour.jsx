@@ -32,7 +32,7 @@ const chartConfig = {
 };
 
 
-export default function PieCircleFour({ label1, label2, label3 }) {
+export default function PieCircleFour({ label1, label2, label3,lable4,label5,label6 }) {
   return (
     <Card className="p-4">
       <CardHeader

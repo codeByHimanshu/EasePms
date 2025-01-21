@@ -18,7 +18,7 @@ function Dashboard() {
         </div>
         <div className="m-1" >
           <div className="w-full rounded-none" >
-            <PieCircleOne label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
+            <PieCircleTwo label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
           </div>
           <div>
             
@@ -26,7 +26,7 @@ function Dashboard() {
         </div>
         <div className="m-1" >
           <div className="w-full rounded-none" >
-            <PieCircleOne label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
+            <PieCircleThree label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
           </div>
           <div>
             
@@ -34,7 +34,7 @@ function Dashboard() {
         </div>
         <div className="m-1" >
           <div className="w-full rounded-none" >
-            <PieCircleOne label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
+            <PieCircleFour label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
           </div>
         </div>
         <div className="m-1" >
