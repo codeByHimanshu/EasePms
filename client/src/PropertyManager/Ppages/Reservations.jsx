@@ -15,7 +15,7 @@ export default function Reservations() {
 
     return (
         <div>
-            <h1>Reservations karle bhaiii</h1>
+            <h1>Reservations</h1>
             <ul>
                 {reservations.map(reservation => (
                     <li key={reservation.id}>
