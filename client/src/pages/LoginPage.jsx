@@ -1,9 +1,11 @@
 import React from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { adminEmail} from '../states/state';
+import {  useNavigate } from 'react-router-dom';
 function LoginPage() {
 const email = useRecoilValue(adminEmail); // Get admin username from Recoil state
 console.log(email + "emaaillllll");
+ const navigate=useNavigate()
 
   return (
     <div className="flex h-screen">
@@ -25,7 +27,7 @@ console.log(email + "emaaillllll");
         <div className="flex flex-col space-y-6 w-full">
           <button
             className="w-full bg-white text-blue-700 py-3 rounded-md font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg"
-            onClick={() => alert('Accessing Property Manager...')}
+            onClick={()=>{navigate('/mainpage')}}
           >
             Access Property Manager
           </button>
