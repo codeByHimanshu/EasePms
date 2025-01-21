@@ -7,22 +7,52 @@ function Dashboard() {
   return (
     <div>
       dashborad
-      <div className="graph wala div w-full  flex space-x-2">
-        <div className="" style={{ height: '10px', width: '200px' }}>
-        <PieCircleOne  />
+      <div className="graph wala div w-3/4  flex space-x-2">
+        <div className="" >
+          <div className="w-full" >
+            <PieCircleOne label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
+          </div>
+          <div>
+            <div className="flex mt-2">
+            
+            </div>
+          </div>
         </div>
-        <div className="" style={{ height: '10px', width: '200px' }}>
-          <PieCircleTwo />
+        <div className="" >
+          <div className="w-full" >
+            <PieCircleTwo label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
+          </div>
+          <div>
+            <div className="flex mt-2">
+            
+            </div>
+          </div>
         </div>
-        <div className="" style={{ height: '10px', width: '200px' }}>
-          <PieCircleThree />
+        <div className="" >
+          <div className="w-full" >
+            <PieCircleThree label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
+          </div>
+          <div>
+            <div className="flex mt-2">
+            
+            </div>
+          </div>
         </div>
-        <div className="" style={{ height: '10px', width: '200px' }}>
-          <PieCircleFour />
+        <div className="" >
+          <div className="w-full" >
+            <PieCircleFour label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
+          </div>
+          <div>
+            <div className="flex mt-2">
+            
+            </div>
+          </div>
         </div>
-        
       </div>
+      <div className="w-1/4"></div>
     </div>
   );
 }
 export default Dashboard;
+
+
