@@ -7,8 +7,7 @@ function MainPage() {
       <div>
         <div class="">
           <HeaderP />
-          
-          
+         
         </div>
         <Outlet />
       </div>

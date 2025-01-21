@@ -9,7 +9,7 @@ import Dashboard from "./PropertyManager/Ppages/DashBoard";
 import Reservations from "./PropertyManager/Ppages/Reservations";
 
 function App() {
-  const [count, setCount] = useState(0);
+  
 
   return (
     <BrowserRouter>
