@@ -62,7 +62,7 @@ export default function PieCircleTwo({ label1, label2, label3 }) {
                 style={{
                   width: "8px",
                   height: "8px",
-                  backgroundColor: "red",
+                  backgroundColor: "#0068FF",
                   borderRadius: "50%",
                 }}
               ></div>
@@ -75,7 +75,7 @@ export default function PieCircleTwo({ label1, label2, label3 }) {
                 style={{
                   width: "8px",
                   height: "8px",
-                  backgroundColor: "red",
+                  backgroundColor: "#F8B505",
                   borderRadius: "50%",
                 }}
               ></div>

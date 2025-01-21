@@ -63,7 +63,7 @@ import {
                  style={{
                    width: "8px",
                    height: "8px",
-                   backgroundColor: "red",
+                   backgroundColor: "#0068FF",
                    borderRadius: "50%",
                  }}
                ></div>
@@ -76,7 +76,7 @@ import {
                  style={{
                    width: "8px",
                    height: "8px",
-                   backgroundColor: "red",
+                   backgroundColor: "#F8B505",
                    borderRadius: "50%",
                  }}
                ></div>
