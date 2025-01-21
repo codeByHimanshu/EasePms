@@ -1,3 +1,4 @@
+import ChartP from "../Pcomponents/ChartP";
 import PieCircleFour from "../Pcomponents/PieCircleFour";
 import PieCircleOne from "../Pcomponents/PieCircleOne";
 import PieCircleThree from "../Pcomponents/PieCircleThree";
@@ -5,51 +6,44 @@ import PieCircleTwo from "../Pcomponents/PieCircleTwo";
 
 function Dashboard() {
   return (
-    <div>
-      dashborad
-      <div className="graph wala div w-3/4  flex space-x-2">
-        <div className="" >
-          <div className="w-full" >
+    <div className="flex">
+      <div className="w-fit  flex justify-between space-x-7 " >
+        <div className="m-1" >
+          <div className="w-full rounded-none" >
             <PieCircleOne label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
           </div>
           <div>
-            <div className="flex mt-2">
             
-            </div>
           </div>
         </div>
-        <div className="" >
-          <div className="w-full" >
-            <PieCircleTwo label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
+        <div className="m-1" >
+          <div className="w-full rounded-none" >
+            <PieCircleOne label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
           </div>
           <div>
-            <div className="flex mt-2">
             
-            </div>
           </div>
         </div>
-        <div className="" >
-          <div className="w-full" >
-            <PieCircleThree label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
+        <div className="m-1" >
+          <div className="w-full rounded-none" >
+            <PieCircleOne label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
           </div>
           <div>
-            <div className="flex mt-2">
             
-            </div>
           </div>
         </div>
-        <div className="" >
-          <div className="w-full" >
-            <PieCircleFour label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
+        <div className="m-1" >
+          <div className="w-full rounded-none" >
+            <PieCircleOne label1={"Arrival"} label2={"Pending"} label3={"Arrived"} />
           </div>
-          <div>
-            <div className="flex mt-2">
-            
-            </div>
+        </div>
+        <div className="m-1" >
+          <div className="w-full rounded-none" >
+            <ChartP/>
           </div>
         </div>
       </div>
-      <div className="w-1/4"></div>
+
     </div>
   );
 }

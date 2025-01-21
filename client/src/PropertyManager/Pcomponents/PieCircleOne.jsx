@@ -33,7 +33,7 @@ const chartConfig = {
 
 export default function PieCircleOne({ label1, label2, label3 }) {
   return (
-    <Card className="p-4">
+    <Card className="p-4 rounded-none">
       <CardHeader
         floated={false}
         shadow={false}
