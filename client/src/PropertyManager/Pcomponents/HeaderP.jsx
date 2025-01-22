@@ -50,9 +50,7 @@ export default function HeaderP() {
         variant="small"
         className="p-1 font-medium text-gray-600"
       >
-        <a href="#" className="flex items-center">
-          Add Reservations
-        </a>
+         <NavLink to="addreservation">AddReservation</NavLink>
       </Typography>
       <Typography
         as="li"
