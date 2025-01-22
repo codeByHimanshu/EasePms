@@ -24,6 +24,8 @@ const AddReservation = () => {
       {/* Left Section */}
       <div className="w-full bg-gray-100 p-6">
         <h2 className="text-2xl font-bold mb-4">Add Reservation</h2>
+        <form action="">
+
         <div className="space-y-4">
           <div className="grid grid-cols-3 gap-4">
             <div>
@@ -32,7 +34,7 @@ const AddReservation = () => {
               </label>
               <input
                 type="datetime-local"
-                className="w-full border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-blue-500"
+                className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 value={checkinDate}
                 onChange={(e) => handleDateChange(e, "checkin")}
                 min={currentDate}
@@ -44,7 +46,7 @@ const AddReservation = () => {
               </label>
               <input
                 type="datetime-local"
-                className="w-full border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-blue-500"
+                className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 value={checkoutDate}
                 onChange={(e) => handleDateChange(e, "checkout")}
                 min={checkinDate || currentDate}
@@ -57,7 +59,7 @@ const AddReservation = () => {
               </label>
               <input
                 type="number"
-                className="w-full border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-blue-500"
+             className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 value={rooms}
                 onChange={(e) => setRooms(e.target.value)}
                 min="1"
@@ -65,13 +67,13 @@ const AddReservation = () => {
             </div>
           </div>
         </div>
-        <div className="flex mt-8 max-w-mdspace-y-4">
-       
+        <div className="space-y-4">
+       <div className="grid grid-cols-4 gap-4">
           <input
             id="reservation-type"
             name="reservationType"
             list="reservationTypeOptions"
-            className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Select Reservation Type"
           />
           <datalist id="reservationTypeOptions">
@@ -84,7 +86,7 @@ const AddReservation = () => {
             id="booking-source"
             name="bookingSource"
             list="bookingSourceOptions"
-            className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Select Booking Source"
           />
           <datalist id="bookingSourceOptions">
@@ -99,7 +101,7 @@ const AddReservation = () => {
             id="business-source"
             name="businessSource"
             list="businessSourceOptions"
-            className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Select Business Source"
           />
           <datalist id="businessSourceOptions">
@@ -112,7 +114,7 @@ const AddReservation = () => {
             id="market-code"
             name="marketCode"
             list="marketCodeOptions"
-            className="block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Select Market Code"
           />
           <datalist id="marketCodeOptions">
@@ -120,8 +122,13 @@ const AddReservation = () => {
             <option value="Code Y" />
             <option value="Code Z" />
           </datalist>
-        </div>
+
+       </div>
+        
       </div>
+        </form>
+        </div>
+     
 
       <div className="w-1/3 bg-white p-6">
         <h2 className="text-2xl font-bold mb-4">Booking Summary</h2>
