@@ -60,55 +60,114 @@ function Dashboard() {
               />
             </div>
           </div>
-          <div className="m-1">
-            <div className="w-full rounded-none">
+          <div className="m-1 ">
+            <div className="w-full rounded-none shadow-md">
               <ChartP />
             </div>
           </div>
         </div>
       </div>
       <div className="flex justify-between space-x-2 shadow-md py-12 space-y-8">
-        <div className="first w-1/2 flex flex-col shadow-md py-12 space-y-8 bg-white rounded-lg">
-          <div style={{ borderBottom: "1px solid gray" }} className="mx-1">
+        <div
+          className="first w-1/2 flex flex-col shadow-md py-8 space-y-16  rounded-lg"
+          // style={{ backgroundColor: "red" }}
+        >
+          <div
+            style={{ borderBottom: "1px solid gray" }}
+            className="mx-1 w-auto"
+          >
             Notifications
           </div>
-          <div className="w-full flex flex-row justify-between items-center px-4">
-            <div className="text-xl text-gray-600">
-              <LuCircleDollarSign />
+          <div className="w-auto flex flex-row justify-between items-center px-4">
+            <div className="flex space-x-2">
+              <div className="text-xl text-gray-600 p-2 mx-2 my-2 bg-gray-200 rounded-lg">
+                <LuCircleDollarSign />
+              </div>
+              <div>
+                <div>0</div>
+                <div>some text </div>
+              </div>
             </div>
-            <div className="text-xl text-gray-600">
-              <FaCalendar />
+            <div className="flex space-x-2">
+              <div className="text-xl text-gray-600 p-2 mx-2 my-2 bg-gray-200 rounded-lg">
+                <FaCalendar />
+              </div>
+              <div>
+                <div>0</div>
+                <div>some text </div>
+              </div>
             </div>
-            <div className="text-xl text-gray-600">
-              <FaClipboardCheck />
+            <div className="flex space-x-2">
+              <div className="text-xl text-gray-600 p-2 mx-2 my-2 bg-gray-200 rounded-lg">
+                <FaClipboardCheck />
+              </div>
+              <div>
+                <div>0</div>
+                <div>some text </div>
+              </div>
             </div>
           </div>
           <div className="w-full flex flex-row justify-between items-center px-4">
-            <div className="text-xl text-gray-600">
-              <FaBed />
+            <div className="flex space-x-2">
+              <div className="text-xl text-gray-600 p-2 mx-2 my-2 bg-gray-200 rounded-lg">
+                <FaBed />
+              </div>
+              <div>
+                <div>0</div>
+                <div>some text </div>
+              </div>
             </div>
-            <div className="text-xl text-gray-600">
-              <LuSmartphone />
+            <div className="flex space-x-2">
+              <div className="text-xl text-gray-600 p-2 mx-2 my-2 bg-gray-200 rounded-lg">
+                <LuSmartphone />
+              </div>
+              <div>
+                <div>0</div>
+                <div>some text</div>
+              </div>
             </div>
-            <div className="text-xl text-gray-600">
-              <AiFillMessage />
+            <div className="flex space-x-2">
+              <div className="text-xl text-gray-600 p-2 mx-2 my-2 bg-gray-200 rounded-lg">
+                <AiFillMessage />
+              </div>
+              <div>
+                <div>0</div>
+                <div>some text</div>
+              </div>
             </div>
           </div>
 
           <div className="w-full flex flex-row justify-between items-center px-4">
-            <div className="text-xl text-gray-600">
-              <FaRegCreditCard />
+            <div className="flex space-x-2">
+              <div className="text-xl text-gray-600 p-2 mx-2 my-2 bg-gray-200 rounded-lg">
+                <FaRegCreditCard />
+              </div>
+              <div>
+                <div>0</div>
+                <div>some text</div>
+              </div>
             </div>
-            <div className="text-xl text-gray-600">
-              <FaFileAlt />
+            <div className="flex space-x-2">
+              <div className="text-xl text-gray-600 p-2 mx-2 my-2 bg-gray-200 rounded-lg">
+                <AiOutlineLike />
+              </div>
+              <div>
+                <div>0</div>
+                <div>some text</div>
+              </div>
             </div>
-            <div className="text-xl text-gray-600">
-              <AiOutlineLike />
+            <div className="flex space-x-2">
+              <div className="text-xl text-gray-600 p-2 mx-2 my-2 bg-gray-200 rounded-lg">
+                <FaFileAlt />
+              </div>
+              <div>
+                <div>0</div>
+                <div>some text</div>
+              </div>
             </div>
           </div>
         </div>
         <div className="second w-1/2 bg-white shadow-md rounded-lg p-6">
-         
           <div className="flex justify-between items-center mb-4">
             <div className="text-lg font-semibold">Activity Feed</div>
             <div>
@@ -126,8 +185,63 @@ function Dashboard() {
 
           {/* Content Section */}
           <div className="overflow-y-scroll h-64 bg-gray-100 rounded-md p-4">
-           
-            <p className="text-sm text-gray-500">No activities to display.</p>
+            <div className="flex flex-col">
+              <div>
+                <div className="flex justify-between">
+                  <div>
+                    <span>some text here</span>
+                    <p>2h ago</p>
+                  </div>
+                  <div>
+                    <button className="bg-black text-white p-1/2 px-1 py-1 rounded-sm">Arrived</button>
+                  </div>
+                </div>
+              </div>  
+              <div>
+                <div className="flex justify-between">
+                  <div>
+                    <span>some text here</span>
+                    <p>2h ago</p>
+                  </div>
+                  <div>
+                    <button className="bg-black text-white p-1/2 px-1 py-1 rounded-sm">Arrived</button>
+                  </div>
+                </div>
+              </div>  
+              <div>
+                <div className="flex justify-between">
+                  <div>
+                    <span>some text here</span>
+                    <p>2h ago</p>
+                  </div>
+                  <div>
+                    <button className="bg-black text-white p-1/2 px-1 py-1 rounded-sm">Arrived</button>
+                  </div>
+                </div>
+              </div>  
+              <div>
+                <div className="flex justify-between">
+                  <div>
+                    <span>some text here</span>
+                    <p>2h ago</p>
+                  </div>
+                  <div>
+                    <button className="bg-black text-white p-1/2 px-1 py-1 rounded-sm">Arrived</button>
+                  </div>
+                </div>
+              </div>  
+              <div>
+                <div className="flex justify-between">
+                  <div>
+                    <span>some text here</span>
+                    <p>2h ago</p>
+                  </div>
+                  <div>
+                    <button className="bg-black text-white p-1/2 px-1 py-1 rounded-sm">Arrived</button>
+                  </div>
+                </div>
+              </div>  
+            </div>
           </div>
         </div>
       </div>
