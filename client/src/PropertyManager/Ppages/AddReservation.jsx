@@ -18,7 +18,14 @@ const AddReservation = () => {
   };
 
   const currentDate = new Date().toISOString().slice(0, 16); // ISO format for input[type=datetime-local]
-
+function AddRoom(){
+  return <div>
+    <input type="text" placeholder="Room Type" />
+    <input type="text" placeholder="Room Number" />
+    <input type="text" placeholder="Room Rate" />
+    <input type="text" placeholder="Room Status" />
+  </div>
+}
   return (
     <div className="flex h-screen">
       {/* Left Section */}
@@ -63,12 +70,13 @@ const AddReservation = () => {
                 value={rooms}
                 onChange={(e) => setRooms(e.target.value)}
                 min="1"
+                max={10}
               />
             </div>
+         
           </div>
-        </div>
-        <div className="space-y-4">
-       <div className="grid grid-cols-4 gap-4">
+        <div className="space-y-4 mb-8">
+       <div className="grid grid-cols-4 gap-4 border-b-2 border-gray-300 mb">
           <input
             id="reservation-type"
             name="reservationType"
@@ -124,8 +132,100 @@ const AddReservation = () => {
           </datalist>
 
        </div>
-        
       </div>
+        </div>
+       {Array.from({ length: rooms }, (index) => (
+      <div className="mt-6">
+
+        Rate & room Plans :
+      
+           <div key={index} className="grid grid-cols-6 gap-4 mt-2">
+           <input
+             id="room-type"
+             name="roomType"
+             list="roomTypeOptions"
+             className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+             placeholder="Select Room Type"
+           />
+           <datalist id="roomTypeOptions">
+             <option value="Delux Room" />
+             <option value="Suit Room" />
+             <option value="Twin With Bathroom" />
+             <option value="Executive Room" />
+             <option value="Standard Room" />
+             <option value="Bussiness Room" />
+           </datalist>
+ 
+           <input
+             id="ratePlan"
+             name="ratePlan"
+             list="ratePlanOptions"
+             className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+             placeholder="Select Rate Plan"
+           />
+           <datalist id="ratePlanOptions">
+             <option value="EP" />
+             <option value="CP" />
+           </datalist>
+
+           <input
+             id="room-number"
+             name="roomNumber"
+             list="roomNumberOptions"
+             className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+             placeholder="Select Room Number"
+           />
+           <datalist id="roomNumberOptions">
+             <option value="101" />
+              <option value="102" />
+              <option value="103" />
+              <option value="104" />
+              <option value="105" />
+              <option value="106" />
+              <option value="107" />
+              <option value="108" />
+              <option value="109" />
+              <option value="110" />
+              <option value="111" />
+           
+           </datalist>
+ 
+           <input
+             id="adults"
+             name="adults"
+             list="adultsOptions"
+             className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+             placeholder="Select Adults"
+        
+           />
+           <datalist id="adultsOptions">
+             <option value="1" />
+             <option value="2" />
+             <option value="3" />
+           </datalist>
+           <input
+             id="children"
+             name="children"
+             list="childrenOptions"
+             className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+             placeholder="Select Children"
+           />
+           <datalist id="childrenOptions">
+             <option value="1" />
+             <option value="2" />
+          
+           </datalist>
+           <input
+             id="total-amount"
+             name="totalAmount"
+          
+             className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+             placeholder="Total Amount"
+           />
+         
+        </div>
+        </div>
+          ))}
         </form>
         </div>
      
