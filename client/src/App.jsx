@@ -7,7 +7,7 @@ import { RecoilRoot } from "recoil";
 import MainPage from "./PropertyManager/Ppages/MainPage";
 import Dashboard from "./PropertyManager/Ppages/DashBoard";
 import Reservations from "./PropertyManager/Ppages/Reservations";
-import RatesPage from "./PropertyManager/Ppages/RatesPage";
+import AddReservation from "./PropertyManager/Ppages/AddReservation";
 
 function App() {
   
@@ -21,7 +21,7 @@ function App() {
           <Route path="/mainpage" element={<MainPage />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="reservations" element={<Reservations />} />
-            <Route path="rates" element={<RatesPage />} />
+            <Route path="addreservation" element={<AddReservation />} />
           </Route>
         </Routes>
       </RecoilRoot>
