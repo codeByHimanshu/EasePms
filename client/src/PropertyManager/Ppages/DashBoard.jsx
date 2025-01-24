@@ -182,8 +182,6 @@ function Dashboard() {
               </select>
             </div>
           </div>
-
-          {/* Content Section */}
           <div className="overflow-y-scroll h-64 bg-gray-100 rounded-md p-4">
             <div className="flex flex-col">
               <div>
@@ -193,7 +191,7 @@ function Dashboard() {
                     <p>2h ago</p>
                   </div>
                   <div>
-                    <button className="bg-black text-white p-1/2 px-1 py-1 rounded-sm">Arrived</button>
+                    <button className="bg-green-400 text-white p-1/2 px-1 py-1 rounded-sm">Arrived</button>
                   </div>
                 </div>
               </div>  
