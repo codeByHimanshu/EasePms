@@ -41,9 +41,7 @@ export default function HeaderP() {
         variant="small"
         className="p-1 font-medium text-gray-600"
       >
-        <a href="#" className="flex items-center">
-          Rates
-        </a>
+        <NavLink to="rates">Rates Page</NavLink>
       </Typography>
       <Typography
         as="li"
