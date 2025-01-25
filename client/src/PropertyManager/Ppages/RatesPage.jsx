@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./RatesPage.css"; // Optional CSS file for styling
+
 
 const RatesPage = () => {
   const [rates, setRates] = useState([]);

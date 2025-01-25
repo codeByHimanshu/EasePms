@@ -305,7 +305,9 @@ const AddReservation = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Address</label>
+                <label className="block text-sm font-medium mb-1">
+                  Address
+                </label>
                 <input
                   type="text"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -331,7 +333,9 @@ const AddReservation = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Zip Code</label>
+                <label className="block text-sm font-medium mb-1">
+                  Zip Code
+                </label>
                 <input
                   type="text"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -342,27 +346,45 @@ const AddReservation = () => {
           </form>
         </div>
         <div className="flex justify-end space-x-2 mt-4">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600">Check In</button>
-          <button className="bg-green-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-green-600">Reserve</button>
-          <button className="bg-red-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-red-600">Cancel</button>
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600">
+            Check In
+          </button>
+          <button className="bg-green-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-green-600">
+            Reserve
+          </button>
+          <button className="bg-red-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-red-600">
+            Cancel
+          </button>
         </div>
       </div>
-
-      <div className="w-1/3 bg-white p-6">
-        <h2 className="text-2xl font-bold mb-4">Booking Summary</h2>
-        <div className="space-y-4">
-          <div>
-            <p className="text-sm text-gray-500">Check-in:</p>
-            <p className="font-medium">{checkinDate || "Not selected"}</p>
+      <div className="w-1/3 bg-gradient-to-b from-white to-gray-50 shadow-lg rounded-2xl p-6">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 border-b pb-2">
+          Booking Summary
+        </h2>
+        <div className="space-y-6">
+          <div className="flex items-center justify-between">
+            <p className="text-sm font-semibold text-gray-500">Check-in</p>
+            <p className="text-base font-medium text-gray-800">
+              {checkinDate || "Not selected"}
+            </p>
           </div>
-          <div>
-            <p className="text-sm text-gray-500">Check-out:</p>
-            <p className="font-medium">{checkoutDate || "Not selected"}</p>
+          <div className="flex items-center justify-between">
+            <p className="text-sm font-semibold text-gray-500">Check-out</p>
+            <p className="text-base font-medium text-gray-800">
+              {checkoutDate || "Not selected"}
+            </p>
           </div>
-          <div>
-            <p className="text-sm text-gray-500">Rooms:</p>
-            <p className="font-medium">{rooms}</p>
+          <div className="flex items-center justify-between">
+            <p className="text-sm font-semibold text-gray-500">Rooms</p>
+            <p className="text-base font-medium text-gray-800">
+              {rooms || "Not selected"}
+            </p>
           </div>
+        </div>
+        <div className="mt-6">
+          <button className="w-full bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition-all duration-200">
+            Confirm Booking
+          </button>
         </div>
       </div>
     </div>
