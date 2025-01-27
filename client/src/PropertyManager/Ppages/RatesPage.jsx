@@ -84,20 +84,20 @@ const RatesPage = () => {
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
             <tr>
-              <th className="px-4 py-2 border">Room Type</th>
-              <th className="px-4 py-2 border">Rate Type</th>
+              <th className="px-4 py-1 border">Room Type</th>
+              <th className="px-4 py-1 border">Rate Type</th>
               {dates
                 .slice(startIndex, startIndex + visibleDays)
                 .map((date, index) => (
-                  <th key={index} className="px-4 py-2 border">
+                  <th key={index} className="px-2 text-sm border">
                     <div className="flex flex-col items-center">
-                      <div>
+                      <div className="text-gray-400 font-open-sans" style={{fontSize:"9px"}}>
                         {date.toLocaleDateString("default", { weekday: "short" })}
                       </div>
                       <div>
                         {date.toLocaleDateString("default", { day: "numeric" })}
                       </div>
-                      <div>
+                      <div className="text-gray-700 font-open-sans" style={{fontSize:"14px"}}>
                         {date.toLocaleDateString("default", { month: "short" })}
                       </div>
                     </div>
