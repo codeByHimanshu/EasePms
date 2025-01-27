@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 
 const RatesPage = () => {
   const [rates, setRates] = useState([
