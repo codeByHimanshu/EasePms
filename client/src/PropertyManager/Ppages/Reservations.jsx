@@ -75,7 +75,7 @@ const Reservations = () => {
   return (
     <>
       <div className="mt-3">
-        <Navbar activeTab={"reservations"} />
+        <Navbar/>
       </div>
       <div className="p-4 bg-white">
         <h1 className="text-2xl font-bold mb-4 text-blue-600">

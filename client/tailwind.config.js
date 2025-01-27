@@ -11,6 +11,11 @@ module.exports = withMT({
         roboto: ['Roboto', 'sans-serif'],
         'open-sans': ['Open Sans', 'sans-serif'],
       },
+      fontWeight: {
+        'extra-light': 200,
+        'semi-bold': 600,
+        'extra-bold': 800,
+      },
     },
   },
   plugins: [],
