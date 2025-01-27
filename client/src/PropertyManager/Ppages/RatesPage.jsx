@@ -55,10 +55,8 @@ const RatesPage = () => {
   const applyBulkUpdate = () => {
     const { roomType, rateType, startDate, endDate, price } = bulkUpdate;
     if (!roomType || !rateType || !startDate || !endDate || !price) {
-      alert("Please fill in all fields for bulk update.");
       return;
     }
-
     const updatedRates = rates.map((rate) => {
       const rateDate = new Date(rate.date);
       const start = new Date(startDate);
@@ -74,7 +72,6 @@ const RatesPage = () => {
       }
       return rate;
     });
-
     setRates(updatedRates);
     setShowBulkUpdate(false);
   };
@@ -93,10 +90,17 @@ const RatesPage = () => {
                 .slice(startIndex, startIndex + visibleDays)
                 .map((date, index) => (
                   <th key={index} className="px-4 py-2 border">
-                    {date.toLocaleDateString("default", {
-                      month: "short",
-                      day: "numeric",
-                    })}
+                    <div className="flex flex-col items-center">
+                      <div>
+                        {date.toLocaleDateString("default", { weekday: "short" })}
+                      </div>
+                      <div>
+                        {date.toLocaleDateString("default", { day: "numeric" })}
+                      </div>
+                      <div>
+                        {date.toLocaleDateString("default", { month: "short" })}
+                      </div>
+                    </div>
                   </th>
                 ))}
             </tr>
