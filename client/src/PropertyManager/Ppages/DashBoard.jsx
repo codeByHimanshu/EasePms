@@ -85,7 +85,7 @@ function Dashboard() {
               </div>
               <div>
                 <div>0</div>
-                <div>some text </div>
+                <div>some text </div> 
               </div>
             </div>
             <div className="flex space-x-2">
@@ -202,7 +202,7 @@ function Dashboard() {
                     <p>2h ago</p>
                   </div>
                   <div>
-                    <button className="bg-black text-white p-1/2 px-1 py-1 rounded-sm">Arrived</button>
+                    <button className="bg-black text-wh,  2 px-1 py-1 rounded-sm">Arrived</button>
                   </div>
                 </div>
               </div>  
