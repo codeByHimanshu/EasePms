@@ -1,6 +1,6 @@
 import React from "react";
 import BookingCard from "../Pcomponents/BookingCard";
-import Navbar from "../Pcomponents/ReservationNavBar";
+import { Navbar } from "../PRoutes/RoutesTwo";
 
 const bookings = [
   {
@@ -75,7 +75,7 @@ const Reservations = () => {
   return (
     <>
       <div className="mt-3">
-        <Navbar/>
+       <Navbar/>
       </div>
       <div className="p-4 bg-white">
         <h1 className="text-2xl font-bold mb-4 text-blue-600">

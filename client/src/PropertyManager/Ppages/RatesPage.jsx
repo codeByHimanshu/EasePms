@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-
+import React, { useState } from "react";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const RatesPage = () => {
   const [rates, setRates] = useState([
@@ -85,20 +84,20 @@ const RatesPage = () => {
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
             <tr>
-              <th className="px-4 py-1 border">Room Type</th>
-              <th className="px-4 py-1 border">Rate Type</th>
+              <th className="px-4 py-1 border font-open-sans font-extra-light" style={{fontSize:"20px"}}>Room Type</th>
+              <th className="px-4 py-1 border font-open-sans font-extra-light" style={{fontSize:"20px"}}>Rate Type</th>
               {dates
                 .slice(startIndex, startIndex + visibleDays)
                 .map((date, index) => (
                   <th key={index} className="px-2 text-sm border">
                     <div className="flex flex-col items-center">
-                      <div className="text-gray-400 font-open-sans" style={{fontSize:"9px"}}>
+                      <div className="text-gray-800 font-open-sans font-extra-light" style={{fontSize:"14px"}}>
                         {date.toLocaleDateString("default", { weekday: "short" })}
                       </div>
-                      <div>
+                      <div className="font-open-sans font-semi-bold" style={{fontSize:"15px"}}>
                         {date.toLocaleDateString("default", { day: "numeric" })}
                       </div>
-                      <div className="text-gray-700 font-open-sans" style={{fontSize:"14px"}}>
+                      <div className="text-gray-800 font-open-sans font-extra-light" style={{fontSize:"14px"}}>
                         {date.toLocaleDateString("default", { month: "short" })}
                       </div>
                     </div>
