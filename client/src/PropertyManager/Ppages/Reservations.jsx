@@ -1,6 +1,6 @@
 import React from "react";
 import BookingCard from "../Pcomponents/BookingCard";
-import { Navbar } from "../PRoutes/RoutesTwo";
+import  Navbar  from "../Pcomponents/ReservationNavBar";
 
 const bookings = [
   {
