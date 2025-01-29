@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const AddReservation = () => {
   const [checkinDate, setCheckinDate] = useState("");
   const [checkoutDate, setCheckoutDate] = useState("");
+  const [childFields, setChildFields] = useState(false);
   const [rooms, setRooms] = useState(1);
 
   const handleDateChange = (e, type) => {
@@ -16,6 +17,114 @@ const AddReservation = () => {
       setCheckoutDate(value);
     }
   };
+
+  function HandleChildForm() {
+    setChildFields(true)
+  }
+  const ChildForm = () => {
+  
+    return (
+      <>
+      {childFields && (
+      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div className="bg-white p-6 rounded-lg shadow-lg space-y-4 animate-fadeIn w-1/2">
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+          <label className="block text-sm font-medium mb-1">Child Name</label>
+          <input
+            type="text"
+            className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Child Name"
+          />
+          </div>
+          <div>
+          <label className="block text-sm font-medium mb-1">Child Age</label>
+          <input
+            type="number"
+            className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Child Age"
+          />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+          <label className="block text-sm font-medium mb-1">Child Gender</label>
+          <select
+            className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+          >
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+          </div>
+          <div>
+          <label className="block text-sm font-medium mb-1">Special Needs</label>
+          <input
+            type="text"
+            className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Special Needs"
+          />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+          <label className="block text-sm font-medium mb-1">Child Passport Number</label>
+          <input
+            type="text"
+            className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Child Passport Number"
+          />
+          </div>
+          <div>
+          <label className="block text-sm font-medium mb-1">Child Nationality</label>
+          <input
+            type="text"
+            className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Child Nationality"
+          />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+          <label className="block text-sm font-medium mb-1">Child Allergies</label>
+          <input
+            type="text"
+            className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Child Allergies"
+          />
+          </div>
+          <div>
+          <label className="block text-sm font-medium mb-1">Child Medications</label>
+          <input
+            type="text"
+            className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Child Medications"
+          />
+          </div>
+        </div>
+        <div className="flex justify-end">
+          <button
+          onClick={() => setChildFields(false)}
+          className="bg-red-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-red-600"
+          >
+          Close
+          </button>
+        <button
+          onClick={() => alert('Form Submitted')}
+          className="bg-green-500 text-white px-4 py-2 ml-2 rounded-md shadow-sm hover:bg-green-600"
+        >
+          Submit
+        </button>
+        </div>
+        </div>
+      </div>
+      )}
+      </>
+    );
+  
+  }
+
 
   const currentDate = new Date().toISOString().slice(0, 16); // ISO format for input[type=datetime-local]
   function AddRoom() {
@@ -33,9 +142,9 @@ const AddReservation = () => {
     );
   }
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen" onClick={() => setChildFields(false)}>
       {/* Left Section */}
-      <div className="w-full bg-gray-100 p-6 flex flex-col justify-between">
+      <div className="w-full bg-gray-100 p-6 flex flex-col justify-between" onClick={(e) => e.stopPropagation()}>
         <div>
           <h2 className="text-2xl font-bold mb-4">Add Reservation</h2>
           <form action="">
@@ -344,6 +453,12 @@ const AddReservation = () => {
               </div>
             </div>
           </form>
+            <a
+            onClick={(e) => { e.stopPropagation(); HandleChildForm(); }}
+            className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600">
+              Child Form
+            </a>
+            {childFields && <ChildForm />}
         </div>
         <div className="flex justify-end space-x-2 mt-4">
           <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600">
@@ -389,6 +504,9 @@ const AddReservation = () => {
       </div>
     </div>
   );
+
+
+
 };
 
 export default AddReservation;
