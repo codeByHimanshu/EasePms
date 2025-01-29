@@ -69,7 +69,7 @@ export default function HeaderP() {
           <div className="flex flex-col gap-x-2 sm:flex-row sm:items-center z-20">
             <ul>
               <li className="p-2 w-full m-2 hover:bg-gray-100">
-                <a href="#">Room View</a>
+              <NavLink to="roomview">Room View</NavLink>
               </li>
               <li className="p-2 w-full m-2 hover:bg-gray-100">
                 <a href="#">Guest Reviews</a>
