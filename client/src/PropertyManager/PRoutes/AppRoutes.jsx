@@ -7,8 +7,6 @@ import Dashboard from "../Ppages/DashBoard";
 import Reservations from "../Ppages/Reservations";
 import AddReservation from "../Ppages/AddReservation";
 import RatesPage from "../Ppages/RatesPage";
-import Arrival from "../Ppages/Arrival";
-
 
 export const AppRoutes = () => {
     return (
@@ -19,7 +17,6 @@ export const AppRoutes = () => {
                 <Route index element={<Dashboard />} />
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="reservations">
-                    <Route path="arrival" element={<Arrival />} />
                     <Route index element={<Reservations />} />
                 </Route>
                 <Route path="addreservation" element={<AddReservation />} />
