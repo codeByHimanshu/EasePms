@@ -7,6 +7,7 @@ import Dashboard from "../Ppages/DashBoard";
 import Reservations from "../Ppages/Reservations";
 import AddReservation from "../Ppages/AddReservation";
 import RatesPage from "../Ppages/RatesPage";
+import GuestStats  from "../Ppages/GuestStats";
 
 export const AppRoutes = () => {
     return (
@@ -16,6 +17,7 @@ export const AppRoutes = () => {
             <Route path="/mainpage" element={<MainPage />}>
                 <Route index element={<Dashboard />} />
                 <Route path="dashboard" element={<Dashboard />} />
+                <Route path="gueststats" element={<GuestStats/>}/>
                 <Route path="reservations">
                     <Route index element={<Reservations />} />
                 </Route>
