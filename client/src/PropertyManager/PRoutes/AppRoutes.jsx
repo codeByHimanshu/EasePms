@@ -7,7 +7,7 @@ import Dashboard from "../Ppages/DashBoard";
 import Reservations from "../Ppages/Reservations";
 import AddReservation from "../Ppages/AddReservation";
 import RatesPage from "../Ppages/RatesPage";
-import GuestStats  from "../Ppages/GuestStats";
+import RoomView from "../Ppages/RoomView";
 
 export const AppRoutes = () => {
     return (
@@ -23,6 +23,7 @@ export const AppRoutes = () => {
                 </Route>
                 <Route path="addreservation" element={<AddReservation />} />
                 <Route path="rates" element={<RatesPage />} />
+                <Route path="roomview" element={<RoomView />} />
             </Route>
         </Routes>
     );
