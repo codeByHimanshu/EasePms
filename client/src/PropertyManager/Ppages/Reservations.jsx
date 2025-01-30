@@ -103,7 +103,7 @@ const bookingsData = {
 
   ],
 };
-
+  
 const Reservations = () => {
   const [activeTab, setActiveTab] = useState("arrival");
   const handleTabChange = (tab) => {
