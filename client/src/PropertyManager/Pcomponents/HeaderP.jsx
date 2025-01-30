@@ -86,7 +86,7 @@ export default function HeaderP() {
                 <a href="#">Rates</a>
               </li>
               <li className="p-2 w-full m-2 hover:bg-gray-100">
-                <a href="#">Stay View</a>
+              <NavLink to="stayview">Stay View</NavLink>
               </li>
               <li className="p-2 w-full m-2 hover:bg-gray-100">
                 <a href="#">Analytics</a>
