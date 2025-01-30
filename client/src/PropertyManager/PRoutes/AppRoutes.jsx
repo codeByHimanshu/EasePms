@@ -8,6 +8,7 @@ import Reservations from "../Ppages/Reservations";
 import AddReservation from "../Ppages/AddReservation";
 import RatesPage from "../Ppages/RatesPage";
 import RoomView from "../Ppages/RoomView";
+import GuestStats from "../Ppages/GuestStats";
 
 export const AppRoutes = () => {
     return (

@@ -239,7 +239,7 @@ function ChartsExample5() {
 
 function ChartBarHorizontal() {
     return (
-        
+
         <TEChart
             type="bar"
             data={{
@@ -318,31 +318,105 @@ function ChartBarHorizontal() {
     );
 }
 
+function ChartBar() {
+    return (
+        <TEChart
+            type="bar"
+            data={{
+                labels: [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday",
+                ],
+                datasets: [
+                    {
+                        label: "Traffic",
+                        data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+                    },
+                ],
+            }}
+        />
+    );
+}
+
+function ChartDoughnut() {
+    return (
+            <TEChart
+                type="doughnut"
+                data={{
+                    labels: [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday ",
+                    ],
+                    datasets: [
+                        {
+                            label: "Traffic",
+                            data: [2112, 2343, 2545, 3423, 2365, 1985, 987],
+                            backgroundColor: [
+                                "rgba(63, 81, 181, 0.5)",
+                                "rgba(77, 182, 172, 0.5)",
+                                "rgba(66, 133, 244, 0.5)",
+                                "rgba(156, 39, 176, 0.5)",
+                                "rgba(233, 30, 99, 0.5)",
+                                "rgba(66, 73, 244, 0.4)",
+                                "rgba(66, 133, 244, 0.2)",
+                            ],
+                        },
+                    ],
+                }}
+            />
+        
+    );
+}
+
 function GuestStats() {
     return (
         <>
             <Navbar />
-            <div className='mt-2 flex-col  m-4 p-4  w-auto'>
-                <div className=''><h2>Counteries your Guest are Coming from</h2>
-                    <div className='flex '>
-                        <div> <ChartsExample5 /></div>
-                        <div> <ChartsExample5 /></div>
+            <div className='mt-2 flex-col m-4 p-4 w-auto'>
+                <div className=''>
+                    <h2>Countries your Guests are Coming from</h2>
+                    <div className='flex'>
+                        <div><ChartsExample5 /></div>
+                        <div><ChartsExample5 /></div>
                     </div>
                     <div className='flex flex-row'>
-                        <div className="flex ml-5">
-                            <div className='w-full border max-w-full h-auto flex shadow'><ChartBarHorizontal /></div>
-                            <div className="w-full border max-w-full h-auto flex shadow "><Charts /></div>
+                        <div className="flex ml-5 space-x-1">
+                            <div className='w-full border max-w-full h-auto flex shadow'>
+                                <ChartBarHorizontal />
+                            </div>
+                            <div className="w-full border max-w-full h-auto flex shadow">
+                                <Charts />
+                            </div>
+                            <div className="w-full border max-w-full h-auto flex shadow">
+                                <ChartBar />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className='w-fit border bg-gray-300 h-auto flex shadow justify-center items-center mt-3 ml-6'>
+                        <div className="w-[400px] h-[400px] shadow b bg-white border space-x-2"> 
+                            <ChartDoughnut />
+                        </div>
+                        <div className="w-[400px] h-[400px] shadow b bg-white border space-x-2"> 
+                            <ChartDoughnut />
+                        </div>
+                        <div className="w-[400px] h-[400px] shadow b bg-white border space-x-2"> 
+                            <ChartDoughnut />
                         </div>
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 }
-export default GuestStats
-
-
-
-
-
-
+export default GuestStats;
