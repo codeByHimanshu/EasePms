@@ -66,7 +66,6 @@ function Dashboard() {
       <div className="flex justify-between space-x-2 shadow-md py-12 space-y-8">
         <div
           className="first w-1/2 flex flex-col shadow-md py-8 space-y-16  rounded-lg"
-          // style={{ backgroundColor: "red" }}
         >
           <div
             style={{ borderBottom: "1px solid gray" }}

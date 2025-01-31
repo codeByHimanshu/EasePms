@@ -7,7 +7,7 @@ const StayView = () => {
     const [viewType, setViewType] = useState('all');
     const [roomTypes] = useState(["Banquet Hall", "Deluxe", "Luxury", "Suite", "Twin"]);
     
-    const generateDummyRooms = (date) => {
+    const generateDummyRooms = () => {
         const rooms = [];
         // Room distribution
         const roomDistribution = {
@@ -35,11 +35,9 @@ const StayView = () => {
         return rooms;
     };
     
-    // Replace the existing allRoomsData with this
+    // Generate rooms data with today's date
     const allRoomsData = {
-        "2024-01-30": generateDummyRooms("2025-01-30"),
-        "2024-01-31": generateDummyRooms("2025-01-31"),
-        "2024-02-01": generateDummyRooms("2025-02-01"),
+        [selectedDate]: generateDummyRooms(),
     };
 
     // Get rooms for selected date or default rooms if no data exists
@@ -77,14 +75,14 @@ const StayView = () => {
     const handleViewChange = (status) => {
         setViewType(status);
         const currentRooms = getRoomsForDate(selectedDate);
-        if (status === 'all') {
-            setBookings(currentRooms);
-        } else {
-            setBookings(currentRooms.filter(room => room.status === status));
-        }
+        const filteredByType = selectedRoomType === "All" 
+            ? currentRooms 
+            : currentRooms.filter(room => room.type === selectedRoomType);
+        
+        setBookings(status === 'all' 
+            ? filteredByType 
+            : filteredByType.filter(room => room.status === status));
     };
-
-    // Update room type filter
     const handleRoomTypeChange = (type) => {
         setSelectedRoomType(type);
         const currentRooms = getRoomsForDate(selectedDate);
