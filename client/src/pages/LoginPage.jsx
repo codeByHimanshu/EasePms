@@ -29,7 +29,7 @@ const email = useRecoilValue(adminEmail);
           </button>
           <button
             className="w-full bg-white text-blue-700 py-3 rounded-md font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg"
-            onClick={() => alert('Accessing Channel Manager...')}
+            onClick={() => navigate('/channel')}
           >
             Access Channel Manager
           </button>
