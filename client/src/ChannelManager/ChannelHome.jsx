@@ -14,7 +14,7 @@ const ChannelHome = () => {
                 <Typography variant="body1" color="text.secondary">
                     Welcome to the Channel Manager. Here you can manage and monitor your channels.
                 </Typography>
-                {/* Add your channel management components here */}
+             
             </Box>
         </Container>
     );
