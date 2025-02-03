@@ -39,7 +39,8 @@ export default function PieCircleFour({
   label6,
 }) {
   return (
-    <Card className="p-4">
+    
+    <Card className="p-4" style={{ zIndex: -1 }}>
       <CardHeader
         floated={false}
         shadow={false}

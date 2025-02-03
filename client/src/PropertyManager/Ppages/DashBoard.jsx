@@ -1,4 +1,4 @@
-// import ChartP from "../Pcomponents/ChartP";
+
 import PieCircleFour from "../Pcomponents/PieCircleFour";
 import PieCircleOne from "../Pcomponents/PieCircleOne";
 import PieCircleThree from "../Pcomponents/PieCircleThree";
@@ -60,17 +60,12 @@ function Dashboard() {
               />
             </div>
           </div>
-          <div className="m-1 ">
-            <div className="w-full rounded-none shadow-md">
-              {/* <ChartP /> */}
-            </div>
-          </div>
+      
         </div>
       </div>
       <div className="flex justify-between space-x-2 shadow-md py-12 space-y-8">
         <div
           className="first w-1/2 flex flex-col shadow-md py-8 space-y-16  rounded-lg"
-          // style={{ backgroundColor: "red" }}
         >
           <div
             style={{ borderBottom: "1px solid gray" }}
