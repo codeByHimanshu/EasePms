@@ -1,4 +1,4 @@
-import ChartP from "../Pcomponents/ChartP";
+// import ChartP from "../Pcomponents/ChartP";
 import PieCircleFour from "../Pcomponents/PieCircleFour";
 import PieCircleOne from "../Pcomponents/PieCircleOne";
 import PieCircleThree from "../Pcomponents/PieCircleThree";
@@ -62,7 +62,7 @@ function Dashboard() {
           </div>
           <div className="m-1 ">
             <div className="w-full rounded-none shadow-md">
-              <ChartP />
+              {/* <ChartP /> */}
             </div>
           </div>
         </div>
