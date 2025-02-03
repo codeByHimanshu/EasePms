@@ -1,9 +1,12 @@
 import React from 'react';
-
+import Navbar from './component/Navbar';
 
 const ChannelHome = () => {
     return (
-        <div>hmlo hmlo fromt eh channle home</div>
+        <>
+            <Navbar />
+            <div>hmlo hmlo fromt eh channle home</div>
+        </>
     );
 };
 
