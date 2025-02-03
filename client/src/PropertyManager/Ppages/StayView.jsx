@@ -79,7 +79,7 @@ const StayView = () => {
             ? currentRooms 
             : currentRooms.filter(room => room.type === selectedRoomType);
         
-        setBookings(status === 'all' 
+        setBookings(status === 'all'    
             ? filteredByType 
             : filteredByType.filter(room => room.status === status));
     };
@@ -153,7 +153,7 @@ const StayView = () => {
 };
 
 // StatusBadge component remains the same
-// ...
+
 const StatusBadge = ({ status, count, selected, onClick }) => {
     const getStatusStyles = () => {
         const baseStyles = "rounded-full px-4 py-2 text-center cursor-pointer transition-colors";
