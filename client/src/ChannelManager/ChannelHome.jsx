@@ -1,13 +1,19 @@
-import React from 'react';
+
 import Navbar from './component/Navbar';
 
-const ChannelHome = () => {
-    return (
-        <>
-            <Navbar />
-            <div>hmlo hmlo fromt eh channle home</div>
-        </>
-    );
-};
+export default function ChannelManager() {
+  return (
+    <div className="flex min-h-screen bg-gray-50">
+      {/* Sidebar */}
+   <Navbar />
 
-export default ChannelHome;
+
+       
+      
+    </div>
+  );
+}
+
+
+
+
