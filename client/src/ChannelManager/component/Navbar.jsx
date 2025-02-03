@@ -1,5 +1,6 @@
 import { FiActivity, FiHome, FiSettings, FiUsers, FiCalendar, FiBarChart2, FiGlobe } from 'react-icons/fi';
 import { FaRegBuilding } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 export default function Navbar() {
   return (
     <div className="flex min-h-screen bg-gray-50">
@@ -12,8 +13,10 @@ export default function Navbar() {
           <ul className="space-y-2">
             <li>
               <a href="#" className="flex items-center space-x-2 text-gray-600 hover:bg-gray-100 p-2 rounded">
-                <FiHome className="w-5 h-5" />
-                <span>Dashboard</span>
+                <NavLink to="dashboard" className="flex items-center space-x-2 text-gray-600 hover:bg-gray-100 p-2 rounded">
+                  <FiHome className="w-5 h-5" />
+                  <span>Dashboard</span>
+                </NavLink>
               </a>
             </li>
             <li>
