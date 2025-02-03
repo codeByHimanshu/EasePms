@@ -1,5 +1,6 @@
 import { FiActivity, FiHome, FiSettings, FiUsers, FiCalendar, FiBarChart2, FiGlobe } from 'react-icons/fi';
 import { FaRegBuilding } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 export default function Navbar() {
   return (
     <div className="flex min-h-screen bg-gray-50">
@@ -13,31 +14,31 @@ export default function Navbar() {
             <li>
               <a href="#" className="flex items-center space-x-2 text-gray-600 hover:bg-gray-100 p-2 rounded">
                 <FiHome className="w-5 h-5" />
-                <span>Dashboard</span>
+                <NavLink to="">Dashboard</NavLink>
               </a>
             </li>
             <li>
               <a href="#" className="flex items-center space-x-2 text-gray-600 hover:bg-gray-100 p-2 rounded">
                 <FiCalendar className="w-5 h-5" />
-                <span>Reservations</span>
+                <NavLink to="">Reservations</NavLink>
               </a>
             </li>
             <li>
               <a href="#" className="flex items-center space-x-2 text-gray-600 hover:bg-gray-100 p-2 rounded">
                 <FaRegBuilding className="w-5 h-5" />
-                <span>Properties</span>
+                <NavLink to="">Properties</NavLink>
               </a>
             </li>
             <li>
               <a href="#" className="flex items-center space-x-2 text-gray-600 hover:bg-gray-100 p-2 rounded">
                 <FiGlobe className="w-5 h-5" />
-                <span>Channels</span>
+                <NavLink to="">Channels</NavLink>
               </a>
             </li>
             <li>
               <a href="#" className="flex items-center space-x-2 text-gray-600 hover:bg-gray-100 p-2 rounded">
                 <FiSettings className="w-5 h-5" />
-                <span>Settings</span>
+                <NavLink to="">Settings</NavLink>
               </a>
             </li>
           </ul>
