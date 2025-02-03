@@ -22,25 +22,25 @@ export default function Navbar() {
             <li>
               <a href="#" className="flex items-center space-x-2 text-gray-600 hover:bg-gray-100 p-2 rounded">
                 <FiCalendar className="w-5 h-5" />
-                <span>Reservations</span>
+                <NavLink to="">Reservations</NavLink>
               </a>
             </li>
             <li>
               <a href="#" className="flex items-center space-x-2 text-gray-600 hover:bg-gray-100 p-2 rounded">
                 <FaRegBuilding className="w-5 h-5" />
-                <span>Properties</span>
+                <NavLink to="">Properties</NavLink>
               </a>
             </li>
             <li>
               <a href="#" className="flex items-center space-x-2 text-gray-600 hover:bg-gray-100 p-2 rounded">
                 <FiGlobe className="w-5 h-5" />
-                <span>Channels</span>
+                <NavLink to="">Channels</NavLink>
               </a>
             </li>
             <li>
               <a href="#" className="flex items-center space-x-2 text-gray-600 hover:bg-gray-100 p-2 rounded">
                 <FiSettings className="w-5 h-5" />
-                <span>Settings</span>
+                <NavLink to="">Settings</NavLink>
               </a>
             </li>
           </ul>
