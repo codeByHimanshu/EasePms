@@ -1,17 +1,15 @@
 
 import Navbar from './component/Navbar';
-
+import { Outlet } from 'react-router-dom'
 export default function ChannelManager() {
-  return (
-    <div className="flex min-h-screen bg-gray-50">
-      {/* Sidebar */}
-   <Navbar />
-
-
-       
-      
-    </div>
-  );
+    return (
+        <>
+            <div class="">
+                {/* <Navbar /> */}
+            </div>
+            <Outlet />
+        </>
+    );
 }
 
 

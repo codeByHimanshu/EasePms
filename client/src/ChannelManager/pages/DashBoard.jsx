@@ -1,7 +1,7 @@
 export default function Dashboard(){
     return (
-        <>
-        hmlo hmlo from the dashboard
-        </>
+        <div className="bg-black">
+        <div className="text-white" >hmlooo hmooooo</div>
+        </div>
     )
 }
