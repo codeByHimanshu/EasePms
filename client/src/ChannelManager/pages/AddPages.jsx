@@ -8,6 +8,7 @@ export default function AddPages() {
     // setShowDiv(false)
     return (
         <>
+         <Navbar />
             <div> hmlo hmlo from the add page</div>
             <div className="max-w-xl mx-auto bg-white p-6 rounded-md shadow">
                 <h2 className="text-xl font-semibold mb-4">Booking Information</h2>
