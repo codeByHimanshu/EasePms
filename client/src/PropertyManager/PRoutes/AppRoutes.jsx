@@ -9,8 +9,6 @@ import AddReservation from "../Ppages/AddReservation";
 import RatesPage from "../Ppages/RatesPage";
 import RoomView from "../Ppages/RoomView";
 import StayView from "../Ppages/StayView";
-
-
 import GuestStats from "../Ppages/GuestStats";
 
 export const AppRoutes = () => {

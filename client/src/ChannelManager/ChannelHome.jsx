@@ -5,7 +5,7 @@ export default function ChannelManager() {
     return (
         <>
             <div class="">
-                <Navbar />
+                {/* <Navbar /> */}
             </div>
             <Outlet />
         </>
