@@ -19,7 +19,7 @@ export default function AddPages() {
                         <select
                             id="bookingSource"
                             name="bookingSource"
-                            className="block w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"
+                            className="block w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring focus:ring-blue-200"
                         >
                             <option value="OTA">OTA</option>
                             <option value="Website">Website</option>
@@ -34,8 +34,9 @@ export default function AddPages() {
                         <select
                             id="ota"
                             name="ota"
-                            className="block w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"
+                            className="block w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring focus:ring-blue-200"
                             onChange={handleShowDiv}
+                            style={{ width: '100%' }}
                         >
                             <option value="bookOnGoogle">Book on Google</option>
                             <option value="bookingCom">Booking.com</option>
@@ -53,7 +54,7 @@ export default function AddPages() {
                             id="checkIn"
                             name="checkIn"
                             defaultValue="2025-02-04"
-                            className="block w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"
+                            className="block w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring focus:ring-blue-200"
                         />
                     </div>
                     <div>
@@ -65,7 +66,7 @@ export default function AddPages() {
                             id="nights"
                             name="nights"
                             defaultValue="1"
-                            className="block w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"
+                            className="block w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring focus:ring-blue-200"
                         />
                     </div>
                     <div>
@@ -77,7 +78,7 @@ export default function AddPages() {
                             id="checkOut"
                             name="checkOut"
                             defaultValue="2025-02-05"
-                            className="block w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"
+                            className="block w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring focus:ring-blue-200"
                         />
                     </div>
                 </div>
@@ -94,7 +95,64 @@ export default function AddPages() {
             </div>
 
             {showDiv ? <div className="max-w-xl mx-auto bg-white p-6 rounded-md shadow mt-4">
-                <h2 className="text-xl font-semi-bold mb-4">Room Details</h2>
+                <div className=" p-2 pl-4 border"><h2 className="text-xl font-semi-bold mb-4">Room Details</h2></div>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4" >
+                    <div>
+                        <label className="text-gray-600 font-md mt-2" >
+                            Room Type
+                        </label>
+                        <select
+                            id="bookingSource"
+                            name="bookingSource"
+                            className="mt-2 block w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring focus:ring-blue-200"
+                            style={{ width: '100%' }}
+                        >
+                            <option value="Deluxe">Deluxe</option>
+                            <option value="Standard">Standard</option>
+                            <option value="Suite">Suite</option>
+                            <option value="Twin">Twin</option>
+                            <option value="Luxury">Luxury</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label className="text-gray-600 font-md " > Room Plan</label>
+                        <select
+                            id="bookingSource"
+                            name="bookingSource"
+                            className="mt-2 p-1 block w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring focus:ring-blue-200"
+                            style={{ width: '100%' }}
+                        >
+                            <option value="Deluxe Cp">Deluxe Cp</option>
+                            <option value="Deluxe Ep">Deluxe Ep</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label className="text-gray-600 font-md " > Room</label>
+                        <select
+                            id="Room"
+                            name="Room"
+                            defaultValue="Select Room"
+                            className="mt-2 block w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring focus:ring-blue-200"
+                            style={{ width: '100%' }}
+                        >
+                            <option value="101">101</option>
+                            <option value="102">102</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label className="text-gray-600 font-md " > Rooms</label>
+                        <select
+                            id="rooms"
+                            name="rooms"
+                            defaultValue="Select Room"
+                            className="mt-2 block w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring focus:ring-blue-200"
+                            style={{ width: '100%' }}
+                        >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+                </div>
             </div> : ""}
         </>
 
