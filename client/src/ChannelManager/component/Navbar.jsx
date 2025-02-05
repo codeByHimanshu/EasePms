@@ -1,14 +1,14 @@
 import { FiHome, FiSettings, FiCalendar, FiGlobe } from 'react-icons/fi';
 import { FaRegBuilding } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
-import Bookings from '../pages/Bookings';
-import { useState } from 'react';
+
+
 
 export default function Navbar() {
-  const [showQuickAccess, setShowQuickAccess] = useState(false);
+ 
 
   return (
-    <div className=" bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className=" mb-auto bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Top Navbar */}
       <div className="w-full bg-white border-b border-gray-200 shadow-lg ">
         <div className="container mx-auto px-6">

@@ -56,7 +56,7 @@ const Bookings = () => {
     return (
         <>
             <Navbar/>
-            <div className="min-h-screen bg-gray-50 w-full">
+            <div className=" bg-gray-50 w-full">
                 <div className="p-6 max-w-[1920px] mx-auto">
                     {/* Header Section with enhanced styling */}
                     <div className="flex flex-col md:flex-row justify-between gap-4 mb-6">
@@ -127,7 +127,7 @@ const Bookings = () => {
                     </div>
 
                     {/* Table Section with enhanced styling */}
-                    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div className="bg-white rounded-lg shadow-md ">
                         <div className="overflow-x-auto">
                             <table className="w-full border-collapse">
                                 <thead className="bg-gray-50">
