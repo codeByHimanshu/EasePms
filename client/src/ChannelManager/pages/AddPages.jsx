@@ -2,6 +2,13 @@ import { useState, useEffect } from "react";
 import Navbar from "../component/Navbar";
 export default function AddPages() {
     const [showDiv, setShowDiv] = useState(false);
+    const [showDiv1,setShowDiv1]=useState(false);
+    const handleShowDiv1=()=>{
+        setShowDiv1(true);
+    }
+    const [rooms, setRooms] = useState(
+        Array(5).fill({ adults: 1, children: 0, rate: 2240 })
+    );
     const handleShowDiv = () => {
         setShowDiv(true);
     }
@@ -9,8 +16,8 @@ export default function AddPages() {
     return (
         <>
             <Navbar />
-            <div className="static" >
-                <div className="max-w-xl mx-auto bg-white p-6 rounded-md shadow absolute top-20 left-2">
+            <div className="flex flex-col mt-2">
+                <div className=" justify-start max-w-xl mx-auto bg-white p-6 rounded-md shadow ">
                     <h2 className="text-xl font-semibold mb-4">Booking Information</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
@@ -94,7 +101,8 @@ export default function AddPages() {
                         </label>
                     </div>
                 </div>
-                {showDiv ? <div className="max-w-xl mx-auto bg-white p-6 rounded-md shadow mt-4 top-96 left-2">
+
+                {showDiv ? <div className=" justify-start max-w-xl mx-auto bg-white p-6 rounded-md shadow mt-4">
                     <div className=" p-2 pl-4 border"><h2 className="text-xl font-semi-bold mb-4">Room Details</h2></div>
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4" >
                         <div>
@@ -147,6 +155,7 @@ export default function AddPages() {
                                 defaultValue="Select Room"
                                 className="mt-2 block w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring focus:ring-blue-200"
                                 style={{ width: '100%' }}
+                                onClick={handleShowDiv1}
                             >
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -155,7 +164,36 @@ export default function AddPages() {
 
                     </div>
                 </div> : ""}
-
+               {showDiv1 ? <div className="border rounded-lg p-4 w-full bg-white shadow-md">
+                    <div className="grid grid-cols-4 gap-4 p-2 font-semibold border-b bg-gray-100">
+                        <span>Adult</span>
+                        <span>Child</span>
+                        <span>Rate (Tax Inc.)</span>
+                        <div className="flex items-center gap-2">
+                            <input type="checkbox" id="overrideRate" className="w-4 h-4" />
+                            <label htmlFor="overrideRate">Override Rate</label>
+                        </div>
+                    </div>
+                    <div className="p-2">
+                        <h2 className="font-bold text-lg">Standard EP</h2>
+                        {rooms.map((room, index) => (
+                            <div key={index} className="grid grid-cols-4 gap-4 p-2 border-b items-center">
+                                <span>Room {index + 1}</span>
+                                <select className="border p-2 rounded w-full">
+                                    {[1, 2, 3, 4].map((num) => (
+                                        <option key={num} value={num}>{num}</option>
+                                    ))}
+                                </select>
+                                <select className="border p-2 rounded w-full">
+                                    {[0, 1, 2, 3].map((num) => (
+                                        <option key={num} value={num}>{num}</option>
+                                    ))}
+                                </select>
+                                <span>Rs {room.rate.toFixed(2)}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>:""}
             </div>
 
 
