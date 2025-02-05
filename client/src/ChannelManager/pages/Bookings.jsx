@@ -28,6 +28,222 @@ const dummyBookings = [
         adr: "$375",
         deposit: "Paid",
         source: "Direct"
+    },
+    {
+        resNo: "RES003",
+        bookingDate: "2023-10-03",
+        guestName: "Alice Johnson",
+        dates: "Oct 25-27",
+        room: "Standard",
+        pax: 1,
+        total: "$300",
+        adr: "$150",
+        deposit: "Pending",
+        source: "Expedia"
+    },
+    {
+        resNo: "RES004",
+        bookingDate: "2023-10-04",
+        guestName: "Bob Brown",
+        dates: "Oct 28-30",
+        room: "Deluxe",
+        pax: 2,
+        total: "$500",
+        adr: "$250",
+        deposit: "Paid",
+        source: "Airbnb"
+    },
+    {
+        resNo: "RES005",
+        bookingDate: "2023-10-05",
+        guestName: "Charlie Davis",
+        dates: "Nov 1-3",
+        room: "Suite",
+        pax: 4,
+        total: "$1000",
+        adr: "$500",
+        deposit: "Pending",
+        source: "Direct"
+    },
+    {
+        resNo: "RES006",
+        bookingDate: "2023-10-06",
+        guestName: "Diana Evans",
+        dates: "Nov 5-7",
+        room: "Standard",
+        pax: 2,
+        total: "$400",
+        adr: "$200",
+        deposit: "Paid",
+        source: "Booking.com"
+    },
+    {
+        resNo: "RES007",
+        bookingDate: "2023-10-07",
+        guestName: "Ethan Foster",
+        dates: "Nov 10-12",
+        room: "Deluxe",
+        pax: 3,
+        total: "$750",
+        adr: "$250",
+        deposit: "Pending",
+        source: "Expedia"
+    },
+    {
+        resNo: "RES008",
+        bookingDate: "2023-10-08",
+        guestName: "Fiona Green",
+        dates: "Nov 15-17",
+        room: "Suite",
+        pax: 2,
+        total: "$800",
+        adr: "$400",
+        deposit: "Paid",
+        source: "Airbnb"
+    },
+    {
+        resNo: "RES009",
+        bookingDate: "2023-10-09",
+        guestName: "George Harris",
+        dates: "Nov 20-22",
+        room: "Standard",
+        pax: 1,
+        total: "$300",
+        adr: "$150",
+        deposit: "Pending",
+        source: "Direct"
+    },
+    {
+        resNo: "RES010",
+        bookingDate: "2023-10-10",
+        guestName: "Hannah Irving",
+        dates: "Nov 25-27",
+        room: "Deluxe",
+        pax: 2,
+        total: "$500",
+        adr: "$250",
+        deposit: "Paid",
+        source: "Booking.com"
+    },
+    {
+        resNo: "RES011",
+        bookingDate: "2023-10-11",
+        guestName: "Ian Jackson",
+        dates: "Nov 28-30",
+        room: "Suite",
+        pax: 3,
+        total: "$900",
+        adr: "$300",
+        deposit: "Pending",
+        source: "Expedia"
+    },
+    {
+        resNo: "RES012",
+        bookingDate: "2023-10-12",
+        guestName: "Jackie King",
+        dates: "Dec 1-3",
+        room: "Standard",
+        pax: 2,
+        total: "$400",
+        adr: "$200",
+        deposit: "Paid",
+        source: "Airbnb"
+    },
+    {
+        resNo: "RES013",
+        bookingDate: "2023-10-13",
+        guestName: "Kevin Lewis",
+        dates: "Dec 5-7",
+        room: "Deluxe",
+        pax: 4,
+        total: "$1000",
+        adr: "$250",
+        deposit: "Pending",
+        source: "Direct"
+    },
+    {
+        resNo: "RES014",
+        bookingDate: "2023-10-14",
+        guestName: "Laura Miller",
+        dates: "Dec 10-12",
+        room: "Suite",
+        pax: 2,
+        total: "$800",
+        adr: "$400",
+        deposit: "Paid",
+        source: "Booking.com"
+    },
+    {
+        resNo: "RES015",
+        bookingDate: "2023-10-15",
+        guestName: "Michael Nelson",
+        dates: "Dec 15-17",
+        room: "Standard",
+        pax: 1,
+        total: "$300",
+        adr: "$150",
+        deposit: "Pending",
+        source: "Expedia"
+    },
+    {
+        resNo: "RES016",
+        bookingDate: "2023-10-16",
+        guestName: "Nina Owens",
+        dates: "Dec 20-22",
+        room: "Deluxe",
+        pax: 2,
+        total: "$500",
+        adr: "$250",
+        deposit: "Paid",
+        source: "Airbnb"
+    },
+    {
+        resNo: "RES017",
+        bookingDate: "2023-10-17",
+        guestName: "Oscar Perry",
+        dates: "Dec 25-27",
+        room: "Suite",
+        pax: 3,
+        total: "$900",
+        adr: "$300",
+        deposit: "Pending",
+        source: "Direct"
+    },
+    {
+        resNo: "RES018",
+        bookingDate: "2023-10-18",
+        guestName: "Paula Quinn",
+        dates: "Dec 28-30",
+        room: "Standard",
+        pax: 2,
+        total: "$400",
+        adr: "$200",
+        deposit: "Paid",
+        source: "Booking.com"
+    },
+    {
+        resNo: "RES019",
+        bookingDate: "2023-10-19",
+        guestName: "Quincy Roberts",
+        dates: "Jan 1-3",
+        room: "Deluxe",
+        pax: 4,
+        total: "$1000",
+        adr: "$250",
+        deposit: "Pending",
+        source: "Expedia"
+    },
+    {
+        resNo: "RES020",
+        bookingDate: "2023-10-20",
+        guestName: "Rachel Scott",
+        dates: "Jan 5-7",
+        room: "Suite",
+        pax: 2,
+        total: "$800",
+        adr: "$400",
+        deposit: "Paid",
+        source: "Airbnb"
     }
 ];
 
@@ -60,6 +276,7 @@ const Bookings = () => {
                 <div className="p-6 max-w-[1920px] mx-auto">
                     {/* Header Section with enhanced styling */}
                     <div className="flex flex-col md:flex-row justify-between gap-4 mb-6">
+                        <h1 className="text-2xl font-semibold">Bookings</h1>
                         <div className="relative flex-grow max-w-md">
                             <input
                                 className="w-full px-4 py-3 border border-gray-200 rounded-lg shadow-sm 
@@ -86,7 +303,7 @@ const Bookings = () => {
                         </div>
                     </div>
 
-                    {/* Filters Section with animation */}
+                 
                     <div className={`transform transition-all duration-300 ease-in-out overflow-hidden
                                 ${showFilters ? 'opacity-100 max-h-40' : 'opacity-0 max-h-0'}`}>
                         <div className="mb-6 p-4 border rounded-lg bg-white shadow-sm">
@@ -122,6 +339,22 @@ const Bookings = () => {
                                     />
                                     Show Pending Deposits Only
                                 </label>
+                                <input
+                                    type="date"
+                                    className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 
+                                         focus:outline-none transition-all duration-300"
+                                    value={filters.checkInDate}
+                                    onChange={(e) => setFilters({ ...filters, checkInDate: e.target.value })}
+                                    placeholder="Check-in Date"
+                                />
+                                <input
+                                    type="date"
+                                    className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 
+                                         focus:outline-none transition-all duration-300"
+                                    value={filters.checkOutDate}
+                                    onChange={(e) => setFilters({ ...filters, checkOutDate: e.target.value })}
+                                    placeholder="Check-out Date"
+                                />
                             </div>
                         </div>
                     </div>
