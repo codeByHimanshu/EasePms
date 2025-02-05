@@ -164,7 +164,7 @@ export default function AddPages() {
 
                     </div>
                 </div> : ""}
-               {showDiv1 ? <div className="border rounded-lg p-4 w-full bg-white shadow-md">
+               {showDiv1 ? <div className="border rounded-lg p-4 w-full bg-white shadow-md mt-4">
                     <div className="grid grid-cols-4 gap-4 p-2 font-semibold border-b bg-gray-100">
                         <span>Adult</span>
                         <span>Child</span>
