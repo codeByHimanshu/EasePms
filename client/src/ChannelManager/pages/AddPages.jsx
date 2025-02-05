@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import Navbar from "../component/Navbar";
 export default function AddPages() {
     const [showDiv, setShowDiv] = useState(false);
-    const [showDiv1,setShowDiv1]=useState(false);
-    const handleShowDiv1=()=>{
+    const [showDiv1, setShowDiv1] = useState(false);
+    const handleShowDiv1 = () => {
         setShowDiv1(true);
     }
     const [rooms, setRooms] = useState(
@@ -12,6 +12,13 @@ export default function AddPages() {
     const handleShowDiv = () => {
         setShowDiv(true);
     }
+    const extrasList = [
+        "Room Posting",
+        "Banquet",
+        "Channel",
+        "Early Check In",
+        "Extra Mattress",
+    ];
     // setShowDiv(false)
     return (
         <>
@@ -164,36 +171,72 @@ export default function AddPages() {
 
                     </div>
                 </div> : ""}
-               {showDiv1 ? <div className="border rounded-lg p-4 w-full bg-white shadow-md mt-4">
-                    <div className="grid grid-cols-4 gap-4 p-2 font-semibold border-b bg-gray-100">
-                        <span>Adult</span>
-                        <span>Child</span>
-                        <span>Rate (Tax Inc.)</span>
-                        <div className="flex items-center gap-2">
-                            <input type="checkbox" id="overrideRate" className="w-4 h-4" />
-                            <label htmlFor="overrideRate">Override Rate</label>
+
+                <div className="flex justify-between space-x-1">
+                    {showDiv1 ? <div className="border rounded-lg p-4 w-full bg-white shadow-md mt-4">
+                        <div className="grid grid-cols-4 gap-4 p-2 font-semibold border-b bg-gray-100">
+                            <span>Adult</span>
+                            <span>Child</span>
+                            <span>Rate (Tax Inc.)</span>
+                            <div className="flex items-center gap-2">
+                                <input type="checkbox" id="overrideRate" className="w-4 h-4" />
+                                <label htmlFor="overrideRate">Override Rate</label>
+                            </div>
                         </div>
-                    </div>
-                    <div className="p-2">
-                        <h2 className="font-bold text-lg">Standard EP</h2>
+                        <div className="p-2">
+                            <h2 className="font-bold text-lg">Standard EP</h2>
+                            {rooms.map((room, index) => (
+                                <div key={index} className="grid grid-cols-4 gap-4 p-2 border-b items-center">
+                                    <span>Room {index + 1}</span>
+                                    <select className="border p-2 rounded w-full">
+                                        {[1, 2, 3, 4].map((num) => (
+                                            <option key={num} value={num}>{num}</option>
+                                        ))}
+                                    </select>
+                                    <select className="border p-2 rounded w-full">
+                                        {[0, 1, 2, 3].map((num) => (
+                                            <option key={num} value={num}>{num}</option>
+                                        ))}
+                                    </select>
+                                    <span>Rs {room.rate.toFixed(2)}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div> : ""}
+
+                    {showDiv1 ? <div className="border rounded-lg p-4 w-full bg-white shadow-md mt-4">
+                        <div className="flex justify-between items-center border-b pb-2 mb-2">
+                            <h2 className="font-bold text-lg">ADD EXTRAS</h2>
+                            <button className="flex items-center gap-2 text-blue-500 border px-2 py-1 rounded">
+                                ↻ Reset
+                            </button>
+                        </div>
                         {rooms.map((room, index) => (
-                            <div key={index} className="grid grid-cols-4 gap-4 p-2 border-b items-center">
-                                <span>Room {index + 1}</span>
-                                <select className="border p-2 rounded w-full">
-                                    {[1, 2, 3, 4].map((num) => (
-                                        <option key={num} value={num}>{num}</option>
+                            <div key={index} className="border-b pb-4 mb-4">
+                                <h3 className="font-bold text-md">Room {index + 1} - Standard EP</h3>
+                                <div className="grid grid-cols-3 gap-4 p-2 font-semibold">
+                                    <span>Adult: {room.adults}</span>
+                                    <span>Child: {room.children}</span>
+                                    <span>Rate: Rs {room.rate.toFixed(2)}</span>
+                                </div>
+                                <div className="mt-2">
+                                    <h4 className="font-semibold">Extra Charge</h4>
+                                    {extrasList.map((extra) => (
+                                        <div key={extra} className="flex items-center gap-2 mt-1">
+                                            <input type="checkbox" className="w-4 h-4" />
+                                            <span>{extra}</span>
+                                            <input
+                                                type="number"
+                                                className="border p-1 rounded w-20 text-right"
+                                                placeholder="Rs 0.00"
+                                            />
+                                        </div>
                                     ))}
-                                </select>
-                                <select className="border p-2 rounded w-full">
-                                    {[0, 1, 2, 3].map((num) => (
-                                        <option key={num} value={num}>{num}</option>
-                                    ))}
-                                </select>
-                                <span>Rs {room.rate.toFixed(2)}</span>
+                                </div>
                             </div>
                         ))}
-                    </div>
-                </div>:""}
+                    </div> : ""}
+                </div>
             </div>
 
 

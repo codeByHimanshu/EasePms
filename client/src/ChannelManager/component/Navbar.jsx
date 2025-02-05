@@ -6,6 +6,7 @@ import React from 'react';
 export default function Navbar() {
   const [showOptions, setShowOptions] = React.useState(false);
 
+
   const handleAdminClick = () => {
     setShowOptions(!showOptions);
   };
@@ -30,7 +31,7 @@ export default function Navbar() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/reservations" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
+                  <NavLink to="/addpages" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
                     <FiCalendar className="w-5 h-5" />
                     <span className="tracking-wide">Reservations</span>
                   </NavLink>
