@@ -5,6 +5,10 @@ import { FaHotel } from "react-icons/fa";
 export default function AddPages() {
     const [showDiv, setShowDiv] = useState(false);
     const [showDiv1, setShowDiv1] = useState(false);
+    const [guestType, setGuestType] = useState("returning");
+    const [guestName, setGuestName] = useState("");
+    const [email, setEmail] = useState("");
+    const [mobile, setMobile] = useState("");
     const handleShowDiv1 = () => {
         setShowDiv1(true);
     }
@@ -27,7 +31,7 @@ export default function AddPages() {
             <Navbar />
             <div className="flex flex-col mt-2">
                 <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-                    
+
                     <div className="bg-white p-6 rounded-md shadow-md flex flex-col">
                         <h2 className="text-xl font-semibold mb-4">Booking Information</h2>
 
@@ -54,6 +58,7 @@ export default function AddPages() {
                                 <select
                                     id="ota"
                                     name="ota"
+                                    onClick={handleShowDiv}
                                     className="block w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:ring focus:ring-blue-200"
                                 >
                                     <option value="bookOnGoogle">Book on Google</option>
@@ -105,7 +110,7 @@ export default function AddPages() {
                             <label htmlFor="payAtHotel" className="ml-2 text-gray-700">Pay at Hotel</label>
                         </div>
                     </div>
-                    <div className="bg-white p-6 rounded-md shadow-md flex flex-col">
+                    {showDiv1 ? <div className="bg-white p-6 rounded-md shadow-md flex flex-col">
                         <h2 className="text-xl font-semibold mb-4 text-gray-600">Booking Summary</h2>
                         <div className="grid grid-cols-3 items-center text-center gap-4 p-2">
                             <div className="text-gray-700">06/02/2025</div>
@@ -128,7 +133,7 @@ export default function AddPages() {
                                 <span>Rs 3,360.00</span>
                             </div>
                         </div>
-                    </div>
+                    </div> : ""}
                 </div>
                 {showDiv ? <div className=" justify-start max-w-xl mx-auto bg-white p-6 rounded-md shadow mt-4">
                     <div className=" p-2 pl-4 border"><h2 className="text-xl font-semi-bold mb-4">Room Details</h2></div>
@@ -194,36 +199,77 @@ export default function AddPages() {
                 </div> : ""}
 
                 <div className="flex justify-between space-x-1">
-                    {showDiv1 ? <div className="border rounded-lg p-4 w-full bg-white shadow-md mt-4">
-                        <div className="grid grid-cols-4 gap-4 p-2 font-semibold border-b bg-gray-100">
-                            <span>Adult</span>
-                            <span>Child</span>
-                            <span>Rate (Tax Inc.)</span>
-                            <div className="flex items-center gap-2">
-                                <input type="checkbox" id="overrideRate" className="w-4 h-4" />
-                                <label htmlFor="overrideRate">Override Rate</label>
-                            </div>
-                        </div>
-                        <div className="p-2">
-                            <h2 className="font-bold text-lg">Standard EP</h2>
-                            {rooms.map((room, index) => (
-                                <div key={index} className="grid grid-cols-4 gap-4 p-2 border-b items-center">
-                                    <span>Room {index + 1}</span>
-                                    <select className="border p-2 rounded w-full">
-                                        {[1, 2, 3, 4].map((num) => (
-                                            <option key={num} value={num}>{num}</option>
-                                        ))}
-                                    </select>
-                                    <select className="border p-2 rounded w-full">
-                                        {[0, 1, 2, 3].map((num) => (
-                                            <option key={num} value={num}>{num}</option>
-                                        ))}
-                                    </select>
-                                    <span>Rs {room.rate.toFixed(2)}</span>
+                    {showDiv1 ?
+                        <div className="grid grid-rows-1">
+                            <div className="border rounded-lg p-4 w-full h-fit shadow-md mt-4 relative">
+                                <div className="grid grid-cols-4 gap-4 p-2 font-semibold border-b bg-gray-100">
+                                    <span>Adult</span>
+                                    <span>Child</span>
+                                    <span>Rate (Tax Inc.)</span>
+                                    <div className="flex items-center gap-2">
+                                        <input type="checkbox" id="overrideRate" className="w-4 h-4" />
+                                        <label htmlFor="overrideRate">Override Rate</label>
+                                    </div>
                                 </div>
-                            ))}
-                        </div>
-                    </div> : ""}
+                                <div className="p-2">
+                                    <h2 className="font-bold text-lg">Standard EP</h2>
+                                    {rooms.map((room, index) => (
+                                        <div key={index} className="grid grid-cols-4 gap-4 p-2 border-b items-center">
+                                            <span>Room {index + 1}</span>
+                                            <select className="border p-2 rounded w-full">
+                                                {[1, 2, 3, 4].map((num) => (
+                                                    <option key={num} value={num}>{num}</option>
+                                                ))}
+                                            </select>
+                                            <select className="border p-2 rounded w-full">
+                                                {[0, 1, 2, 3].map((num) => (
+                                                    <option key={num} value={num}>{num}</option>
+                                                ))}
+                                            </select>
+                                            <span>Rs {room.rate.toFixed(2)}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="p-6 w-full  mt-3 border">
+                                    <h2 className=" ml-0 mb-3 font-semibold">GUEST INFORMATION</h2>
+                                    <div className="grid grid-cols-1">
+                                        <div>
+                                            <label htmlFor="">
+                                                <input type="radio" className="w-8 h-4" />
+                                            </label>
+                                            <span>Returning Guest</span>
+                                        </div>
+                                        <div>
+                                            <label htmlFor="">
+                                                <input type="radio" className="w-8 h-4" />
+                                            </label>
+                                            <span>New Guest</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex space-x-2">
+                                        <div className="rounded">
+                                            <input type="text" className="w-full h-9 rounded border border-black p-2" />
+                                        </div>
+                                        <div><button className="bg-blue-600 h-9 p-2 font-semibold text-white rounded">Search</button></div>
+                                    </div>
+                                    <div className="text-gray-600 mt-2 w-auto h-auto  p-8 border">
+                                        <label htmlFor="" className="text-2xl font-semibold">Info</label>
+                                        <div className="rounded ">
+                                            <input className="w-full h-9 p-2 rounded border border-black" type="text" placeholder="Guest Name" />
+                                        </div>
+                                        <div className="flex space-x-2 mt-2 w-auto h-8">
+                                            <div >
+                                                <label htmlFor="" className="text-gray-500">Email</label>
+                                                <input className="w-auto h-8 rounded border border-black" type="text" /></div>
+                                            <div>
+                                            <label htmlFor="" className="text-gray-500">Mobile</label>
+                                                <input className="w-auto h-8 rounded border border-black" type="text" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> : ""}
 
                     {showDiv1 ? <div className="border rounded-lg p-4 w-full bg-white shadow-md mt-4">
                         <div className="flex justify-between items-center border-b pb-2 mb-2">
