@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../component/Navbar";
 import { FaHotel } from "react-icons/fa";
 import PaymentModal from '../component/PaymentModal.jsx'
+import PaymentCollectModal from "../component/PaymentCollectModel.jsx";
 
 export default function AddPages() {
     const [showDiv, setShowDiv] = useState(false);
@@ -11,6 +12,7 @@ export default function AddPages() {
     const [email, setEmail] = useState("");
     const [mobile, setMobile] = useState("");
     const [isOpen, setIsOpen] = useState(false);
+    const [isCollectOpen,setIsCollectOpen]=useState(false);
     const handleShowDiv1 = () => {
         setShowDiv1(true);
     }
@@ -326,8 +328,9 @@ export default function AddPages() {
                                             ADD
                                         </button>
 
-                                        <button className="bg-blue-600 w-1/3 text-white px-2 py-2 rounded hover:bg-blue-700">COLLECT</button>
+                                        <button className="bg-blue-600 w-1/3 text-white px-2 py-2 rounded hover:bg-blue-700"onClick={()=>setIsCollectOpen(true)}>COLLECT</button>
                                         {isOpen && <PaymentModal onClose={() => setIsOpen(false)} />}
+                                        {isCollectOpen && <PaymentCollectModal onClose={()=>setIsCollectOpen(false)}/>}
                                     </div>
 
                                 </div>
