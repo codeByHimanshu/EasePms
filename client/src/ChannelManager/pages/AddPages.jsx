@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "../component/Navbar";
 import { FaHotel } from "react-icons/fa";
+import PaymentModal from '../component/PaymentModal.jsx'
 
 export default function AddPages() {
     const [showDiv, setShowDiv] = useState(false);
@@ -9,6 +10,7 @@ export default function AddPages() {
     const [guestName, setGuestName] = useState("");
     const [email, setEmail] = useState("");
     const [mobile, setMobile] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
     const handleShowDiv1 = () => {
         setShowDiv1(true);
     }
@@ -25,7 +27,11 @@ export default function AddPages() {
         "Early Check In",
         "Extra Mattress",
     ];
-    // setShowDiv(false)
+    // useEffect(() => {
+    //     console.log("hmlo hmlo from the useeffect")
+    //     { isOpen && <PaymentModal onClose={() => setIsOpen(false)} /> }
+
+    // }, [isOpen])
     return (
         <>
             <Navbar />
@@ -252,7 +258,7 @@ export default function AddPages() {
                                         </div>
                                         <div><button className="bg-blue-600 h-9 p-2 font-semibold text-white rounded">Search</button></div>
                                     </div>
-                                    <div className="text-gray-600 mt-2 w-auto h-auto  p-8 border border-black ">
+                                    <div className="text-gray-600 mt-2 w-auto h-auto  p-8 border  bg-gray-200">
                                         <label htmlFor="" className="text-2xl font-semibold">Info</label>
                                         <div className="rounded ">
                                             <input className="w-full h-9 p-2 rounded border border-black" type="text" placeholder="Guest Name" />
@@ -266,7 +272,7 @@ export default function AddPages() {
                                                 <input className="w-auto h-8 rounded border border-black" type="text" /></div>
                                         </div>
                                     </div>
-
+                                    {/* {credit card information div} */}
                                     <div className="p-6 border rounded-md text-white mt-3">
                                         <div className="mb-3">
                                             <input
@@ -309,6 +315,19 @@ export default function AddPages() {
                                             </select>
 
                                         </div>
+                                    </div>
+                                    {/* payment add or collect infomation's div */}
+                                    <div className="flex items-center space-x-3 mt-3">
+                                        <span className="font-bold text-lg w-1/3">PAYMENTS</span>
+                                        <button
+                                            className="bg-blue-600 w-1/3 text-white px-2 py-2 rounded hover:bg-blue-700"
+                                            onClick={() => setIsOpen(true)} 
+                                        >
+                                            ADD
+                                        </button>
+
+                                        <button className="bg-blue-600 w-1/3 text-white px-2 py-2 rounded hover:bg-blue-700">COLLECT</button>
+                                        {isOpen && <PaymentModal onClose={() => setIsOpen(false)} />}
                                     </div>
 
                                 </div>
