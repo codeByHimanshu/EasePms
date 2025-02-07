@@ -274,7 +274,6 @@ const Bookings = () => {
        
             <div className=" bg-gray-50 w-full">
                 <div className="p-6 max-w-[1920px] mx-auto">
-                    {/* Header Section with enhanced styling */}
                     <div className="flex flex-col md:flex-row justify-between gap-4 mb-6">
                         <h1 className="text-2xl font-semibold">Bookings</h1>
                         <div className="relative flex-grow max-w-md">

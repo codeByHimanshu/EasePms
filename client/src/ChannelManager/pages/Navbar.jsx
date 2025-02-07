@@ -54,7 +54,7 @@ export default function Navbar() {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="channels" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
+                  <NavLink to="#" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
                     <FiGlobe className="w-5 h-5 transform hover:scale-110 transition-transform duration-200" />
                     <span className="tracking-wide">Channels</span>
                   </NavLink>
