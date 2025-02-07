@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Navbar from "../component/Navbar";
+import Navbar from "./Navbar";
 import { FaHotel } from "react-icons/fa";
 
 export default function AddPages() {
@@ -28,7 +28,7 @@ export default function AddPages() {
     // setShowDiv(false)
     return (
         <>
-            <Navbar />
+            
             <div className="flex flex-col mt-2">
                 <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
 

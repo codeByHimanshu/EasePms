@@ -36,31 +36,31 @@ export default function Navbar() {
               
               <ul className="flex space-x-8">
                 <li>
-                  <NavLink to="/dashboard" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
+                  <NavLink to="dashboard" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
                     <FiHome className="w-5 h-5" />
                     <span className="tracking-wide">Dashboard</span>
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/addpages" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
+                  <NavLink to="addpages" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
                     <FiCalendar className="w-5 h-5" />
                     <span className="tracking-wide">Reservations</span>
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/properties" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
+                  <NavLink to="inventory" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
                     <FaRegBuilding className="w-5 h-5" />
-                    <span className="tracking-wide">Properties</span>
+                    <span className="tracking-wide">Rates and Inventory</span>
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/channels" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
+                  <NavLink to="channels" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
                     <FiGlobe className="w-5 h-5 transform hover:scale-110 transition-transform duration-200" />
                     <span className="tracking-wide">Channels</span>
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/bookings" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
+                  <NavLink to="bookings" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
                     <FiSettings className="w-5 h-5 transform hover:scale-110 transition-transform duration-200" />
                     <span className="tracking-wide">Bookings</span>
                   </NavLink>

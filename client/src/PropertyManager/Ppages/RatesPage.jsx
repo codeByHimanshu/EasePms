@@ -163,14 +163,14 @@ const RatesPage = () => {
 
       <button
         onClick={() => setShowBulkUpdate(!showBulkUpdate)}
-        className="w-full bg-blue-500 text-white p-2 rounded mb-6"
+        className="w-fit flex bg-blue-500 text-white p-2 rounded mb-6"
       >
         {showBulkUpdate ? "Hide Bulk Update" : "Show Bulk Update"}
       </button>
 
       {showBulkUpdate && (
         <div className="bg-white p-6 rounded shadow-md mb-6">
-          <h2 className="text-2xl font-bold mb-4">Bulk Update</h2>
+          <h2 className="text-2xl font-bold w-fit mb-4">Bulk Update</h2>
           <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
             <div>
               <label className="block mb-1">Room Type:</label>
@@ -242,7 +242,7 @@ const RatesPage = () => {
             <button
               type="button"
               onClick={applyBulkUpdate}
-              className="w-full bg-blue-500 text-white p-2 rounded"
+              className="w-fit bg-blue-500 text-white p-2 rounded"
             >
               Apply Bulk Update
             </button>
@@ -250,7 +250,7 @@ const RatesPage = () => {
         </div>
       )}
 
-      <button className="w-full bg-green-500 text-white p-2 rounded">
+      <button className="w-fit bg-green-500 text-white p-2 rounded">
         Save Changes
       </button>
     </div>

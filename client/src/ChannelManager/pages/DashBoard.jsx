@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { FaArrowUp, FaArrowDown, FaHome, FaDollarSign, FaChartBar, FaChartLine, FaChartPie, FaGlobe } from "react-icons/fa";
-import Navbar from "../component/Navbar";
+import { FaHome, FaDollarSign, FaChartBar,  FaChartPie, FaGlobe } from "react-icons/fa";
+
+import { FaArrowDown, FaArrowUp, FaChartLine, FaBed, FaMoneyBillWave, FaClock } from "react-icons/fa";
+import Navbar from "./Navbar";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { BsBuilding } from "react-icons/bs";
 
@@ -90,6 +92,64 @@ const RecentBookings = () => {
   );
 };
 
+
+
+const DashboardStats = () => {
+  return (
+    <div className="p-6 bg-gray-100 w-full">
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-blue-500 text-white p-6 shadow-lg rounded-lg">
+          <FaBed className="text-3xl mb-2" />
+          <p className="text-lg">Bookings</p>
+          <h2 className="text-3xl font-bold">0</h2>
+          <p className="text-sm opacity-80">5 last week</p>
+        </div>
+
+        <div className="bg-green-500 text-white p-6 shadow-lg rounded-lg">
+          <FaMoneyBillWave className="text-3xl mb-2" />
+          <p className="text-lg">Revenue</p>
+          <h2 className="text-3xl font-bold">Rs 2,880.00</h2>
+          <p className="text-sm opacity-80">Rs 6,391.20 last week</p>
+        </div>
+
+        <div className="bg-red-500 text-white p-6 shadow-lg rounded-lg">
+          <FaChartLine className="text-3xl mb-2" />
+          <p className="text-lg">Occupancy</p>
+          <h2 className="text-3xl font-bold flex items-center">
+            20.91% <FaArrowDown className="ml-2 text-lg" />
+          </h2>
+          <p className="text-sm opacity-80">27.27% last week</p>
+        </div>
+      </div>
+
+      {/* Second Row */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+        <div className="bg-yellow-500 text-white p-6 shadow-lg rounded-lg">
+          <FaChartLine className="text-3xl mb-2" />
+          <p className="text-lg">ADR</p>
+          <h2 className="text-3xl font-bold">Rs 250.43</h2>
+          <p className="text-sm opacity-80">Rs 426.08 last week</p>
+        </div>
+
+        <div className="bg-indigo-500 text-white p-6 shadow-lg rounded-lg">
+          <FaClock className="text-3xl mb-2" />
+          <p className="text-lg">Booking Lead Time</p>
+          <h2 className="text-3xl font-bold">1</h2>
+        </div>
+
+        <div className="bg-gray-800 text-white p-6 shadow-lg rounded-lg">
+          <FaBed className="text-3xl mb-2" />
+          <p className="text-lg">Unsold Rooms</p>
+          <h2 className="text-3xl font-bold">43.5/55</h2>
+          <p className="text-sm opacity-80">40/55 last week</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
 const Dashboard = () => {
   const [bookings, setBookings] = useState([
     { id: 1, name: "Aditi Sinha", guests: 2, nights: 1, room: "Standard", voucher: "1526812565/1", adr: 1688.7 },
@@ -104,7 +164,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Navbar />
+    
       <nav className="flex items-center justify-between bg-gray-900 text-white p-4 shadow-lg">
         <div className="flex space-x-6 text-sm font-semibold">
           <NavItem icon={<FaHome size={18} />} text="TODAY'S OVERVIEW" onClick={() => handleNavClick("TODAY'S OVERVIEW")} />
@@ -122,48 +182,7 @@ const Dashboard = () => {
           </button>
         </div>
       </nav>
-      <div className="p-6 bg-gray-100 w-full">
-        <div className="grid grid-cols-3 gap-4">
-          <div className="bg-white p-4 shadow rounded-lg">
-            <p className="text-gray-500">Bookings</p>
-            <h2 className="text-2xl font-bold">0</h2>
-            <p className="text-gray-500">5</p>
-          </div>
-          <div className="bg-white p-4 shadow rounded-lg">
-            <p className="text-gray-500">Revenue</p>
-            <h2 className="text-2xl font-bold text-blue-500">Rs 2,880.00</h2>
-            <p className="text-gray-500">Rs 6,391.20</p>
-          </div>
-          <div className="bg-white p-4 shadow rounded-lg">
-            <p className="text-gray-500">Occupancy</p>
-            <h2 className="text-2xl font-bold text-red-500 flex items-center">
-              20.91% <FaArrowDown className="ml-2 text-sm" />
-            </h2>
-            <p className="text-gray-500">27.27%</p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-3 gap-4 mt-4 ">
-          <div className="bg-white p-4 shadow rounded-lg">
-            <p className="text-gray-500">ADR</p>
-            <h2 className="text-2xl font-bold text-green-500">Rs 250.43</h2>
-            <p className="text-gray-500">Rs 426.08</p>
-          </div>
-          <div className="bg-white p-4 shadow rounded-lg">
-            <p className="text-gray-500">Booking Lead Time</p>
-            <h2 className="text-2xl font-bold">1</h2>
-          </div>
-          <div className="bg-white p-4 shadow rounded-lg">
-            <p className="text-gray-500">Unsold Rooms</p>
-            <h2 className="text-2xl font-bold">43.5/55</h2>
-            <p className="text-gray-500">40/55</p>
-          </div>
-        </div>
-
-
-       
-
-      </div>
+     <DashboardStats />
         <RecentBookings />
     </>
   );

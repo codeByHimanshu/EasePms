@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FiSliders } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
-import Navbar from "../component/Navbar";
+import Navbar from "./Navbar";
 
 const dummyBookings = [
     {
@@ -271,7 +271,7 @@ const Bookings = () => {
 
     return (
         <>
-            <Navbar/>
+       
             <div className=" bg-gray-50 w-full">
                 <div className="p-6 max-w-[1920px] mx-auto">
                     {/* Header Section with enhanced styling */}

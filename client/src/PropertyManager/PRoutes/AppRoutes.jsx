@@ -14,7 +14,7 @@ import GuestStats from "../Ppages/GuestStats";
 export const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
             <Route path="/LoginPage" element={<LoginPage />} />
             <Route path="/mainpage" element={<MainPage />}>
                 <Route index element={<Dashboard />} />
