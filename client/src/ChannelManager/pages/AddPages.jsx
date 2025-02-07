@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { FaHotel } from "react-icons/fa";
+import PaymentModal from '../component/PaymentModal.jsx'
 
 export default function AddPages() {
     const [showDiv, setShowDiv] = useState(false);
@@ -9,6 +10,7 @@ export default function AddPages() {
     const [guestName, setGuestName] = useState("");
     const [email, setEmail] = useState("");
     const [mobile, setMobile] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
     const handleShowDiv1 = () => {
         setShowDiv1(true);
     }
@@ -25,7 +27,7 @@ export default function AddPages() {
         "Early Check In",
         "Extra Mattress",
     ];
-    // setShowDiv(false)
+
     return (
         <>
             
@@ -252,7 +254,7 @@ export default function AddPages() {
                                         </div>
                                         <div><button className="bg-blue-600 h-9 p-2 font-semibold text-white rounded">Search</button></div>
                                     </div>
-                                    <div className="text-gray-600 mt-2 w-auto h-auto  p-8 border">
+                                    <div className="text-gray-600 mt-2 w-auto h-auto  p-8 border  bg-gray-200">
                                         <label htmlFor="" className="text-2xl font-semibold">Info</label>
                                         <div className="rounded ">
                                             <input className="w-full h-9 p-2 rounded border border-black" type="text" placeholder="Guest Name" />
@@ -262,10 +264,68 @@ export default function AddPages() {
                                                 <label htmlFor="" className="text-gray-500">Email</label>
                                                 <input className="w-auto h-8 rounded border border-black" type="text" /></div>
                                             <div>
-                                            <label htmlFor="" className="text-gray-500">Mobile</label>
+                                                <label htmlFor="" className="text-gray-500">Mobile</label>
                                                 <input className="w-auto h-8 rounded border border-black" type="text" /></div>
                                         </div>
                                     </div>
+                                    {/* {credit card information div} */}
+                                    <div className="p-6 border rounded-md text-white mt-3">
+                                        <div className="mb-3">
+                                            <input
+                                                className="w-full rounded p-2 border px-4 text-black"
+                                                placeholder="Credit Card Number"
+                                                type="text"
+                                            />
+                                        </div>
+                                        <div className="mb-3">
+                                            <input
+                                                className="w-full rounded p-2 border px-4 text-black"
+                                                placeholder="Card Holder Name"
+                                                type="text"
+                                            />
+                                        </div>
+                                        <div className="grid grid-cols-3 gap-3">
+                                            {/* <input
+                                                className="w-full rounded p-2 border px-4 text-black"
+                                                placeholder="MM/YY"
+                                                type="text"
+                                            /> */}
+                                            <select className="w-full rounded p-2 border px-4 text-black">
+                                                <option value="">Select Year</option>
+                                                {Array.from({ length: 2050 - 2015 + 1 }, (_, i) => 2015 + i).map(year => (
+                                                    <option key={year} value={year}>{year}</option>
+                                                ))}
+                                            </select>
+
+                                            <input
+                                                className="w-full rounded p-2 border px-4 text-black"
+                                                placeholder="CVV"
+                                                type="text"
+                                            />
+                                            <select className="w-full rounded p-2 border px-4 text-black">
+                                                <label htmlFor="" className="bg-black">Select Month</label>
+                                                <option value="">Select Month</option>
+                                                {Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, "0")).map(month => (
+                                                    <option key={month} value={month}>{month}</option>
+                                                ))}
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    {/* payment add or collect infomation's div */}
+                                    <div className="flex items-center space-x-3 mt-3">
+                                        <span className="font-bold text-lg w-1/3">PAYMENTS</span>
+                                        <button
+                                            className="bg-blue-600 w-1/3 text-white px-2 py-2 rounded hover:bg-blue-700"
+                                            onClick={() => setIsOpen(true)} 
+                                        >
+                                            ADD
+                                        </button>
+
+                                        <button className="bg-blue-600 w-1/3 text-white px-2 py-2 rounded hover:bg-blue-700">COLLECT</button>
+                                        {isOpen && <PaymentModal onClose={() => setIsOpen(false)} />}
+                                    </div>
+
                                 </div>
                             </div>
 
