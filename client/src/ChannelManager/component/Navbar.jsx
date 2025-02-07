@@ -3,7 +3,6 @@ import { FaRegBuilding } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 
-
 export default function Navbar() {
   const [showOptions, setShowOptions] = React.useState(false);
   const [showSlider, setShowSlider] = React.useState(false);
@@ -23,34 +22,34 @@ export default function Navbar() {
   return (
     <div className="mb-auto bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="w-full bg-indigo-600 border-b border-indigo-700 shadow-lg">
+ 
         <div className="container mx-auto px-6">
           <div className="flex items-center h-16 justify-between">
             <div className="flex items-center">
+
               <button onClick={handleMenuClick} className="text-white focus:outline-none mr-4">
                 <FiMenu className="w-6 h-6 transform hover:scale-110 transition-transform duration-200" />
-              </button>
-             
-              <h1 className="text-2xl font-extrabold text-white tracking-wide transform hover:scale-105 transition-transform duration-200">
-                Channel Manager
-              </h1>
+              </button>             
             </div>
-            <nav className="flex-1 ml-8"> {/* Add margin-left to create space */}
+           
+            <nav className="flex-1 ml-8">
+              
               <ul className="flex space-x-8">
                 <li>
                   <NavLink to="/dashboard" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
-                    <FiHome className="w-5 h-5 transform hover:scale-110 transition-transform duration-200" />
+                    <FiHome className="w-5 h-5" />
                     <span className="tracking-wide">Dashboard</span>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/addpages" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
-                    <FiCalendar className="w-5 h-5 transform hover:scale-110 transition-transform duration-200" />
+                    <FiCalendar className="w-5 h-5" />
                     <span className="tracking-wide">Reservations</span>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/properties" className="flex items-center space-x-2 text-white hover:text-yellow-300 font-semibold transition-all duration-200 ease-in-out">
-                    <FaRegBuilding className="w-5 h-5 transform hover:scale-110 transition-transform duration-200" />
+                    <FaRegBuilding className="w-5 h-5" />
                     <span className="tracking-wide">Properties</span>
                   </NavLink>
                 </li>
@@ -72,6 +71,7 @@ export default function Navbar() {
               <button onClick={handleAdminClick} className="text-white font-semibold focus:outline-none transform hover:scale-105 transition-transform duration-200">
                 Admin
               </button>
+
               {showOptions && (
                 <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg animate-fade-in">
                   <ul className="py-1">
@@ -103,12 +103,13 @@ export default function Navbar() {
                 </div>
               )}
             </div>
+               <div className="text-black p-1 ml-3 rounded-sm font-semibold bg-white border-2 ">Hotel Name: <span className="font-bold">Grand Resort</span></div>
           </div>
         </div>
       </div>
       {showSlider && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300 ease-in-out animate-fade-in">
-          <div className="fixed left-0 top-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out translate-x-0">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-300 ease-in-out animate-fade-in" onClick={handleCloseSlider}>
+          <div className="fixed left-0 top-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out translate-x-0" onClick={(e) => e.stopPropagation()}>
             <div className="flex justify-between items-center p-4 bg-indigo-600 text-white">
               <h2 className="text-lg font-semibold">Menu</h2>
               <button onClick={handleCloseSlider} className="focus:outline-none transform hover:scale-110 transition-transform duration-200">
