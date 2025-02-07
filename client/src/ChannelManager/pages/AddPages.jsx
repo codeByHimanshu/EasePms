@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Navbar from "./Navbar";
+
 import { FaHotel } from "react-icons/fa";
 import PaymentModal from '../component/PaymentModal.jsx'
 import PaymentCollectModal from "../component/PaymentCollectModel.jsx";
