@@ -19,7 +19,7 @@ const email = useRecoilValue(adminEmail);
       <p className="text-gray-500 text-sm">Please choose your desired action below:</p>
     </div>
     
-    {/* Right Panel */}
+  
     <div 
       className="w-3/5 bg-gradient-to-br from-indigo-500 to-purple-700 text-white flex flex-col justify-center items-start px-20 rounded-l-3xl shadow-xl transition-all duration-500 transform translate-x-0 opacity-100"
     >
@@ -28,7 +28,7 @@ const email = useRecoilValue(adminEmail);
         Manage your hotel operations seamlessly. Choose a module to proceed.
       </p>
       
-      {/* Buttons */}
+ 
       <div className="flex flex-col space-y-6 w-full">
         <button
           className="w-full bg-white text-indigo-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-all duration-300 shadow-lg transform hover:scale-105 active:scale-95"

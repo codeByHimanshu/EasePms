@@ -99,21 +99,21 @@ const DashboardStats = () => {
     <div className="p-6 bg-gray-100 w-full">
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-blue-500 text-white p-6 shadow-lg rounded-lg">
+        <div className="bg-blue-500 text-black p-6 shadow-lg rounded-lg">
           <FaBed className="text-3xl mb-2" />
           <p className="text-lg">Bookings</p>
           <h2 className="text-3xl font-bold">0</h2>
           <p className="text-sm opacity-80">5 last week</p>
         </div>
 
-        <div className="bg-green-500 text-white p-6 shadow-lg rounded-lg">
+        <div className="bg-green-500 text-black p-6 shadow-lg rounded-lg">
           <FaMoneyBillWave className="text-3xl mb-2" />
           <p className="text-lg">Revenue</p>
           <h2 className="text-3xl font-bold">Rs 2,880.00</h2>
           <p className="text-sm opacity-80">Rs 6,391.20 last week</p>
         </div>
 
-        <div className="bg-red-500 text-white p-6 shadow-lg rounded-lg">
+        <div className="bg-red-500 text-black p-6 shadow-lg rounded-lg ">
           <FaChartLine className="text-3xl mb-2" />
           <p className="text-lg">Occupancy</p>
           <h2 className="text-3xl font-bold flex items-center">
@@ -123,16 +123,16 @@ const DashboardStats = () => {
         </div>
       </div>
 
-      {/* Second Row */}
+  
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-        <div className="bg-yellow-500 text-white p-6 shadow-lg rounded-lg">
+        <div className="bg-yellow-500 text-black p-6 shadow-lg rounded-lg">
           <FaChartLine className="text-3xl mb-2" />
           <p className="text-lg">ADR</p>
           <h2 className="text-3xl font-bold">Rs 250.43</h2>
           <p className="text-sm opacity-80">Rs 426.08 last week</p>
         </div>
 
-        <div className="bg-indigo-500 text-white p-6 shadow-lg rounded-lg">
+        <div className="bg-indigo-500 text-black p-6 shadow-lg rounded-lg">
           <FaClock className="text-3xl mb-2" />
           <p className="text-lg">Booking Lead Time</p>
           <h2 className="text-3xl font-bold">1</h2>
