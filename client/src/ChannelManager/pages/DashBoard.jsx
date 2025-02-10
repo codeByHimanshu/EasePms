@@ -2,8 +2,7 @@ import { useState } from "react";
 import { FaHome, FaDollarSign, FaChartBar,  FaChartPie, FaGlobe } from "react-icons/fa";
 
 import { FaArrowDown, FaArrowUp, FaChartLine, FaBed, FaMoneyBillWave, FaClock } from "react-icons/fa";
-import Navbar from "./Navbar";
-import { FaRegCalendarAlt } from "react-icons/fa";
+
 import { BsBuilding } from "react-icons/bs";
 
 const NavItem = ({ icon, text, onClick }) => (

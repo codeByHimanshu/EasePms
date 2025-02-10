@@ -26,32 +26,32 @@ export default function HeaderP() {
   };
 
   const navList = (
-    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+    <ul className=" mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <Typography
         as="li"
         variant="small"
-        className="p-1 font-medium text-gray-600"
+        className="p-1 font-medium text-white"
       >
         <NavLink to="dashboard">Dashboard</NavLink>
       </Typography>
       <Typography
         as="li"
         variant="small"
-        className="p-1 font-medium text-gray-600"
+        className="p-1 font-medium text-white"
       >
         <NavLink to="reservations">Reservations</NavLink>
       </Typography>
       <Typography
         as="li"
         variant="small"
-        className="p-1 font-medium text-gray-600"
+        className="p-1 font-medium text-white"
       >
         <NavLink to="rates">Rates Page</NavLink>
       </Typography>
       <Typography
         as="li"
         variant="small"
-        className="p-1 font-medium text-gray-600"
+        className="p-1 font-medium text-white"
       >
         <a href="#" onClick={handleAddReservationClick}>
           AddReservation
@@ -60,12 +60,12 @@ export default function HeaderP() {
       <Typography
         as="li"
         variant="small"
-        className="p-1 font-medium text-gray-600 relative group"
+        className="p-1 font-medium text-white relative group"
       >
         <a href="#" className="flex items-center">
           Options
         </a>
-        <div className="dropdown-content mt-2 hidden absolute bg-white shadow-lg rounded-lg group-hover:block">
+        <div className="dropdown-content mt-2 hidden absolute bg-gray-600 shadow-lg rounded-lg group-hover:block">
           <div className="flex flex-col gap-x-2 sm:flex-row sm:items-center z-20">
             <ul>
               <li className="p-2 w-full m-2 hover:bg-gray-100">
@@ -324,14 +324,14 @@ export default function HeaderP() {
 
   return (
     <>
-      <Navbar className="mx-auto max-w-full px-4 py-2 lg:px-8 lg:py-4">
+      <Navbar className=" bg-indigo-600 border-b border-indigo-700 text-white mx-auto max-w-full px-2 py-2 lg:px-6 lg:py-3">
         <div className="container mx-auto flex flex-wrap items-center justify-between">
           <Typography
             as="a"
             href="#"
-            className="mr-4 cursor-pointer py-1.5 font-bold text-4xl text-blue-700"
+            className="mr-4 cursor-pointer py-1.5 font-bold text-4xl text-white"
           >
-            EasePms <sub className="text-sm">By DigiPants</sub>
+            InnSync <sub className="text-sm">By DigiPants</sub>
           </Typography>
           <div className="hidden items-center gap-x-2 lg:flex">
             <div className="relative flex w-full gap-2 md:w-max">
@@ -341,7 +341,7 @@ export default function HeaderP() {
                 containerProps={{
                   className: "min-w-[288px]",
                 }}
-                className="!border-t-blue-gray-300 pl-9 placeholder:text-blue-gray-300 focus:!border-blue-gray-300"
+                className="!border-t-blue-gray-300 pl-9 placeholder:text-black bg-white focus:!border-blue-gray-300"
                 labelProps={{
                   className: "before:content-none after:content-none",
                 }}
