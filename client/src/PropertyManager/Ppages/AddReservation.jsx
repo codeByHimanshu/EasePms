@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 
 const AddReservation = () => {
-  const [checkinDate, setCheckinDate] = useState("");
-  const [checkoutDate, setCheckoutDate] = useState("");
   const [childFields, setChildFields] = useState(false);
+
+  const [reservation, setReservation] = useState({
+    checkInDate: " ",
+    checkOutDate: " ",
+    checkInTime: " ",
+    checkOutTime: " ",
+    numberOfRooms: 1,
+    reservationType:" ",
+    bookingSurce:" ",
+    bussinessSource:" ",
+    marketCode:" "
+  });
   const [rooms, setRooms] = useState(1);
 
   const handleDateChange = (e, type) => {
