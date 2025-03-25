@@ -4,29 +4,40 @@ const AddReservation = () => {
   const [childFields, setChildFields] = useState(false);
 
   const [reservation, setReservation] = useState({
-    checkInDate: " ",
-    checkOutDate: " ",
-    checkInTime: " ",
-    checkOutTime: " ",
-    numberOfRooms: 1,
-    reservationType:" ",
-    bookingSurce:" ",
-    bussinessSource:" ",
-    marketCode:" "
+    hotelid: "",
+    checkIn: "",
+    checkOut: "",
+    checkInTime: "",
+    checkOutTime: "",
+    numNights: 0,
+    numRooms: 0,
+    reservationType: "",
+    bookingSource: "",
+    businessSource: "",
+    marketCode: "",
+    roomType: "",
+    rateType: "",
+    priceforeachroom: 0,
+    roomNumber: "",
+    numAdults: 0,
+    numChildren: 0,
+    totalPrice: 0,
+    guestDetails: {
+        fullName: "",
+        email: "",
+        phone: "",
+        address: "",
+        specialRequests: ""
+    },
+    childrenDetails: []
   });
+
+  const handleSubmit = async ()=>{
+    
+  }
   const [rooms, setRooms] = useState(1);
 
-  const handleDateChange = (e, type) => {
-    const value = e.target.value;
-    if (type === "checkin") {
-      setCheckinDate(value);
-      if (checkoutDate && new Date(value) >= new Date(checkoutDate)) {
-        setCheckoutDate("");
-      }
-    } else {
-      setCheckoutDate(value);
-    }
-  };
+
 
   function HandleChildForm() {
     setChildFields(true)
