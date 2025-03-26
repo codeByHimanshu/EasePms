@@ -178,7 +178,6 @@ const AddReservation = () => {
                   <input
                     type="datetime-local"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    value={checkinDate}
                     onChange={(e) => handleDateChange(e, "checkin")}
                     min={currentDate}
                   />
@@ -190,10 +189,8 @@ const AddReservation = () => {
                   <input
                     type="datetime-local"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    value={checkoutDate}
+          
                     onChange={(e) => handleDateChange(e, "checkout")}
-                    min={checkinDate || currentDate}
-                    disabled={!checkinDate}
                   />
                 </div>
                 <div>
@@ -501,13 +498,13 @@ const AddReservation = () => {
           <div className="flex items-center justify-between">
             <p className="text-sm font-semibold text-gray-500">Check-in</p>
             <p className="text-base font-medium text-gray-800">
-              {checkinDate || "Not selected"}
+              
             </p>
           </div>
           <div className="flex items-center justify-between">
             <p className="text-sm font-semibold text-gray-500">Check-out</p>
             <p className="text-base font-medium text-gray-800">
-              {checkoutDate || "Not selected"}
+              
             </p>
           </div>
           <div className="flex items-center justify-between">
