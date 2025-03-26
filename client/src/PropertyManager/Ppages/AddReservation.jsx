@@ -31,6 +31,7 @@ const AddReservation = () => {
     },
     childrenDetails: []
   });
+  const [rooms,setRooms]=useState([]);
   const handleSubmit = async () => {
     try {
       const response = await fetch("https://innsync-1.onrender.com/api/addreservation", {
@@ -53,7 +54,7 @@ const AddReservation = () => {
     }
   };
    
-  }
+  
  const handleSubmission = ()=>{
 
 
@@ -222,7 +223,7 @@ const AddReservation = () => {
                   <input
                     type="number"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    value={rooms}
+              
                     onChange={(e) => setRooms(e.target.value)}
                     min="1"
                     max={10}
