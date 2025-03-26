@@ -7,7 +7,7 @@ const AddReservation = () => {
     hotelid: "",
     checkIn: "",
     checkOut: "",
-    checkInTime: "",
+    checkInTime: "", 
     checkOutTime: "",
     numNights: 0,
     numRooms: 0,
@@ -31,11 +31,33 @@ const AddReservation = () => {
     },
     childrenDetails: []
   });
-
-  const handleSubmit = async ()=>{
-    
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch("https://innsync-1.onrender.com/api/addreservation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reservation),  
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        alert("Booking added");
+        setReservation({});
+      } else {
+        alert("Booking failed: " + data.message); // Display error from response
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Booking failed due to a network error");
+    }
+  };
+   
   }
-  const [rooms, setRooms] = useState(1);
+ const handleSubmission = ()=>{
+
+
+ }
 
 
 
@@ -164,7 +186,7 @@ const AddReservation = () => {
   }
   return (
     <div className="flex h-screen" onClick={() => setChildFields(false)}>
-      {/* Left Section */}
+     
       <div className="w-full bg-gray-100 p-6 flex flex-col justify-between" onClick={(e) => e.stopPropagation()}>
         <div>
           <h2 className="text-2xl font-bold mb-4">Add Reservation</h2>
