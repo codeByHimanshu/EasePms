@@ -17,56 +17,35 @@ function Dashboard() {
   return (
     <>
       <div className="flex">
-        <div className="w-fit  flex justify-between space-x-1 ">
+        <div className="w-fit flex justify-between space-x-1 sm:w-full s  md:w-full lg:flex  lg:bg-green-600 lg:w-full">
           <div className="m-1">
-            <div className="w-full rounded-none">
-              <PieCircleOne
-                label1={"Arrival"}
-                label2={"Pending"}
-                label3={"Arrived"}
-              />
+            <div className="w-full rounded-none bg-red-500">
+              pie circle one
             </div>
             <div></div>
           </div>
           <div className="m-1">
-            <div className="w-full rounded-none">
-              <PieCircleTwo
-                label1={"Departure"}
-                label2={"Pending"}
-                label3={"CheckOut"}
-              />
+            <div className="w-full rounded-none bg-green-800">
+              pie circle two
             </div>
             <div></div>
           </div>
           <div className="m-1">
-            <div className="w-full rounded-none">
-              <PieCircleThree
-                label1={"Arrival"}
-                label2={"Pending"}
-                label3={"Arrived"}
-              />
+            <div className="w-full rounded-none bg-yellow-800">
+             pie cirlce two
             </div>
             <div></div>
           </div>
           <div className="m-1">
-            <div className="w-full rounded-none">
-              <PieCircleFour
-                label1={"Room Status"}
-                label2={"Vacant"}
-                label3={"Sold"}
-                label4={"Day Use"}
-                label5={"Complimentary"}
-                label6={"Blocked"}
-              />
+            <div className="w-full rounded-none bg-black text-white ">
+              pie circle four
             </div>
           </div>
       
         </div>
       </div>
-      <div className="flex justify-between space-x-2 shadow-md py-12 space-y-8">
-        <div
-          className="first w-1/2 flex flex-col shadow-md py-8 space-y-16  rounded-lg"
-        >
+      <div className="flex justify-between space-x-2 shadow-md py-12 space-y-8 sm:grid  sm:w-full  lg:w-full lg:flex lg:space-x-2 bg-yellow-700">
+        <div className="w-1/2 flex flex-col shadow-md py-8 space-y-16  rounded-lg bg-red-800 sm:w-full sm:mx-14">
           <div
             style={{ borderBottom: "1px solid gray" }}
             className="mx-1 w-auto"
@@ -162,7 +141,7 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="second w-1/2 bg-white shadow-md rounded-lg p-6">
+        <div className="w-1/2 flex flex-col shadow-md py-8 space-y-16  rounded-lg bg-green-800 sm:w-full sm:mx-14">
           <div className="flex justify-between items-center mb-4">
             <div className="text-lg font-semibold">Activity Feed</div>
             <div>

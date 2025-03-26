@@ -324,7 +324,7 @@ export default function HeaderP() {
 
   return (
     <>
-      <Navbar className=" bg-indigo-600 border-b border-indigo-700 text-white mx-auto max-w-full px-2 py-2 lg:px-6 lg:py-3">
+      <Navbar className=" bg-indigo-600  text-white mx-auto max-w-full px-2 py-2 lg:px-6 lg:py-3">
         <div className="container mx-auto flex flex-wrap items-center justify-between">
           <Typography
             as="a"
