@@ -91,9 +91,7 @@ const StayView = () => {
             : currentRooms.filter(room => room.type === type);
         setBookings(filtered);
     };
-
     const counts = getCounts();
-
     return (
         <div className="p-4 bg-white shadow-lg rounded-lg">
             <div className="flex items-center justify-between mb-4">
