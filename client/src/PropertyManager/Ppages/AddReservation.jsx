@@ -7,8 +7,6 @@ const AddReservation = () => {
     hotelid: "",
     checkIn: "",
     checkOut: "",
-    checkInTime: "", 
-    checkOutTime: "",
     numNights: 0,
     numRooms: 0,
     reservationType: "",
@@ -29,7 +27,9 @@ const AddReservation = () => {
         address: "",
         specialRequests: ""
     },
-    childrenDetails: []
+    childrenDetails: [
+
+    ]
   });
   const handleSubmit = async () => {
     try {
@@ -45,7 +45,7 @@ const AddReservation = () => {
         alert("Booking added");
         setReservation({});
       } else {
-        alert("Booking failed: " + data.message); // Display error from response
+        alert("Booking failed: " + data.message);
       }
     } catch (error) {
       console.error("Error:", error);
@@ -53,12 +53,25 @@ const AddReservation = () => {
     }
   };
    
-  }
- const handleSubmission = ()=>{
+  
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setReservation((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-
- }
-
+  const handleGuestChange = (e) => {
+  const { name, value } = e.target;
+  setReservation((prev) => ({
+    ...prev,
+    guestDetails: {
+      ...prev.guestDetails,
+      [name]: value,
+    },
+  }));
+};
 
 
   function HandleChildForm() {
@@ -78,6 +91,10 @@ const AddReservation = () => {
             type="text"
             className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Child Name"
+            onChange={(e)=>{
+              
+
+            }}
           />
           </div>
           <div>
@@ -169,7 +186,8 @@ const AddReservation = () => {
   }
 
 
-  const currentDate = new Date().toISOString().slice(0, 16); // ISO format for input[type=datetime-local]
+
+  const currentDate = new Date().toISOString().slice(0, 16); 
   function AddRoom() {
     return (
       <div>
@@ -184,6 +202,9 @@ const AddReservation = () => {
       </div>
     );
   }
+
+  console.log(reservation.checkIn );
+  
   return (
     <div className="flex h-screen" onClick={() => setChildFields(false)}>
      
@@ -195,27 +216,27 @@ const AddReservation = () => {
               <div className="grid grid-cols-3 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">
-                    Check-in Date & Time
+                    Check-in Date
                   </label>
                   <input
                     type="datetime-local"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    value={checkinDate}
-                    onChange={(e) => handleDateChange(e, "checkin")}
+                    value={reservation.checkIn}
+                    onChange={handleInputChange}
                     min={currentDate}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">
-                    Check-out Date & Time
+                    Check-out Date 
                   </label>
                   <input
                     type="datetime-local"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    value={checkoutDate}
-                    onChange={(e) => handleDateChange(e, "checkout")}
-                    min={checkinDate || currentDate}
-                    disabled={!checkinDate}
+                    value={reservation.checkOut}
+                    onChange={handleInputChange}
+                    min={reservation.checkIn || currentDate}
+                    disabled={!reservation.checkIn}
                   />
                 </div>
                 <div>
@@ -225,8 +246,9 @@ const AddReservation = () => {
                   <input
                     type="number"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    value={rooms}
-                    onChange={(e) => setRooms(e.target.value)}
+                  
+                    value={reservation.numRooms}
+                    onChange={handleInputChange}
                     min="1"
                     max={10}
                   />
@@ -244,6 +266,8 @@ const AddReservation = () => {
                       list="reservationTypeOptions"
                       className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Reservation Type"
+                      value={reservation.reservationType}
+                      onChange={handleInputChange}
                     />
                     <datalist id="reservationTypeOptions">
                       <option value="Type A" />
@@ -261,6 +285,8 @@ const AddReservation = () => {
                       list="bookingSourceOptions"
                       className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Booking Source"
+                      value={reservation.bookingSource}
+                      onChange={handleInputChange}
                     />
                     <datalist id="bookingSourceOptions">
                       <option value="Source 1" />
@@ -278,6 +304,9 @@ const AddReservation = () => {
                       list="businessSourceOptions"
                       className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Business Source"
+                      value={reservation.businessSource}
+                      onChange={handleInputChange}
+                      
                     />
                     <datalist id="businessSourceOptions">
                       <option value="Business 1" />
@@ -295,6 +324,8 @@ const AddReservation = () => {
                       list="marketCodeOptions"
                       className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Market Code"
+                      value={reservation.marketCode}
+                onChange={handleInputChange}
                     />
                     <datalist id="marketCodeOptions">
                       <option value="Code X" />
@@ -306,8 +337,8 @@ const AddReservation = () => {
               </div>
             </div>
             <h1>Rate & room Plans</h1>
-            {Array.from({ length: rooms }, (v, index) => (
-              <div key={index} className="grid grid-cols-6 gap-4 mt-2">
+           
+              <div className="grid grid-cols-6 gap-4 mt-2">
                 <div>
                   <label className="block text-sm font-medium mb-1">
                     Room Type
@@ -318,6 +349,9 @@ const AddReservation = () => {
                     list="roomTypeOptions"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Room Type"
+                    value={reservation.roomType}
+                    onChange={handleInputChange}
+
                   />
                   <datalist id="roomTypeOptions">
                     <option value="Delux Room" />
@@ -338,6 +372,8 @@ const AddReservation = () => {
                     list="ratePlanOptions"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Rate Plan"
+                    value={reservation.rateType}
+                    onChange={handleInputChange}
                   />
                   <datalist id="ratePlanOptions">
                     <option value="EP" />
@@ -354,6 +390,8 @@ const AddReservation = () => {
                     list="roomNumberOptions"
                     className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Room Number"
+                    value={reservation.roomNumber}
+                    onChange={handleInputChange}
                   />
                   <datalist id="roomNumberOptions">
                     <option value="101" />
@@ -379,6 +417,8 @@ const AddReservation = () => {
                     list="adultsOptions"
                     className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Adults"
+                    value={reservation.numAdults}
+                    onChange={handleInputChange}
                   />
                   <datalist id="adultsOptions">
                     <option value="1" />
@@ -396,6 +436,8 @@ const AddReservation = () => {
                     list="childrenOptions"
                     className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Children"
+                    value={reservation.numChildren}
+                    onChange={handleInputChange}
                   />
                   <datalist id="childrenOptions">
                     <option value="1" />
@@ -405,6 +447,8 @@ const AddReservation = () => {
                 <div>
                   <label className="block text-sm font-medium mb-1">
                     Total Amount
+                    value={reservation.totalPrice}
+                    onChange={handleInputChange}
                   </label>
                   <input
                     id="total-amount"
@@ -414,36 +458,31 @@ const AddReservation = () => {
                   />
                 </div>
               </div>
-            ))}
+          
 
             <h1>Guest Information</h1>
             <div className="grid grid-cols-4 gap-4 mt-2">
               <div>
                 <label className="block text-sm font-medium mb-1">
-                  First Name
+                  Fullname
                 </label>
                 <input
                   type="text"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="First Name"
+                  value={reservation.guestDetails.fullName}
+                  onChange={handleGuestChange}
                 />
               </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  placeholder="Last Name"
-                />
-              </div>
+              
               <div>
                 <label className="block text-sm font-medium mb-1">Email</label>
                 <input
                   type="email"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Email"
+                  value={reservation.guestDetails.email}
+                  onChange={handleGuestChange}
                 />
               </div>
               <div>
@@ -454,6 +493,8 @@ const AddReservation = () => {
                   type="tel"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Phone Number"
+                  value={reservation.guestDetails.phone}
+                  onChange={handleGuestChange}
                 />
               </div>
               <div>
@@ -464,6 +505,8 @@ const AddReservation = () => {
                   type="text"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Address"
+                  value={reservation.guestDetails.address}
+                onChange={handleGuestChange}         
                 />
               </div>
               <div>
@@ -523,19 +566,19 @@ const AddReservation = () => {
           <div className="flex items-center justify-between">
             <p className="text-sm font-semibold text-gray-500">Check-in</p>
             <p className="text-base font-medium text-gray-800">
-              {checkinDate || "Not selected"}
+              {reservation.checkIn || "Not selected"}
             </p>
           </div>
           <div className="flex items-center justify-between">
             <p className="text-sm font-semibold text-gray-500">Check-out</p>
             <p className="text-base font-medium text-gray-800">
-              {checkoutDate || "Not selected"}
+              {reservation.checkOut || "Not selected"}
             </p>
           </div>
           <div className="flex items-center justify-between">
             <p className="text-sm font-semibold text-gray-500">Rooms</p>
             <p className="text-base font-medium text-gray-800">
-              {rooms || "Not selected"}
+              {/* {rooms || "Not selected"} */}
             </p>
           </div>
         </div>
