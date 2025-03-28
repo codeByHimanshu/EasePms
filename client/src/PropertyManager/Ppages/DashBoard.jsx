@@ -12,32 +12,65 @@ import { AiFillMessage } from "react-icons/ai";
 import { FaRegCreditCard } from "react-icons/fa";
 import { FaFileAlt } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
+import { useEffect, useState } from "react";
+import { data } from "react-router-dom";
 
 function Dashboard() {
+  const [arrival, setArrival] = useState(null);
+  const [inhouse, setInhouse] = useState(null);
+  const [departure, setDeparture] = useState(null);
+  const [bookingroom, setBookingRoom] = useState(null);
+  useEffect(() => {
+    async function fetchdata() {
+      const token= localStorage.getItem("access_token");
+      if(!token){
+        console.log("token is missing");
+        return;
+      }
+      try {
+        const response = await fetch('http://localhost:3000/api/booking/gettotalofallthebooking',{
+          method:'GET',
+          headers:{
+            "Authorization":`access_token ${token}`,
+            "Content-Type":"application/json"
+          }
+        });
+        const data = await response.json();
+        console.log("data = ", data);
+        setArrival(data.arri);
+        setInhouse(data.inh);
+        setDeparture(data.depa);
+        setBookingRoom(data.book)
+      } catch (e) {
+        console.log(e.message);
+      }
+    }
+    fetchdata();
+  }, [])
   return (
     <>
       <div className="flex">
         <div className="w-fit flex justify-between space-x-1 sm:w-full s  md:w-full lg:flex  lg:bg-green-600 lg:w-full sm:grid sm:grid-cols-1 new-class-piecircle">
           <div className="m-1">
-            <div className="w-full rounded-none bg-red-500">
-              pie circle one
+            <div className="w-full rounded-none flex space-x-1 bg-yellow-600">
+              <h1>Total Booking = </h1>{bookingroom}
             </div>
           </div>
           <div className="m-1">
-            <div className="w-full rounded-none bg-green-800">
-              pie circle two
+            <div className="w-full rounded-none bg-red-600">
+            <h1>Total Arrival = </h1>{arrival}
             </div>
             <div></div>
           </div>
           <div className="m-1">
             <div className="w-full rounded-none bg-yellow-800">
-              pie cirlce two
+            <h1>Total Departure = </h1>{departure}
             </div>
             <div></div>
           </div>
           <div className="m-1">
             <div className="w-full rounded-none bg-black text-white ">
-              pie circle four
+            <h1>Total Inhouse = </h1>{inhouse}
             </div>
           </div>
 
