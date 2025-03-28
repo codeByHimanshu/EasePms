@@ -4,7 +4,8 @@ import { adminEmail} from '../states/state';
 import {  useNavigate } from 'react-router-dom';
 function LoginPage() {
 const email = useRecoilValue(adminEmail);
- const navigate=useNavigate()
+ const navigate=useNavigate();
+ 
 
   return (
     <div className="flex h-screen bg-gray-100">

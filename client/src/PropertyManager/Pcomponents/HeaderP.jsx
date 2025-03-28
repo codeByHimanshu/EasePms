@@ -102,6 +102,7 @@ export default function HeaderP() {
   );
 
   const QuickReservation = () => {
+    console.log("quick reservation got called")
     const [checkinDate, setCheckinDate] = useState("");
     const [checkoutDate, setCheckoutDate] = useState("");
     const [rooms, setRooms] = useState(1);
@@ -309,7 +310,9 @@ export default function HeaderP() {
             <div className="flex justify-end space-x-4">
             <button onClick={() => setShowQuickReservation(false)} className="bg-gray-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-gray-600"> 
                <NavLink to="addreservation">
+                
               More Options
+              {console.log("more option got called")}
             </NavLink>
             </button>
               <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600">

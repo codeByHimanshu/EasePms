@@ -31,6 +31,7 @@ const AddReservation = () => {
 
     ]
   });
+  const [rooms,setRooms]=useState([]);
   const handleSubmit = async () => {
     try {
       const response = await fetch("https://innsync-1.onrender.com/api/addreservation", {

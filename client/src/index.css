@@ -9,3 +9,17 @@ body {
 html {
     font-family: 'Inter', sans-serif;
 }
+@layer utilities {
+    @media (max-width: 545px) {
+        .new-class-piecircle {
+            @apply flex flex-col w-full; 
+        }
+        .new-class{
+            @apply grid grid-cols-1 w-auto  space-x-5 space-y-3
+        }
+        .newclass-wf{
+            @apply w-full bg-black
+        }
+    }
+}
+
