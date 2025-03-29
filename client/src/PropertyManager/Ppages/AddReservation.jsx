@@ -34,7 +34,7 @@ const AddReservation = () => {
   const [rooms,setRooms]=useState([]);
   const handleSubmit = async () => {
     try {
-      const response = await fetch("https://innsync-1.onrender.com/api/addreservation", {
+      const response = await fetch("https://innsync-1.onrender.com/api/reservation/addreservation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reservation),  
@@ -352,7 +352,7 @@ const AddReservation = () => {
                     placeholder="Select Room Type"
                     value={reservation.roomType}
                     onChange={handleInputChange}
-
+     
                   />
                   <datalist id="roomTypeOptions">
                     <option value="Delux Room" />
@@ -448,14 +448,15 @@ const AddReservation = () => {
                 <div>
                   <label className="block text-sm font-medium mb-1">
                     Total Amount
-                    value={reservation.totalPrice}
-                    onChange={handleInputChange}
+                  
                   </label>
                   <input
                     id="total-amount"
                     name="totalAmount"
                     className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Total Amount"
+                    value={reservation.totalPrice}
+                    onChange={handleInputChange}
                   />
                 </div>
               </div>
@@ -548,7 +549,8 @@ const AddReservation = () => {
             {childFields && <ChildForm />}
         </div>
         <div className="flex justify-end space-x-2 mt-4">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600">
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600"
+          onClick={handleSubmit}>
             Check In
           </button>
           <button className="bg-green-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-green-600">
