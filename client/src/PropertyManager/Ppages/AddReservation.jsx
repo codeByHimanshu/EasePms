@@ -34,7 +34,7 @@ const AddReservation = () => {
   const [rooms,setRooms]=useState([]);
   const handleSubmit = async () => {
     try {
-      const response = await fetch("https://innsync-1.onrender.com/api/reservation/addreservation", {
+      const response = await fetch("https://localhost:3000/api/reservation/addreservation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reservation),  
@@ -73,13 +73,10 @@ const AddReservation = () => {
     },
   }));
 };
-
-
   function HandleChildForm() {
     setChildFields(true)
   }
   const ChildForm = () => {
-  
     return (
       <>
       {childFields && (
@@ -94,7 +91,6 @@ const AddReservation = () => {
             placeholder="Child Name"
             onChange={(e)=>{
               
-
             }}
           />
           </div>
@@ -220,9 +216,9 @@ const AddReservation = () => {
                     Check-in Date
                   </label>
                   <input
-                    type="datetime-local"
+                    type="date"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    value={reservation.checkIn}
+                    // value={reservation.checkIn}
                     onChange={handleInputChange}
                     min={currentDate}
                   />
@@ -232,12 +228,12 @@ const AddReservation = () => {
                     Check-out Date 
                   </label>
                   <input
-                    type="datetime-local"
+                    type="date"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    value={reservation.checkOut}
+                    // value={reservation.checkOut}
                     onChange={handleInputChange}
                     min={reservation.checkIn || currentDate}
-                    disabled={!reservation.checkIn}
+                    // disabled={!reservation.checkIn}
                   />
                 </div>
                 <div>
@@ -248,7 +244,7 @@ const AddReservation = () => {
                     type="number"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   
-                    value={reservation.numRooms}
+                    // value={reservation.numRooms}
                     onChange={handleInputChange}
                     min="1"
                     max={10}
@@ -267,7 +263,7 @@ const AddReservation = () => {
                       list="reservationTypeOptions"
                       className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Reservation Type"
-                      value={reservation.reservationType}
+                      // value={reservation.reservationType}
                       onChange={handleInputChange}
                     />
                     <datalist id="reservationTypeOptions">
@@ -286,7 +282,7 @@ const AddReservation = () => {
                       list="bookingSourceOptions"
                       className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Booking Source"
-                      value={reservation.bookingSource}
+                      // value={reservation.bookingSource}
                       onChange={handleInputChange}
                     />
                     <datalist id="bookingSourceOptions">
@@ -305,7 +301,7 @@ const AddReservation = () => {
                       list="businessSourceOptions"
                       className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Business Source"
-                      value={reservation.businessSource}
+                      // value={reservation.businessSource}
                       onChange={handleInputChange}
                       
                     />
@@ -325,7 +321,7 @@ const AddReservation = () => {
                       list="marketCodeOptions"
                       className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Market Code"
-                      value={reservation.marketCode}
+                      // value={reservation.marketCode}
                 onChange={handleInputChange}
                     />
                     <datalist id="marketCodeOptions">
@@ -350,7 +346,7 @@ const AddReservation = () => {
                     list="roomTypeOptions"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Room Type"
-                    value={reservation.roomType}
+                    // value={reservation.roomType}
                     onChange={handleInputChange}
      
                   />
@@ -373,7 +369,7 @@ const AddReservation = () => {
                     list="ratePlanOptions"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Rate Plan"
-                    value={reservation.rateType}
+                    // value={reservation.rateType}
                     onChange={handleInputChange}
                   />
                   <datalist id="ratePlanOptions">
@@ -391,7 +387,7 @@ const AddReservation = () => {
                     list="roomNumberOptions"
                     className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Room Number"
-                    value={reservation.roomNumber}
+                    // value={reservation.roomNumber}
                     onChange={handleInputChange}
                   />
                   <datalist id="roomNumberOptions">
@@ -418,7 +414,7 @@ const AddReservation = () => {
                     list="adultsOptions"
                     className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Adults"
-                    value={reservation.numAdults}
+                    // value={reservation.numAdults}
                     onChange={handleInputChange}
                   />
                   <datalist id="adultsOptions">
@@ -437,7 +433,7 @@ const AddReservation = () => {
                     list="childrenOptions"
                     className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Children"
-                    value={reservation.numChildren}
+                    // value={reservation.numChildren}
                     onChange={handleInputChange}
                   />
                   <datalist id="childrenOptions">
@@ -455,7 +451,7 @@ const AddReservation = () => {
                     name="totalAmount"
                     className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Total Amount"
-                    value={reservation.totalPrice}
+                    // value={reservation.totalPrice}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -472,7 +468,7 @@ const AddReservation = () => {
                   type="text"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="First Name"
-                  value={reservation.guestDetails.fullName}
+                  // value={reservation.guestDetails.fullName}
                   onChange={handleGuestChange}
                 />
               </div>
@@ -483,7 +479,7 @@ const AddReservation = () => {
                   type="email"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Email"
-                  value={reservation.guestDetails.email}
+                  // value={reservation.guestDetails.email}
                   onChange={handleGuestChange}
                 />
               </div>
@@ -495,7 +491,7 @@ const AddReservation = () => {
                   type="tel"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Phone Number"
-                  value={reservation.guestDetails.phone}
+                  // value={reservation.guestDetails.phone}
                   onChange={handleGuestChange}
                 />
               </div>
@@ -507,7 +503,7 @@ const AddReservation = () => {
                   type="text"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Address"
-                  value={reservation.guestDetails.address}
+                  // value={reservation.guestDetails.address}
                 onChange={handleGuestChange}         
                 />
               </div>
