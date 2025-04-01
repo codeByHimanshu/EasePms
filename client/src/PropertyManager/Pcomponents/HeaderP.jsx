@@ -102,10 +102,12 @@ export default function HeaderP() {
   );
 
   const QuickReservation = () => {
-    console.log("quick reservation got called")
     const [checkinDate, setCheckinDate] = useState("");
     const [checkoutDate, setCheckoutDate] = useState("");
     const [rooms, setRooms] = useState(1);
+    const [guestInfo, setGuestInfo] = useState({ name: "", email: "", phone: "" });
+    const [roomDetails, setRoomDetails] = useState([]);
+
 
     const handleDateChange = (e, type) => {
       const value = e.target.value;
@@ -117,6 +119,25 @@ export default function HeaderP() {
       } else {
         setCheckoutDate(value);
       }
+    };
+  
+    const handleRoomDetailsChange = (index, field, value) => {
+      const updatedDetails = [...roomDetails];
+      updatedDetails[index] = { ...updatedDetails[index], [field]: value };
+      setRoomDetails(updatedDetails);
+    };
+  
+    const handleGuestInfoChange = (e) => {
+      setGuestInfo({ ...guestInfo, [e.target.name]: e.target.value });
+    };
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      if (!checkinDate || !checkoutDate || rooms < 1 || !guestInfo.name || !guestInfo.email || !guestInfo.phone) {
+        alert("Please fill in all required fields");
+        return;
+      }
+      console.log("Reservation Submitted", { checkinDate, checkoutDate, rooms, roomDetails, guestInfo });
     };
 
     const currentDate = new Date().toISOString().slice(0, 16);
