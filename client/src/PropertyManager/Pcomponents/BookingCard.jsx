@@ -23,27 +23,27 @@ const BookingCard = ({ booking }) => {
         </p>
         
         <p className="text-gray-700 flex items-center gap-2">
-          <FaUserFriends /> Guests: {booking.guests}
+          <FaUserFriends /> Guests: {booking.nameofguest}
         </p>
 
         <p className="text-gray-700 flex items-center gap-2">
-          <FaCalendarAlt /> Check-in: {booking.checkIn}
+          <FaCalendarAlt /> Check-in: {booking.checkindate}
         </p>
 
         <p className="text-gray-700 flex items-center gap-2">
-          <FaCalendarAlt /> Check-out: {booking.checkOut}
+          <FaCalendarAlt /> Check-out: {booking.checkoutdate}
         </p>
 
         <p className="text-gray-700 flex items-center gap-2">
-          <FaBed /> Room: {booking.room}
+          <FaBed /> Room: {booking.roomnumber}
         </p>
 
         <p className="text-gray-700 flex items-center gap-2">
-          <FaTag /> Rate Type: {booking.rateType}
+          <FaTag /> Rate Type: {booking.typeofroom}
         </p>
 
         <p className="text-gray-700 flex items-center gap-2">
-          <FaDollarSign /> Total: {booking.total}
+          <FaDollarSign /> Total: {booking.totalamount}
         </p>
 
         <p className="text-gray-700 flex items-center gap-2">

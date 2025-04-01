@@ -1,115 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BookingCard from "../Pcomponents/BookingCard";
 
 
-const bookingsData = {
-  arrival: [
-    {
-      name: "Mr. AMBAREES DUBEY",
-      year: 1963,
-      checkIn: "24/01/2025 10:09:38 PM",
-      checkOut: "26/01/2025 11:00:00 AM",
-      room: "104",
-      rateType: "EP",
-      total: "Rs 4,651.00",
-      paid: "Rs 4,651.00",
-      balance: "Rs 0.00",
-    },
-  ],
-  departure: [
-    {
-      name: "Mr. AMRIT PARKASH RAI",
-      year: 1972,
-      checkIn: "25/01/2025 03:15:07 PM",
-      checkOut: "26/01/2025",
-      room: "105",
-      rateType: "EP",
-      total: "Rs 2,500.00",
-      paid: "Rs 1,000.00",
-      balance: "Rs 1,500.00",
-    },
 
-  ],
-  inHouse: [
-    {
-      name: "Mr. AMRIT PARKASH RAI",
-      year: 1972,
-      checkIn: "25/01/2025 03:15:07 PM",
-      checkOut: "26/01/2025",
-      room: "105",
-      rateType: "EP",
-      total: "Rs 2,500.00",
-      paid: "Rs 1,000.00",
-      balance: "Rs 1,500.00",
-    },
-    {
-      name: "Mr. AMRIT PARKASH RAI",
-      year: 1972,
-      checkIn: "25/01/2025 03:15:07 PM",
-      checkOut: "26/01/2025",
-      room: "105",
-      rateType: "EP",
-      total: "Rs 2,500.00",
-      paid: "Rs 1,000.00",
-      balance: "Rs 1,500.00",
-    },
-  
-  ],
-  reserve: [
-    {
-      name: "Mr. AMRIT PARKASH RAI",
-      year: 1972,
-      checkIn: "25/01/2025 03:15:07 PM",
-      checkOut: "26/01/2025",
-      room: "105",
-      rateType: "EP",
-      total: "Rs 2,500.00",
-      paid: "Rs 1,000.00",
-      balance: "Rs 1,500.00",
-    },
-    {
-      name: "Mr. AMRIT PARKASH RAI",
-      year: 1972,
-      checkIn: "25/01/2025 03:15:07 PM",
-      checkOut: "26/01/2025",
-      room: "105",
-      rateType: "EP",
-      total: "Rs 2,500.00",
-      paid: "Rs 1,000.00",
-      balance: "Rs 1,500.00",
-    },
-    {
-      name: "Mr. AMRIT PARKASH RAI",
-      year: 1972,
-      checkIn: "25/01/2025 03:15:07 PM",
-      checkOut: "26/01/2025",
-      room: "105",
-      rateType: "EP",
-      total: "Rs 2,500.00",
-      paid: "Rs 1,000.00",
-      balance: "Rs 1,500.00",
-    },
-    {
-      name: "Mr. AMRIT PARKASH RAI",
-      year: 1972,
-      checkIn: "25/01/2025 03:15:07 PM",
-      checkOut: "26/01/2025",
-      room: "105",
-      rateType: "EP",
-      total: "Rs 2,500.00",
-      paid: "Rs 1,000.00",
-      balance: "Rs 1,500.00",
-    },
-
-  ],
-};
-  
 const Reservations = () => {
+  const [bookingData, setBookingData] = useState({
+    arrival: [],
+    departure: [],
+    inhouse: [],
+    reserve: []
+  });
   const [activeTab, setActiveTab] = useState("arrival");
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
-  const activeBookings = bookingsData[activeTab];
+  const [err, seterr] = useState("")
   const Navbar = () => {
     return (
       <div className="flex space-x-4">
@@ -127,9 +29,9 @@ const Reservations = () => {
         </button>
         <button
           className={activeTab === "inHouse" ? "font-bold" : ""}
-          onClick={() => handleTabChange("inHouse")}
+          onClick={() => handleTabChange("inhouse")}
         >
-          In House
+          inhouse
         </button>
         <button
           className={activeTab === "reserve" ? "font-bold" : ""}
@@ -140,6 +42,30 @@ const Reservations = () => {
       </div>
     );
   };
+  useEffect(() => {
+    async function fetchData() {
+      const token = localStorage.getItem('access_token');
+      if (!token) {
+        seterr("the token is missing")
+      }
+      const response = await fetch('http://localhost:3000/api/booking/getallthebooking', {
+        method: 'GET',
+        headers: {
+          "Authorization": `access_token ${token}`,
+          "Content-Type": "application/json"
+        }
+      });
+      const bookingres = await response.json();
+      setBookingData(bookingres);
+    }
+    fetchData()
+  }, [])
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+  const activeBookings = bookingData[activeTab];
+  console.log("active bookings = ",activeBookings)
+  console.log("booking Data = ", typeof bookingData)
   return (
     <>
       <div className="mt-3">
@@ -156,5 +82,4 @@ const Reservations = () => {
     </>
   );
 };
-
 export default Reservations;
