@@ -9,7 +9,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api/user/signin", {
+      const response = await fetch("https://innsync-1.onrender.com/api/user/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

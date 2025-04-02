@@ -151,10 +151,10 @@ export default function HeaderP() {
               <div className="grid grid-cols-3 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Check-in Date & Time
+                    Check-in 
                   </label>
                   <input
-                    type="datetime-local"
+                    type="date"
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     value={checkinDate}
                     onChange={(e) => handleDateChange(e, "checkin")}
@@ -163,10 +163,10 @@ export default function HeaderP() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Check-out Date & Time
+                    Check-out 
                   </label>
                   <input
-                    type="datetime-local"
+                    type="date"
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     value={checkoutDate}
                     onChange={(e) => handleDateChange(e, "checkout")}
