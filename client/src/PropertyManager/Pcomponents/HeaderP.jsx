@@ -69,7 +69,7 @@ export default function HeaderP() {
           <div className="flex flex-col gap-x-2 sm:flex-row sm:items-center z-20">
             <ul>
               <li className="p-2 w-full m-2 hover:bg-gray-100">
-              <NavLink to="roomview">Room View</NavLink>
+                <NavLink to="roomview">Room View</NavLink>
               </li>
               <li className="p-2 w-full m-2 hover:bg-gray-100">
                 <a href="#">Guest Reviews</a>
@@ -86,7 +86,7 @@ export default function HeaderP() {
                 <a href="#">Rates</a>
               </li>
               <li className="p-2 w-full m-2 hover:bg-gray-100">
-              <NavLink to="stayview">Stay View</NavLink>
+                <NavLink to="stayview">Stay View</NavLink>
               </li>
               <li className="p-2 w-full m-2 hover:bg-gray-100">
                 <a href="#">Analytics</a>
@@ -104,10 +104,17 @@ export default function HeaderP() {
   const QuickReservation = () => {
     const [checkinDate, setCheckinDate] = useState("");
     const [checkoutDate, setCheckoutDate] = useState("");
-    const [rooms, setRooms] = useState(1);
-    const [guestInfo, setGuestInfo] = useState({ name: "", email: "", phone: "" });
-    const [roomDetails, setRoomDetails] = useState([]);
-
+    const [guestInfo, setGuestInfo] = useState({
+      name: "",
+      email: "",
+      phone: "",
+    });
+    const [roomType, setRoomType] = useState();
+    const [roomNumber, setRoomNumber] = useState();
+    const [rates, setRates] = useState();
+    const [children, setChildren] = useState();
+    const [adults, setAdults] = useState();
+    const [totalAmount, setTotalAmount] = useState();
 
     const handleDateChange = (e, type) => {
       const value = e.target.value;
@@ -120,38 +127,47 @@ export default function HeaderP() {
         setCheckoutDate(value);
       }
     };
-  
-    const handleRoomDetailsChange = (index, field, value) => {
-      const updatedDetails = [...roomDetails];
-      updatedDetails[index] = { ...updatedDetails[index], [field]: value };
-      setRoomDetails(updatedDetails);
-    };
-  
+
     const handleGuestInfoChange = (e) => {
       setGuestInfo({ ...guestInfo, [e.target.name]: e.target.value });
     };
-  
+
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (!checkinDate || !checkoutDate || rooms < 1 || !guestInfo.name || !guestInfo.email || !guestInfo.phone) {
+      if (
+        !checkinDate ||
+        !checkoutDate ||
+        rooms < 1 ||
+        !guestInfo.name ||
+        !guestInfo.email ||
+        !guestInfo.phone
+      ) {
         alert("Please fill in all required fields");
         return;
       }
-      console.log("Reservation Submitted", { checkinDate, checkoutDate, rooms, roomDetails, guestInfo });
+      console.log("Reservation Submitted", {
+        checkinDate,
+        checkoutDate,
+        rooms,
+        roomDetails,
+        guestInfo,
+      });
     };
 
     const currentDate = new Date().toISOString().slice(0, 16);
 
     return (
       <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-       <div className="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg">
-          <h2 className="text-3xl font-bold mb-6 text-center">Quick Reservation</h2>
+        <div className="w-full max-w-4xl bg-white p-8 rounded-lg shadow-lg">
+          <h2 className="text-3xl font-bold mb-6 text-center">
+            Quick Reservation
+          </h2>
           <form>
             <div className="space-y-6">
               <div className="grid grid-cols-3 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Check-in 
+                    Check-in
                   </label>
                   <input
                     type="date"
@@ -163,7 +179,7 @@ export default function HeaderP() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Check-out 
+                    Check-out
                   </label>
                   <input
                     type="date"
@@ -189,7 +205,9 @@ export default function HeaderP() {
                 </div>
               </div>
             </div>
-            <h3 className="text-xl font-semibold mt-8 mb-4">Rate & Room Plans</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">
+              Rate & Room Plans
+            </h3>
             {Array.from({ length: rooms }, (v, index) => (
               <div key={index} className="grid grid-cols-6 gap-6 mb-6">
                 <div>
@@ -202,6 +220,9 @@ export default function HeaderP() {
                     list="roomTypeOptions"
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Room Type"
+                    onChange={(e) => {
+                      setRoomType(e.target.value);
+                    }}
                   />
                   <datalist id="roomTypeOptions">
                     <option value="Delux Room" />
@@ -222,6 +243,9 @@ export default function HeaderP() {
                     list="ratePlanOptions"
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Rate Plan"
+                    onChange={(e) => {
+                      setRates(e.target.value);
+                    }}
                   />
                   <datalist id="ratePlanOptions">
                     <option value="EP" />
@@ -238,6 +262,9 @@ export default function HeaderP() {
                     list="roomNumberOptions"
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Room Number"
+                    onChange={(e) => {
+                      setRoomNumber(e.target.value);
+                    }}
                   />
                   <datalist id="roomNumberOptions">
                     <option value="101" />
@@ -263,6 +290,9 @@ export default function HeaderP() {
                     list="adultsOptions"
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Adults"
+                    onChange={(e) => {
+                      setAdults(e.target.value);
+                    }}
                   />
                   <datalist id="adultsOptions">
                     <option value="1" />
@@ -280,6 +310,9 @@ export default function HeaderP() {
                     list="childrenOptions"
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Children"
+                    onChange={(e) => {
+                      setChildren(e.target.value);
+                    }}
                   />
                   <datalist id="childrenOptions">
                     <option value="1" />
@@ -295,11 +328,14 @@ export default function HeaderP() {
                     name="totalAmount"
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Total Amount"
+                    value={totalAmount}
                   />
                 </div>
               </div>
             ))}
-            <h3 className="text-xl font-semibold mt-8 mb-4">Guest Information</h3>
+            <h3 className="text-xl font-semibold mt-8 mb-4">
+              Guest Information
+            </h3>
             <div className="grid grid-cols-3 gap-6 mb-6">
               <div>
                 <label className="block text-sm font-medium mb-2">Name</label>
@@ -307,6 +343,7 @@ export default function HeaderP() {
                   type="text"
                   className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="First Name"
+                  onChange={handleDateChange}
                 />
               </div>
               <div>
@@ -315,6 +352,7 @@ export default function HeaderP() {
                   type="email"
                   className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Email"
+                  onChange={handleGuestInfoChange}
                 />
               </div>
               <div>
@@ -325,18 +363,24 @@ export default function HeaderP() {
                   type="tel"
                   className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Phone Number"
+                  onChange={handleGuestInfoChange}
                 />
               </div>
             </div>
             <div className="flex justify-end space-x-4">
-            <button onClick={() => setShowQuickReservation(false)} className="bg-gray-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-gray-600"> 
-               <NavLink to="addreservation">
-                
-              More Options
-              {console.log("more option got called")}
-            </NavLink>
-            </button>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600">
+              <button
+                onClick={() => setShowQuickReservation(false)}
+                className="bg-gray-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-gray-600"
+              >
+                <NavLink to="addreservation">
+                  More Options
+                  {console.log("more option got called")}
+                </NavLink>
+              </button>
+              <button
+                onClick={handleSubmit}
+                className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600"
+              >
                 Confirm
               </button>
             </div>
