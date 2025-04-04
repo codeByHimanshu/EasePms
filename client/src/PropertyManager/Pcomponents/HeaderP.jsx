@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   Navbar,
   Collapse,
@@ -102,57 +102,96 @@ export default function HeaderP() {
   );
 
   const QuickReservation = () => {
-    const [checkinDate, setCheckinDate] = useState("");
-    const [checkoutDate, setCheckoutDate] = useState("");
-    const [guestInfo, setGuestInfo] = useState({
-      name: "",
+    const [checkIn, setCheckIn] = useState("");
+    const [checkOut, setCheckOut] = useState("");
+    const [guests, setGuests] = useState({
+      fullName: "",
       email: "",
       phone: "",
     });
     const [roomType, setRoomType] = useState();
+    const [rooms,setRooms]=useState()
     const [roomNumber, setRoomNumber] = useState();
     const [rates, setRates] = useState();
-    const [children, setChildren] = useState();
-    const [adults, setAdults] = useState();
+    const [numChildren, setNumChildren] = useState();
+    const [numAdults, setNumAdults] = useState();
     const [totalAmount, setTotalAmount] = useState();
 
-    const handleDateChange = (e, type) => {
-      const value = e.target.value;
-      if (type === "checkin") {
-        setCheckinDate(value);
-        if (checkoutDate && new Date(value) >= new Date(checkoutDate)) {
-          setCheckoutDate("");
-        }
-      } else {
-        setCheckoutDate(value);
-      }
-    };
+
 
     const handleGuestInfoChange = (e) => {
-      setGuestInfo({ ...guestInfo, [e.target.name]: e.target.value });
+      setGuests({ ...guests, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+
+
+    const handleSubmit = useCallback(async (e) => {
       e.preventDefault();
+    
       if (
-        !checkinDate ||
-        !checkoutDate ||
+        !checkIn ||
+        !checkOut ||
         rooms < 1 ||
-        !guestInfo.name ||
-        !guestInfo.email ||
-        !guestInfo.phone
+        !guests.name ||
+        !guests.email ||
+        !guests.phone ||
+        !roomType ||
+        !roomNumber ||
+        !rates ||
+        !numChildren||
+        !numAdults  ||
+        !totalAmount
       ) {
-        alert("Please fill in all required fields");
+        alert("Please fill all fields");
+    
+        console.log("Validation failed with values:", {
+          checkIn,
+          checkOut,
+          rooms,
+          guests,
+          roomType,
+          roomNumber,
+          rates,
+          numChildren,
+          numAdults,
+          totalAmount,
+        });
+    
         return;
       }
-      console.log("Reservation Submitted", {
-        checkinDate,
-        checkoutDate,
-        rooms,
-        roomDetails,
-        guestInfo,
-      });
-    };
+    
+      try {
+        const response = await fetch("https://innsync-1.onrender.com/api/reservation/quickreservation", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            checkIn,
+            checkOut,
+            rooms,
+            guests,
+            roomType,
+            roomNumber,
+            rates,
+            numChildren,
+            numAdults,
+            totalAmount,
+          }),
+        });
+    
+        const data = await response.json();
+    
+        if (response.ok) {
+          alert("Booking added");
+          setReservation({});
+        } else {
+          alert("Booking failed: " + data.message);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Booking failed due to a network error");
+      }
+    }, []);
+    
 
     const currentDate = new Date().toISOString().slice(0, 16);
 
@@ -172,8 +211,8 @@ export default function HeaderP() {
                   <input
                     type="date"
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    value={checkinDate}
-                    onChange={(e) => handleDateChange(e, "checkin")}
+                 
+                    onChange={(e) => setCheckIn(e.target.value)}
                     min={currentDate}
                   />
                 </div>
@@ -184,10 +223,10 @@ export default function HeaderP() {
                   <input
                     type="date"
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    value={checkoutDate}
-                    onChange={(e) => handleDateChange(e, "checkout")}
-                    min={checkinDate || currentDate}
-                    disabled={!checkinDate}
+                    
+                    onChange={(e) => setCheckOut(e.target.value)}
+                    min={checkIn || currentDate}
+                    disabled={!checkIn}
                   />
                 </div>
                 <div>
@@ -197,7 +236,7 @@ export default function HeaderP() {
                   <input
                     type="number"
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    value={rooms}
+                 
                     onChange={(e) => setRooms(e.target.value)}
                     min="1"
                     max="10"
@@ -208,8 +247,8 @@ export default function HeaderP() {
             <h3 className="text-xl font-semibold mt-8 mb-4">
               Rate & Room Plans
             </h3>
-            {Array.from({ length: rooms }, (v, index) => (
-              <div key={index} className="grid grid-cols-6 gap-6 mb-6">
+          
+              <div className="grid grid-cols-6 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     Room Type
@@ -291,7 +330,7 @@ export default function HeaderP() {
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Adults"
                     onChange={(e) => {
-                      setAdults(e.target.value);
+                      setNumAdults(e.target.value);
                     }}
                   />
                   <datalist id="adultsOptions">
@@ -311,7 +350,7 @@ export default function HeaderP() {
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Select Children"
                     onChange={(e) => {
-                      setChildren(e.target.value);
+                      setNumChildren(e.target.value);
                     }}
                   />
                   <datalist id="childrenOptions">
@@ -328,11 +367,13 @@ export default function HeaderP() {
                     name="totalAmount"
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     placeholder="Total Amount"
-                    value={totalAmount}
+                    onChange={(e)=>{
+                      setTotalAmount(e.target.value)
+                    }}
                   />
                 </div>
               </div>
-            ))}
+        
             <h3 className="text-xl font-semibold mt-8 mb-4">
               Guest Information
             </h3>
@@ -343,7 +384,7 @@ export default function HeaderP() {
                   type="text"
                   className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="First Name"
-                  onChange={handleDateChange}
+                  onChange={handleGuestInfoChange}
                 />
               </div>
               <div>
