@@ -10,10 +10,39 @@ function App() {
     <BrowserRouter>
       <RecoilRoot>
         <AppRoutes />
-        <ChannelRoutes/>
+        <ChannelRoutes />
       </RecoilRoot>
     </BrowserRouter>
   );
 }
 
 export default App;
+
+/*
+{
+            hotelid: req.user.hotelid,
+            checkIn,
+            checkOut,
+            numNights,
+            numRooms,
+            reservationType,
+            bookingSource,
+            businessSource,
+            marketCode,
+            roomType,
+            rateType,
+            roomNumber,
+            numAdults,
+            priceforeachroom:room_rate_types[roomType].rate,
+            numChildren,
+            totalPrice:(room_rate_types[roomType].rate)*numRooms,
+            fullname,
+            email,
+            phone,
+            address,
+            childrenname,
+            childrenage,
+            specialRequests,
+            status,
+["Confirm Booking", "Tentative", "Canceled"],
+*/
