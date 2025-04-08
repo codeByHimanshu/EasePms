@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Navbar,
   Collapse,
@@ -109,80 +109,50 @@ export default function HeaderP() {
       email: "",
       phone: "",
     });
-    const [roomType, setRoomType] = useState();
-    const [rooms,setRooms]=useState()
-    const [roomNumber, setRoomNumber] = useState();
-    const [rates, setRates] = useState();
+    const [roomType, setRoomType] = useState("");
+    const [roomNumber, setRoomNumber] = useState("");
+    // const [rates, setRates] = useState();
     const [numChildren, setNumChildren] = useState();
     const [numAdults, setNumAdults] = useState();
     const [totalAmount, setTotalAmount] = useState();
-
-
+  
 
     const handleGuestInfoChange = (e) => {
       setGuests({ ...guests, [e.target.name]: e.target.value });
     };
 
-
-
-    const handleSubmit = useCallback(async (e) => {
+    async function handleSubmit(e) {
       e.preventDefault();
-    
-      if (
-        !checkIn ||
-        !checkOut ||
-        rooms < 1 ||
-        !guests.name ||
-        !guests.email ||
-        !guests.phone ||
-        !roomType ||
-        !roomNumber ||
-        !rates ||
-        !numChildren||
-        !numAdults  ||
-        !totalAmount
-      ) {
-        alert("Please fill all fields");
-    
-        console.log("Validation failed with values:", {
-          checkIn,
-          checkOut,
-          rooms,
-          guests,
-          roomType,
-          roomNumber,
-          rates,
-          numChildren,
-          numAdults,
-          totalAmount,
-        });
-    
-        return;
-      }
-    
+
+
       try {
-        const response = await fetch("https://innsync-1.onrender.com/api/reservation/quickreservation", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            checkIn,
-            checkOut,
-            rooms,
-            guests,
-            roomType,
-            roomNumber,
-            rates,
-            numChildren,
-            numAdults,
-            totalAmount,
-          }),
-        });
-    
+        const token = localStorage.getItem("access_token");
+        const response = await fetch(
+          "http://localhost:3000/api/reservation/quickreservation",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `access_token ${token}`,
+            },
+            body: JSON.stringify({
+              checkIn,
+              checkOut,
+              guests,
+              roomType,
+              roomNumber,
+              numChildren,
+              numAdults,
+              totalAmount,
+            }),
+          }
+        );
+
         const data = await response.json();
-    
+        console.log("data from the post request = ", data);
         if (response.ok) {
           alert("Booking added");
-          setReservation({});
+          // setReservation({});
         } else {
           alert("Booking failed: " + data.message);
         }
@@ -190,8 +160,8 @@ export default function HeaderP() {
         console.error("Error:", error);
         alert("Booking failed due to a network error");
       }
-    }, []);
-    
+      console.log("handle submit is called");
+    }
 
     const currentDate = new Date().toISOString().slice(0, 16);
 
@@ -211,7 +181,7 @@ export default function HeaderP() {
                   <input
                     type="date"
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                 
+                    name="checkIn"
                     onChange={(e) => setCheckIn(e.target.value)}
                     min={currentDate}
                   />
@@ -223,13 +193,13 @@ export default function HeaderP() {
                   <input
                     type="date"
                     className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    
+                    name="checkOut"
                     onChange={(e) => setCheckOut(e.target.value)}
                     min={checkIn || currentDate}
-                    disabled={!checkIn}
+                    // disabled={!checkIn}
                   />
                 </div>
-                <div>
+                {/* <div>
                   <label className="block text-sm font-medium mb-2">
                     Number of Rooms
                   </label>
@@ -241,139 +211,139 @@ export default function HeaderP() {
                     min="1"
                     max="10"
                   />
-                </div>
+                </div> */}
               </div>
             </div>
             <h3 className="text-xl font-semibold mt-8 mb-4">
               Rate & Room Plans
             </h3>
-          
-              <div className="grid grid-cols-6 gap-6 mb-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Room Type
-                  </label>
-                  <input
-                    id="room-type"
-                    name="roomType"
-                    list="roomTypeOptions"
-                    className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    placeholder="Select Room Type"
-                    onChange={(e) => {
-                      setRoomType(e.target.value);
-                    }}
-                  />
-                  <datalist id="roomTypeOptions">
-                    <option value="Delux Room" />
-                    <option value="Suit Room" />
-                    <option value="Twin With Bathroom" />
-                    <option value="Executive Room" />
-                    <option value="Standard Room" />
-                    <option value="Bussiness Room" />
-                  </datalist>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Rate Plan
-                  </label>
-                  <input
-                    id="ratePlan"
-                    name="ratePlan"
-                    list="ratePlanOptions"
-                    className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    placeholder="Select Rate Plan"
-                    onChange={(e) => {
-                      setRates(e.target.value);
-                    }}
-                  />
-                  <datalist id="ratePlanOptions">
-                    <option value="EP" />
-                    <option value="CP" />
-                  </datalist>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Room Number
-                  </label>
-                  <input
-                    id="room-number"
-                    name="roomNumber"
-                    list="roomNumberOptions"
-                    className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    placeholder="Select Room Number"
-                    onChange={(e) => {
-                      setRoomNumber(e.target.value);
-                    }}
-                  />
-                  <datalist id="roomNumberOptions">
-                    <option value="101" />
-                    <option value="102" />
-                    <option value="103" />
-                    <option value="104" />
-                    <option value="105" />
-                    <option value="106" />
-                    <option value="107" />
-                    <option value="108" />
-                    <option value="109" />
-                    <option value="110" />
-                    <option value="111" />
-                  </datalist>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Adults
-                  </label>
-                  <input
-                    id="adults"
-                    name="adults"
-                    list="adultsOptions"
-                    className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    placeholder="Select Adults"
-                    onChange={(e) => {
-                      setNumAdults(e.target.value);
-                    }}
-                  />
-                  <datalist id="adultsOptions">
-                    <option value="1" />
-                    <option value="2" />
-                    <option value="3" />
-                  </datalist>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Children
-                  </label>
-                  <input
-                    id="children"
-                    name="children"
-                    list="childrenOptions"
-                    className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    placeholder="Select Children"
-                    onChange={(e) => {
-                      setNumChildren(e.target.value);
-                    }}
-                  />
-                  <datalist id="childrenOptions">
-                    <option value="1" />
-                    <option value="2" />
-                  </datalist>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Total Amount
-                  </label>
-                  <input
-                    id="total-amount"
-                    name="totalAmount"
-                    className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    placeholder="Total Amount"
-                    onChange={(e)=>{
-                      setTotalAmount(e.target.value)
-                    }}
-                  />
-                </div>
+
+            <div className="grid grid-cols-6 gap-6 mb-6">
+              <div>
+                <label className="block text-sm font-medium mb-2">
+                  Room Type
+                </label>
+                <input
+               
+                  name=" roomType"
+                  list="roomTypeOptions"
+                  className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Select Room Type"
+                  onChange={(e) => {
+                    setRoomType(e.target.value);
+                  }}
+                />
+                <datalist id="roomTypeOptions">
+                  <option value="Deluxe" />
+                  <option value="Suite" />
+                  <option value="Double" />
+                </datalist>
               </div>
-        
+              {/* <div>
+                <label className="block text-sm font-medium mb-2">
+                  Rate Plan
+                </label>
+                <input
+                  id="ratePlan"
+                  name="rate"
+                  list="ratePlanOptions"
+                  className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Select Rate Plan"
+                  onChange={(e) => {
+                    setRates(e.target.value);
+                    console.log("from target function",e.target.value)
+                  }}
+                />
+                <datalist id="ratePlanOptions">
+                  <option value="EP" />
+                  <option value="CP" />
+                </datalist>
+              </div> */}
+              <div>
+                <label className="block text-sm font-medium mb-2">
+                  Room Number
+                </label>
+                <input
+                
+                  name="roomNumber"
+                  list="roomNumberOptions"
+                  className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Select Room Number"
+                  type="number"
+                  onChange={(e) => {
+                    setRoomNumber(e.target.value);
+                  }}
+                />
+                <datalist id="roomNumberOptions">
+                  <option value="101" />
+                  <option value="102" />
+                  <option value="103" />
+                  <option value="104" />
+                  <option value="105" />
+                  <option value="106" />
+                  <option value="107" />
+                  <option value="108" />
+                  <option value="109" />
+                  <option value="110" />
+                  <option value="111" />
+                </datalist>
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Adults</label>
+                <input
+                  id="adults"
+                  name="numAdult"
+                  list="adultsOptions"
+                  className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Select Adults"
+                  type="number"
+                  onChange={(e) => {
+                    setNumAdults(e.target.value);
+                  }}
+                />
+                <datalist id="adultsOptions">
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </datalist>
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">
+                  Children
+                </label>
+                <input
+                  id="children"
+                  name="numChildren"
+                  list="childrenOptions"
+                  className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Select Children"
+                  type="number"
+                  onChange={(e) => {
+                    setNumChildren(e.target.value);
+                  }}
+                />
+                <datalist id="childrenOptions">
+                  <option value="1" />
+                  <option value="2" />
+                </datalist>
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">
+                  Total Amount
+                </label>
+                <input
+                  id="total-amount"
+                  name="rate"
+                  className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Total Amount"
+                  type="number"
+                  onChange={(e) => {
+                    setTotalAmount(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+
             <h3 className="text-xl font-semibold mt-8 mb-4">
               Guest Information
             </h3>
@@ -382,6 +352,7 @@ export default function HeaderP() {
                 <label className="block text-sm font-medium mb-2">Name</label>
                 <input
                   type="text"
+                  name="fullName"
                   className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="First Name"
                   onChange={handleGuestInfoChange}
@@ -391,6 +362,7 @@ export default function HeaderP() {
                 <label className="block text-sm font-medium mb-2">Email</label>
                 <input
                   type="email"
+                  name="email"
                   className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Email"
                   onChange={handleGuestInfoChange}
@@ -402,6 +374,7 @@ export default function HeaderP() {
                 </label>
                 <input
                   type="tel"
+                  name="phone"
                   className="block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Phone Number"
                   onChange={handleGuestInfoChange}
@@ -419,10 +392,11 @@ export default function HeaderP() {
                 </NavLink>
               </button>
               <button
+                type="submit"
                 onClick={handleSubmit}
                 className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600"
               >
-                Confirm
+                Submit
               </button>
             </div>
           </form>
