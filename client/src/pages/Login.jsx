@@ -22,6 +22,7 @@ function Login() {
       if (response.ok) {
         console.log("login successful", data);
         localStorage.setItem("access_token", data.token);
+        localStorage.setItem("hotelid",data.hotelid);
         navigate("/mainpage");
       } else {
         console.log("Error:", data.message);
