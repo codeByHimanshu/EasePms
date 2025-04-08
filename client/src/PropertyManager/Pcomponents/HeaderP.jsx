@@ -142,8 +142,8 @@ export default function HeaderP() {
               roomType,
               roomNumber,
               numChildren,
-              numAdults,
-              totalAmount,
+              numAdult: numAdults,
+              rate: totalAmount,
             }),
           }
         );
