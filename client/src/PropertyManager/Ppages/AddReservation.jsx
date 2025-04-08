@@ -27,33 +27,11 @@ const AddReservation = () => {
     childrenname: "",
     childrenage: 0,
   });
-  const [totalPrice, setTotalPrice] = useState(null);
-
-  const room_rate_types = [{
-    Single: { rate: 1000 },
-    Double: { rate: 2000 },
-    Suite: { rate: 3000 },
-    Deluxe: { rate: 4000 },
-    Presidential: { rate: 5000 },
-  }];
-
-  function handletotalprice() {
-    const roominfo = room_rate_types[reservation.roomType];
-    console.log("roomtype from the functtt = ",room_rate_types[reservation.roomType])
-    console.log("roominfo = ",roominfo);
-    if (roominfo) {
-      setTotalPrice(roominfo.rate);
-    } else {
-      console.log("there is an error");
-      setTotalPrice(0);
-    }
-  }
-
-
+  const [calculatedPrice, setcalculatedPrice] = useState(0);
   const [rooms, setRooms] = useState([]);
   const handleSubmit = async () => {
     console.log("handle submit got calleddd ")
-    console.log("room type = ",reservation.roomType)
+    console.log("room type = ", reservation.roomType)
     try {
       const token = localStorage.getItem("access_token");
       console.log("token = ", token)
@@ -105,8 +83,35 @@ const AddReservation = () => {
       </div>
     );
   }
+  const room_rate_types = [{
+    Single: { rate: 1000 },
+    Double: { rate: 2000 },
+    Suite: { rate: 3000 },
+    Deluxe: { rate: 4000 },
+    Presidential: { rate: 5000 },
+  }];
 
-  // console.log(reservation);
+  function handletotalprice() {
+    const roominfo = room_rate_types[0][reservation.roomType];
+    console.log("roomtype from the functtt = ", room_rate_types[0][reservation.roomType])
+    console.log("room rate types  = ", room_rate_types[reservation]);
+    if (roominfo) {
+      setcalculatedPrice(roominfo.rate);
+      console.log("totalprice from inside the if condition = ", calculatedPrice)
+    } else {
+      console.log("there is an error");
+      setcalculatedPrice(0);
+    }
+  }
+  // this useeffect is used to set the totalprice inside the reservation state whenever the calculated price got
+  // calculated this gets called and updates the totalprice accordingly
+  useEffect(() => {
+    setReservation(prev => ({
+      ...prev,
+      totalPrice: calculatedPrice
+    }));
+  }, [calculatedPrice]);
+
   return (
     <div className="flex h-screen" >
 
@@ -177,7 +182,7 @@ const AddReservation = () => {
                   <label className="block text-sm font-medium mb-1">
                     Total Price
                   </label>
-                  {totalPrice}
+                  {calculatedPrice}
                 </div>
               </div>
               <div className="space-y-4 mb-8">
@@ -276,7 +281,6 @@ const AddReservation = () => {
                   placeholder="Select Room Type"
                   onChange={handleInputChange}
                   onClick={handletotalprice}
-
                 />
                 <datalist id="roomTypeOptions">
                   <option value="Deluxe" />
