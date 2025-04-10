@@ -130,9 +130,9 @@ const AddReservation = () => {
                     name="checkIn"
                     type="date"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    // value={reservation.checkIn}
+                
                     onChange={handleInputChange}
-                  // min={currentDate}
+                  min={currentDate}
                   />
                 </div>
                 <div>
@@ -142,11 +142,10 @@ const AddReservation = () => {
                   <input
                     type="date"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    // value={reservation.checkOut}
+                 
                     name="checkOut"
                     onChange={handleInputChange}
-                  // min={reservation.checkIn || currentDate}
-                  // disabled={!reservation.checkIn}
+           
                   />
                 </div>
                 <div>
@@ -171,7 +170,6 @@ const AddReservation = () => {
                     type="number"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 
-                    // value={reservation.numRooms}
                     name="numNights"
                     onChange={handleInputChange}
                     min="1"
@@ -197,7 +195,7 @@ const AddReservation = () => {
                       list="reservationTypeOptions"
                       className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Reservation Type"
-                      // value={reservation.reservationType}
+                 
                       onChange={handleInputChange}
                     />
                     <datalist id="reservationTypeOptions">
@@ -235,7 +233,7 @@ const AddReservation = () => {
                       list="businessSourceOptions"
                       className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Business Source"
-                      // value={reservation.businessSource}
+                  
                       onChange={handleInputChange}
 
                     />
