@@ -152,7 +152,7 @@ export default function HeaderP() {
         console.log("data from the post request = ", data);
         if (response.ok) {
           alert("Booking added");
-          // setReservation({});
+       
         } else {      
         }
       } catch (error) {
