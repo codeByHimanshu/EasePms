@@ -153,8 +153,7 @@ export default function HeaderP() {
         if (response.ok) {
           alert("Booking added");
           // setReservation({});
-        } else {
-          alert("Booking failed: " + data.message);
+        } else {      
         }
       } catch (error) {
         console.error("Error:", error);
