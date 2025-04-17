@@ -23,7 +23,7 @@ const CreateRoom = () => {
       onSubmit={handleSubmit}
       className="animate__animated animate__fadeInUp max-w-3xl mx-auto p-8 bg-white shadow-2xl rounded-2xl space-y-8 mt-10"
     >
-      <h2 className="text-3xl font-bold text-gray-800 text-center">Create Room</h2>
+      <h2 className="text-3xl font-bold text-gray-800 text-center">Create Room</h2> 
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <input
