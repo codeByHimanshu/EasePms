@@ -15,7 +15,7 @@ const CreateRoom = () => {
     amenties: [""],
     roomtype: ""
   });
-  // chnagesssssssssssssssssssssss
+
 
   const handleSubmit = async () => {
     console.log("hmlo hmlo from the handlesubmit");
@@ -123,7 +123,6 @@ const CreateRoom = () => {
 
       </div>
       <div>
-        {/* changessssssssssssssssssssssssssss */}
         <label className="block mb-2 font-semibold text-gray-700">Images</label>
         {formData.images.map((img, idx) => (
           <input
@@ -142,15 +141,8 @@ const CreateRoom = () => {
         >
           + Add another image
         </button>
-
-
-        {/* changessssssssssssssssssssssssssss */}
-
-
       </div>
       <div>
-        {/* changessssssssssssssssssssssssssss */}
-
         <label className="block mb-2 font-semibold text-gray-700">Amenties</label>
         {formData.amenties.map((elm, idx) => (
           <input
@@ -169,10 +161,6 @@ const CreateRoom = () => {
         >
           + Add Another Amenties
         </button>
-
-        {/* changessssssssssssssssssssssssssss */}
-
-
       </div>
       <div className="text-center">
         <button
