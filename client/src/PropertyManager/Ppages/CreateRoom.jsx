@@ -2,7 +2,9 @@ import { useState } from "react";
 
 
 const CreateRoom = () => {
+  const hotelid = localStorage.getItem("hotelid");
   const [formData, setFormData] = useState({
+    hotelid: hotelid,
     roomname: "",
     pricepernight: 0,
     adults: 0,
@@ -13,38 +15,50 @@ const CreateRoom = () => {
     amenties: [""],
     roomtype: ""
   });
+  // chnagesssssssssssssssssssssss
 
   const handleSubmit = async () => {
-    console.log("hmlo hmlo from the handlesubmit  ")
+    console.log("hmlo hmlo from the handlesubmit");
+    const token = localStorage.getItem("access_token");
+
     try {
-      const token = localStorage.getItem("access_token");
-      const hotelid=localStorage.getItem("hotelid");
-      if(!hotelid){
-        console.log("login ");
-      }
-      const response = await fetch("https://localhost:3000/api/room/createnewroom", {
+      const response = await fetch("http://localhost:3000/api/room/createnewroom", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `access_token ${token}`
         },
-        body: JSON.stringify(formData)
-      })
+        body: JSON.stringify(formData),
+      });
+
       const data = await response.json();
       if (response.ok) {
-        console.log("check db for the new data ");
-      } else {
-        console.log("check where you fucked up  ", data.message);
+        console.log("data sent succesfully");
       }
     } catch (e) {
-      console.log("error =  ", e);
+      console.log(e.message);
     }
   };
+
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+  const handleArrayChange = (e, index, key) => {
+    const updatedArray = [...formData[key]];
+    updatedArray[index] = e.target.value;
+    setFormData((prev) => ({
+      ...prev,
+      [key]: updatedArray,
+    }));
+  };
+  const addArrayItem = (key) => {
+    setFormData((prev) => ({
+      ...prev,
+      [key]: [...prev[key], ""],
     }));
   };
   return (
@@ -89,52 +103,76 @@ const CreateRoom = () => {
           onChange={handleInputChange}
           className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300"
         />
+        <input
+          type="text"
+          name="roomtype"
+          placeholder="Roomtype"
+          onChange={handleInputChange}
+          className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300"
+        />
         <label className="flex items-center gap-3 col-span-2">
           <input
             type="checkbox"
             name="isavailable"
+            checked={formData.isavailable}
             onChange={handleInputChange}
             className="h-5 w-5 text-blue-600 border-gray-300 rounded"
           />
           <span className="text-gray-700 font-medium">Is Available</span>
         </label>
+
       </div>
       <div>
+        {/* changessssssssssssssssssssssssssss */}
         <label className="block mb-2 font-semibold text-gray-700">Images</label>
         {formData.images.map((img, idx) => (
           <input
             key={idx}
             type="text"
-            onChange={handleInputChange}
+            value={img}
+            onChange={(e) => handleArrayChange(e, idx, "images")}
             placeholder={`Image URL ${idx + 1}`}
             className="p-3 mb-3 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300"
           />
         ))}
         <button
           type="button"
+          onClick={() => addArrayItem("images")}
           className="text-blue-600 hover:underline text-sm mt-2"
         >
           + Add another image
         </button>
+
+
+        {/* changessssssssssssssssssssssssssss */}
+
+
       </div>
       <div>
+        {/* changessssssssssssssssssssssssssss */}
+
         <label className="block mb-2 font-semibold text-gray-700">Amenties</label>
         {formData.amenties.map((elm, idx) => (
           <input
             key={idx}
             type="text"
-            onChange={handleInputChange}
-            name="elm"
+            value={elm}
+            onChange={(e) => handleArrayChange(e, idx, "amenties")}
             placeholder={`Amenties ${idx + 1}`}
             className="p-3 mb-3 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300"
           />
         ))}
         <button
           type="button"
+          onClick={() => addArrayItem("amenties")}
           className="text-blue-600 hover:underline text-sm mt-2"
         >
-          Add Another Amenties
+          + Add Another Amenties
         </button>
+
+        {/* changessssssssssssssssssssssssssss */}
+
+
       </div>
       <div className="text-center">
         <button
