@@ -34,46 +34,50 @@ function Login() {
     }
   };
   return (
-    <div className="flex h-screen">
-      <div className="w-2/5 bg-white flex flex-col justify-center items-center shadow-lg px-8">
-        <h1 className="text-4xl font-bold mb-6 text-blue-600">Admin Login</h1>
-        <p className="text-gray-600 mb-8">Access your PMS dashboard</p>
-        <form onSubmit={handleLogin}> 
-          <div className="w-full max-w-md">
-            <label className="block text-gray-700 mb-2" htmlFor="username">
-              Username
-            </label>
-            <input
-              id="username"
-              type="text"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
+    <div className="flex h-screen bg-gradient-to-r from-blue-100 to-blue-300">
+  <div className="w-full sm:w-2/5 bg-white flex flex-col justify-center items-center shadow-2xl rounded-xl px-10 py-10 m-4 animate__animated animate__fadeInDown">
+    <h1 className="text-5xl font-extrabold mb-4 text-blue-600 animate__animated animate__fadeInUp animate__delay-1s">
+      Admin Login
+    </h1>
+    <p className="text-gray-500 text-lg mb-6 animate__animated animate__fadeInUp animate__delay-2s">
+      Access your PMS dashboard
+    </p>
 
-            <label className="block text-gray-700 mb-2" htmlFor="password">
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+    <form onSubmit={handleLogin} className="w-full max-w-md animate__animated animate__fadeIn animate__delay-3s">
+      <label className="block text-gray-700 text-sm font-medium mb-1" htmlFor="username">
+        Username
+      </label>
+      <input
+        id="username"
+        type="text"
+        className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4 transition-all duration-300 hover:shadow-md"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
 
-            {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+      <label className="block text-gray-700 text-sm font-medium mb-1" htmlFor="password">
+        Password
+      </label>
+      <input
+        id="password"
+        type="password"
+        className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 mb-4 transition-all duration-300 hover:shadow-md"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
 
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-all duration-300"
-            >
-              Sign In
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+      {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+
+      <button
+        type="submit"
+        className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all duration-300 shadow-md"
+      >
+        Sign In
+      </button>
+    </form>
+  </div>
+</div>
+
   );
 }
 

@@ -29,7 +29,7 @@ const CreateRoom = () => {
           "Authorization": `access_token ${token}`
         },
         body: JSON.stringify(formData)
-      })
+      })                                 
       const data = await response.json();
       if (response.ok) {
         console.log("check db for the new data ");
@@ -124,6 +124,7 @@ const CreateRoom = () => {
             key={idx}
             type="text"
             onChange={handleInputChange}
+            
             name="elm"
             placeholder={`Amenties ${idx + 1}`}
             className="p-3 mb-3 w-full rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none transition-all duration-300"
