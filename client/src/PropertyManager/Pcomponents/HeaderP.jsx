@@ -277,15 +277,14 @@ export default function HeaderP() {
   };
   return (
     <div className="flex min-h-screen font-serif">
-      <div className="w-1/5 min-w-[200px] bg-white shadow-lg text-black z-10 px-4 py-6 flex flex-col">
+      <div className="w-1/5 min-w-[200px] bg-white shadow-lg text-black z-10 px-4 py-6 flex flex-col flex-shrink-0">
 
-        {/* Company Logo */}
         <div className="flex items-center gap-2 mb-8 px-2">
           <FaHotel className="text-blue-600 text-3xl" />
-          <span className="text-5xl font-bold text-green-600 tracking-wide">InnSync</span>
+          <span className="text-5xl font-bold text-green-600 tracking-wide">InnSync <sub className="text-sm text-orange-900">By Digipants</sub></span>
         </div>
 
-        {/* Search Input */}
+   
         <div className="mb-6 relative">
           <input
             type="text"
@@ -295,7 +294,7 @@ export default function HeaderP() {
           <FaSearch className="absolute left-3 top-3 text-gray-500" />
         </div>
 
-        {/* Navigation Links - Primary */}
+       
         <ul className="mb-6 space-y-2 text-[17px] font-medium">
           <li className="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 transition-all">
             <FaBed className="text-blue-500" />
