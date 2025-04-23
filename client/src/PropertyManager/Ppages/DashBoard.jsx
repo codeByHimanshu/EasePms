@@ -47,19 +47,19 @@ function Dashboard() {
     <>
   
   <div className="flex flex-wrap justify-between gap-4 p-4 bg-white shadow-md rounded-xl animate__animated animate__fadeInDown">
-    <div className="flex-1 min-w-[150px] bg-gradient-to-r from-yellow-400 to-yellow-600 text-white p-4 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105">
+    <div className="flex-1 min-w-[150px] bg-gradient-to-r from-yellow-400 to-yellow-600 text-black p-8 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105">
       <h1 className="text-sm font-semibold">Total Booking</h1>
       <p className="text-2xl font-bold">{bookingroom}</p>
     </div>
-    <div className="flex-1 min-w-[150px] bg-gradient-to-r from-red-400 to-red-600 text-white p-4 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105">
+    <div className="flex-1 min-w-[150px] bg-gradient-to-r from-red-400 to-red-600 text-black p-8 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105">
       <h1 className="text-sm font-semibold">Total Arrival</h1>
       <p className="text-2xl font-bold">{arrival}</p>
     </div>
-    <div className="flex-1 min-w-[150px] bg-gradient-to-r from-yellow-600 to-yellow-800 text-white p-4 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105">
+    <div className="flex-1 min-w-[150px] bg-gradient-to-r from-yellow-600 to-yellow-800 text-black p-8 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105">
       <h1 className="text-sm font-semibold">Total Departure</h1>
       <p className="text-2xl font-bold">{departure}</p>
     </div>
-    <div className="flex-1 min-w-[150px] bg-gradient-to-r from-gray-900 to-gray-700 text-white p-4 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105">
+    <div className="flex-1 min-w-[150px] bg-gradient-to-r from-gray-900 to-gray-700 text-black p-8 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105">
       <h1 className="text-sm font-semibold">Total Inhouse</h1>
       <p className="text-2xl font-bold">{inhouse}</p>
     </div>

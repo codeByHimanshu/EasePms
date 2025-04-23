@@ -8,7 +8,7 @@ function MainPage() {
         <div class="">
           <HeaderP />
         </div>
-        <Outlet />
+       
       </div>
     </div>
   );
