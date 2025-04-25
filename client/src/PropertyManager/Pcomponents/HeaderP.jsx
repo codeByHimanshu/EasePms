@@ -262,11 +262,10 @@ const QuickReservation = () => {
 };
 
 export default function HeaderP() {
-  const [openNav, setOpenNav] = useState(false);
   const [showQuickReservation, setShowQuickReservation] = useState(false);
 
-  React.useEffect(() => {
-    window.addEventListener(
+  useEffect(() => {
+    window.addEventListener(                 
       "resize",
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
@@ -277,7 +276,7 @@ export default function HeaderP() {
   };
   return (
     <div className="flex min-h-screen font-serif">
-      <div className="w-1/5 min-w-[200px] bg-white shadow-lg text-black z-10 px-4 py-6 flex flex-col flex-shrink-0">
+      <div className="w-1/5 min-w-[200px] bg-white shadow-lg text-black z-10 px-4 py-6 flex flex-col flex-shrink-0 ">
 
         <div className="flex items-center gap-2 mb-8 px-2">
           <FaHotel className="text-blue-600 text-3xl" />
@@ -319,11 +318,10 @@ export default function HeaderP() {
             <FaClipboardList className="text-blue-500" />
             <NavLink to="reservations" className="block w-full">
               Reservations
-            </NavLink>
+            </NavLink>       
           </li>
         </ul>
 
-        {/* Navigation Links - Secondary */}
         <ul className="space-y-2 text-[17px] font-medium">
           <li className="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 transition-all">
             <FaTags className="text-blue-500" />
