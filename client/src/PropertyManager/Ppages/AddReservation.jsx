@@ -69,7 +69,7 @@ const AddReservation = () => {
 
 
   const currentDate = new Date().toISOString().slice(0, 16);
- 
+
   const room_rate_types = [{
     Single: { rate: 1000 },
     Double: { rate: 2000 },
@@ -115,9 +115,9 @@ const AddReservation = () => {
                     name="checkIn"
                     type="date"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                
+
                     onChange={handleInputChange}
-                  min={currentDate}
+                    min={currentDate}
                   />
                 </div>
                 <div>
@@ -127,10 +127,10 @@ const AddReservation = () => {
                   <input
                     type="date"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                 
+
                     name="checkOut"
                     onChange={handleInputChange}
-           
+
                   />
                 </div>
                 <div>
@@ -180,7 +180,7 @@ const AddReservation = () => {
                       list="reservationTypeOptions"
                       className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Reservation Type"
-                 
+
                       onChange={handleInputChange}
                     />
                     <datalist id="reservationTypeOptions">
@@ -217,7 +217,7 @@ const AddReservation = () => {
                       list="businessSourceOptions"
                       className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Business Source"
-                  
+
                       onChange={handleInputChange}
 
                     />
@@ -447,11 +447,6 @@ const AddReservation = () => {
               </div>
             </div>
           </form>
-          {/* <a
-            onClick={(e) => { e.stopPropagation(); HandleChildForm(); }}
-            className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600">
-            Child Form
-          </a> */}
         </div>
         <div className="flex justify-end space-x-2 mt-4">
           <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600"
@@ -486,7 +481,6 @@ const AddReservation = () => {
           <div className="flex items-center justify-between">
             <p className="text-sm font-semibold text-gray-500">Rooms</p>
             <p className="text-base font-medium text-gray-800">
-              {/* {rooms || "Not selected"} */}
             </p>
           </div>
         </div>
