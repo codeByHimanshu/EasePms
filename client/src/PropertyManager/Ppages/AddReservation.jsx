@@ -69,20 +69,7 @@ const AddReservation = () => {
 
 
   const currentDate = new Date().toISOString().slice(0, 16);
-  // function AddRoom() {
-  //   return (
-  //     <div>
-  //       <label>Room Type</label>
-  //       <input type="text" placeholder="Room Type" />
-  //       <label>Room Number</label>
-  //       <input type="text" placeholder="Room Number" />
-  //       <label>Room Rate</label>
-  //       <input type="text" placeholder="Room Rate" />
-  //       <label>Room Status</label>
-  //       <input type="text" placeholder="Room Status" />
-  //     </div>
-  //   );
-  // }
+ 
   const room_rate_types = [{
     Single: { rate: 1000 },
     Double: { rate: 2000 },
