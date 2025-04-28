@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 
 export default function HeaderP() {
-  const [showQuickReservation, setShowQuickReservation] = useState(false);
+
 
   useEffect(() => {
     window.addEventListener(                 
@@ -15,9 +15,7 @@ export default function HeaderP() {
     );
   }, []);
 
-  const handleAddReservationClick = () => {
-    setShowQuickReservation(true);
-  };
+
   return (
     <div className="flex min-h-screen font-serif">
       <div className="w-1/5 min-w-[200px] bg-white shadow-lg text-black z-10 px-4 py-6 flex flex-col flex-shrink-0 ">
@@ -52,7 +50,7 @@ export default function HeaderP() {
             </a>
           </li>
           <li
-            onClick={handleAddReservationClick}
+      
             className="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-all"
           >
             <FaPlus className="text-blue-500" />
