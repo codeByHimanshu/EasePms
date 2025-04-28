@@ -1,4 +1,7 @@
-const QuickReservation = () => {
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+
+const  QuickReservation = () => {
     const [checkIn, setCheckIn] = useState("");
     const [checkOut, setCheckOut] = useState("");
     const [guests, setGuests] = useState({
@@ -254,4 +257,5 @@ const QuickReservation = () => {
         </div>
       </div>
     );
-  };
+  }
+  export default QuickReservation;

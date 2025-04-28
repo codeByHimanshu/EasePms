@@ -49,13 +49,14 @@ export default function HeaderP() {
               Guest Reviews
             </a>
           </li>
-          <li
-      
-            className="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 cursor-pointer transition-all"
-          >
-            <FaPlus className="text-blue-500" />
-            <span>Add Reservation</span>
+         
+          <li className="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 transition-all">
+            <FaClipboardList className="text-blue-500" />
+            <NavLink to="quick-reservation" className="block w-full">
+             Add Reservation
+            </NavLink>       
           </li>
+      
           <li className="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 transition-all">
             <FaClipboardList className="text-blue-500" />
             <NavLink to="reservations" className="block w-full">
