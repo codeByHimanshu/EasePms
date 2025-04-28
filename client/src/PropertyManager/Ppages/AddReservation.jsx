@@ -90,8 +90,6 @@ const AddReservation = () => {
       setcalculatedPrice(0);
     }
   }
-  // this useeffect is used to set the totalprice inside the reservation state whenever the calculated price got
-  // calculated this gets called and updates the totalprice accordingly
   useEffect(() => {
     setReservation(prev => ({
       ...prev,
@@ -201,7 +199,6 @@ const AddReservation = () => {
                       list="bookingSourceOptions"
                       className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Booking Source"
-                      // value={reservation.bookingSource}
                       onChange={handleInputChange}
                     />
                     <datalist id="bookingSourceOptions">
@@ -370,19 +367,6 @@ const AddReservation = () => {
                   <option value="2" />
                 </datalist>
               </div>
-              {/* <div>
-                <label className="block text-sm font-medium mb-1">
-                  Total Amount
-
-                </label>
-                <input
-                  id="total-amount"
-                  name="totalAmount"
-                  className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  placeholder="Total Amount"
-                  onChange={handleInputChange}
-                />
-              </div> */}
             </div>
 
 
@@ -408,7 +392,6 @@ const AddReservation = () => {
                   type="email"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Email"
-                  // value={reservation.guestDetails.email}
                   onChange={handleInputChange}
                 />
               </div>
@@ -421,7 +404,6 @@ const AddReservation = () => {
                   type="tel"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Phone Number"
-                  // value={reservation.guestDetails.phone}
                   onChange={handleInputChange}
                 />
               </div>
@@ -434,7 +416,6 @@ const AddReservation = () => {
                   type="text"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Address"
-                  // value={reservation.guestDetails.address}
                   onChange={handleInputChange}
                 />
               </div>
@@ -461,7 +442,6 @@ const AddReservation = () => {
                   type="number"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Children Age"
-                  // value={reservation.guestDetails.email}
                   onChange={handleInputChange}
                 />
               </div>
