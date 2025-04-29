@@ -43,9 +43,7 @@ const AddReservation = () => {
         },
         body: JSON.stringify(reservation),
       });
-
       const data = await response.json();
-
       if (response.ok) {
         alert("Booking added");
         setReservation({});
