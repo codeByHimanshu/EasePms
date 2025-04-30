@@ -11,6 +11,7 @@ import RoomView from "../Ppages/RoomView";
 import StayView from "../Ppages/StayView";
 import GuestStats from "../Ppages/GuestStats";
 import CreateRoom from "../Ppages/CreateRoom";
+import AddReservation from "../Ppages/AddReservation";
 
 export const AppRoutes = () => {
     return (
@@ -25,6 +26,7 @@ export const AppRoutes = () => {
                     <Route index element={<Reservations />} />
                 </Route>
                 <Route path="quick-reservation" element={<QuickReservation />} />
+                <Route path="add-reservation" element={<AddReservation/>} />
                 <Route path="rates" element={<RatesPage />} />
                 <Route path="roomview" element={<RoomView />} />
                 <Route path="stayview" element={<StayView />} />

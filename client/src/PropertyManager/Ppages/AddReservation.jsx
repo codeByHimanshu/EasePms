@@ -90,8 +90,6 @@ const AddReservation = () => {
       setcalculatedPrice(0);
     }
   }
-  // this useeffect is used to set the totalprice inside the reservation state whenever the calculated price got
-  // calculated this gets called and updates the totalprice accordingly
   useEffect(() => {
     setReservation(prev => ({
       ...prev,
@@ -420,7 +418,7 @@ const AddReservation = () => {
                   type="text"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Address"
-                  // value={reservation.guestDetails.address}
+                 
                   onChange={handleInputChange}
                 />
               </div>
@@ -447,17 +445,13 @@ const AddReservation = () => {
                   type="number"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Children Age"
-                  // value={reservation.guestDetails.email}
+               
                   onChange={handleInputChange}
                 />
               </div>
             </div>
           </form>
-          {/* <a
-            onClick={(e) => { e.stopPropagation(); HandleChildForm(); }}
-            className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600">
-            Child Form
-          </a> */}
+        
         </div>
         <div className="flex justify-end space-x-2 mt-4">
           <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-600"
@@ -492,7 +486,7 @@ const AddReservation = () => {
           <div className="flex items-center justify-between">
             <p className="text-sm font-semibold text-gray-500">Rooms</p>
             <p className="text-base font-medium text-gray-800">
-              {/* {rooms || "Not selected"} */}
+         
             </p>
           </div>
         </div>
