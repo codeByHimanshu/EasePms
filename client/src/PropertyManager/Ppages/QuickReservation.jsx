@@ -41,7 +41,7 @@ const  QuickReservation = () => {
               numChildren,
               numAdult: numAdults,
               rate: totalAmount,
-            }),
+            }),        
           }
         );
   
@@ -55,7 +55,7 @@ const  QuickReservation = () => {
         console.error("Error:", error);
         alert("Booking failed due to a network error");
       }
-      console.log("handle submit is called");
+    
     }
   
     const currentDate = new Date().toISOString().slice(0, 16);
