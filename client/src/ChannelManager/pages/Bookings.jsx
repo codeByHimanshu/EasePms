@@ -271,7 +271,6 @@ const Bookings = () => {
 
     return (
         <>
-       
             <div className=" bg-gray-50 w-full">
                 <div className="p-6 max-w-[1920px] mx-auto">
                     <div className="flex flex-col md:flex-row justify-between gap-4 mb-6">
@@ -302,7 +301,7 @@ const Bookings = () => {
                         </div>
                     </div>
 
-                 
+
                     <div className={`transform transition-all duration-300 ease-in-out overflow-hidden
                                 ${showFilters ? 'opacity-100 max-h-40' : 'opacity-0 max-h-0'}`}>
                         <div className="mb-6 p-4 border rounded-lg bg-white shadow-sm">

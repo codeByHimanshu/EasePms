@@ -43,9 +43,7 @@ const AddReservation = () => {
         },
         body: JSON.stringify(reservation),
       });
-
       const data = await response.json();
-
       if (response.ok) {
         alert("Booking added");
         setReservation({});
@@ -69,7 +67,7 @@ const AddReservation = () => {
 
 
   const currentDate = new Date().toISOString().slice(0, 16);
- 
+
   const room_rate_types = [{
     Single: { rate: 1000 },
     Double: { rate: 2000 },
@@ -115,9 +113,9 @@ const AddReservation = () => {
                     name="checkIn"
                     type="date"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                
+
                     onChange={handleInputChange}
-                  min={currentDate}
+                    min={currentDate}
                   />
                 </div>
                 <div>
@@ -127,10 +125,10 @@ const AddReservation = () => {
                   <input
                     type="date"
                     className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                 
+
                     name="checkOut"
                     onChange={handleInputChange}
-           
+
                   />
                 </div>
                 <div>
@@ -180,7 +178,7 @@ const AddReservation = () => {
                       list="reservationTypeOptions"
                       className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Reservation Type"
-                 
+
                       onChange={handleInputChange}
                     />
                     <datalist id="reservationTypeOptions">
@@ -199,7 +197,6 @@ const AddReservation = () => {
                       list="bookingSourceOptions"
                       className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Booking Source"
-                      // value={reservation.bookingSource}
                       onChange={handleInputChange}
                     />
                     <datalist id="bookingSourceOptions">
@@ -218,7 +215,7 @@ const AddReservation = () => {
                       list="businessSourceOptions"
                       className="block w-full p-2 m-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       placeholder="Select Business Source"
-                  
+
                       onChange={handleInputChange}
 
                     />
@@ -405,7 +402,6 @@ const AddReservation = () => {
                   type="tel"
                   className="block w-full m-2 p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   placeholder="Phone Number"
-                  // value={reservation.guestDetails.phone}
                   onChange={handleInputChange}
                 />
               </div>
