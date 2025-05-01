@@ -356,8 +356,6 @@ const Bookings = () => {
                             </div>
                         </div>
                     </div>
-
-                    {/* Table Section with enhanced styling */}
                     <div className="bg-white rounded-lg shadow-md ">
                         <div className="overflow-x-auto">
                             <table className="w-full border-collapse">
