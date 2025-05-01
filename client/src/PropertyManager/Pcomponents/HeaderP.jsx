@@ -90,6 +90,12 @@ export default function HeaderP() {
               Dashboard
             </NavLink>
           </li>
+          <li className="flex items-center gap-2 p-2 rounded-lg hover:bg-blue-50 transition-all">
+            <FaBed className="text-blue-500" />
+            <NavLink to="create-room" className="block w-full">
+          Create Room
+            </NavLink>
+          </li>
         </ul>
       </div>
 

@@ -52,7 +52,7 @@ function Dashboard() {
       <p className="text-2xl font-bold">{bookingroom}</p>
     </div>
     <div className="flex-1 min-w-[150px] bg-gradient-to-r from-red-400 to-red-600 text-black p-8 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105">
-      <h1 className="text-sm font-semibold">Total Arrival</h1>
+      <h1 className="text-sm font-semibold">Total Arrival</h1> 
       <p className="text-2xl font-bold">{arrival}</p>
     </div>
     <div className="flex-1 min-w-[150px] bg-gradient-to-r from-yellow-600 to-yellow-800 text-black p-8 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105">
