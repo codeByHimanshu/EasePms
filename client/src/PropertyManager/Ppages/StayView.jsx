@@ -9,7 +9,6 @@ const StayView = () => {
     
     const generateDummyRooms = () => {
         const rooms = [];
-        // Room distribution
         const roomDistribution = {
             "Banquet Hall": [101, 102],
             "Deluxe": [201, 202, 203, 204, 205, 206, 207, 208, 209, 210],
@@ -56,8 +55,6 @@ const StayView = () => {
         setViewType('all');
         setSelectedRoomType("All");
     };
-
-    // Counts for status badges
     const getCounts = () => {
         const currentRooms = getRoomsForDate(selectedDate);
         return {
@@ -70,8 +67,6 @@ const StayView = () => {
             dirty: currentRooms.filter(room => room.status === "dirty").length,
         };
     };
-
-    // Update view change handler
     const handleViewChange = (status) => {
         setViewType(status);
         const currentRooms = getRoomsForDate(selectedDate);
