@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { FaSearch, FaHotel, FaBed, FaComments, FaPlus, FaClipboardList, FaTags, FaEye, FaChartBar, FaTachometerAlt } from "react-icons/fa";
+import { FaSearch, FaHotel, FaBed, FaComments, FaClipboardList, FaTags, FaEye, FaChartBar, FaTachometerAlt } from "react-icons/fa";
 import { Outlet } from "react-router-dom";
 
 import { NavLink } from "react-router-dom";
