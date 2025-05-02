@@ -7,7 +7,7 @@ const email = useRecoilValue(adminEmail);
  const navigate=useNavigate();
   return (
     <div className="flex h-screen bg-gray-100">
-    {/* Left Panel */}
+
     <div 
       className="w-2/5 bg-white flex flex-col justify-center items-center shadow-2xl px-10 rounded-r-3xl transition-all duration-500 transform translate-x-0 opacity-100"
     >

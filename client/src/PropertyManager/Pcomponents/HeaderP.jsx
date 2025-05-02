@@ -8,12 +8,12 @@ import { NavLink } from "react-router-dom";
 export default function HeaderP() {
 
 
-  useEffect(() => {
-    window.addEventListener(                 
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
-    );
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener(                 
+  //     "resize",
+  //     () => window.innerWidth >= 960 && setOpenNav(false)
+  //   );
+  // }, []);
 
 
   return (
