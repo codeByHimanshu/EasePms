@@ -125,8 +125,8 @@ const CreateRoom = () => {
               className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500"
             >
               <option value="">Select Type</option>
-              <option value="EP">EP (Room Only)</option>
-              <option value="CP">CP (Room + Breakfast)</option>
+              <option value="EP">EP </option>
+              <option value="CP">CP</option>
             </select>
           </div>
 
