@@ -6,7 +6,7 @@ const RoomView = () => {
   useEffect(() => {
     const fetchRooms = async () => {
       try {
-        const token = localStorage.getItem('access_token'); // Get the token
+        const token = localStorage.getItem('access_token'); 
   
         const response = await fetch("http://localhost:3000/api/room/getrooms", {
           method: 'GET', 
@@ -33,16 +33,6 @@ const RoomView = () => {
   }, []);
   
   
-
-//   const handleAssign = (roomId) => {
-//     const updatedRooms = rooms.map((room) =>
-//       room.id === roomId
-//         ? { ...room, assignedTo: room.assignedTo ? null : "Assigned" }
-//         : room
-//     );
-//     setRooms(updatedRooms);
-//   };
-
   return (
 <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 bg-gray-100 h-auto">
   {rooms.map((room) => (
