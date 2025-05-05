@@ -12,8 +12,8 @@ const CreateRoom = () => {
       children: "",
     },
     isavailable: true,
-    images: [""],
-    roomtype: "",
+    images: [""],     
+    roomtype: "",     
     amenties: [""],
     status: "vacant",
   });
