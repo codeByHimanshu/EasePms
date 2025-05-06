@@ -8,13 +8,6 @@ import { NavLink } from "react-router-dom";
 export default function HeaderP() {
 
 
-  // useEffect(() => {
-  //   window.addEventListener(                 
-  //     "resize",
-  //     () => window.innerWidth >= 960 && setOpenNav(false)
-  //   );
-  // }, []);
-
 
   return (
     <div className="flex min-h-screen font-serif">
@@ -99,7 +92,7 @@ export default function HeaderP() {
         </ul>
       </div>
 
-      {/* Main Content */}
+  
       <div className="flex-1 bg-gray-50 p-6 overflow-y-auto">
         <Outlet />
       </div>
