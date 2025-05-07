@@ -32,7 +32,7 @@ const RoomView = () => {
     fetchRooms();
   }, []);
   
-  
+  console.log("type of the rooms from the roomview =",)
   return (
 <div className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 bg-gray-100 h-auto">
   {rooms.map((room) => (
