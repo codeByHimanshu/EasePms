@@ -21,7 +21,7 @@ const StayView = () => {
             }
       
             const data = await response.json();
-            console.log("Fetched data:", data);
+            console.log("Fetched data:", data);                
           } catch (error) {
             console.error("Error fetching data:", error);
           }
