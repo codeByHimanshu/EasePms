@@ -5,7 +5,7 @@ function MainPage() {
   return(
     <div>
       <div>
-        <div class="">
+        <div>
           <HeaderP />
         </div>
        
@@ -14,3 +14,4 @@ function MainPage() {
   );
 }
 export default MainPage;
+              
