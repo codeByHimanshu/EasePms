@@ -23,7 +23,7 @@ const RoomView = () => {
         const roomsData = await response.json();
         console.log("Fetched room data:", JSON.stringify(roomsData, null, 2));
   
-        setRooms(roomsData.response);
+        setRooms(roomsData.rooms);
       } catch (error) {
         console.error("Error in fetching rooms:", error);
       }
