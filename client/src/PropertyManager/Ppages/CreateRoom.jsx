@@ -72,6 +72,8 @@ const CreateRoom = () => {
       });
 
       const data = await response.json();
+      console.log("data from the handlesubmit of the create room = ",data);
+      alert(data.msg);
       if (response.ok) {
         alert("Room created successfully!");
       } else {
@@ -231,5 +233,4 @@ const CreateRoom = () => {
     </div>
   );
 };
-
 export default CreateRoom;
