@@ -12,28 +12,33 @@ import StayView from "../Ppages/StayView";
 import GuestStats from "../Ppages/GuestStats";
 import CreateRoom from "../Ppages/CreateRoom";
 import AddReservation from "../Ppages/AddReservation";
-import CreateProperty from "../Ppages/CreateProperty";
+import ProtectedRoute from "../../ProtectedRoute";
 
 export const AppRoutes = () => {
-    return (
-        <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/login-page" element={<LoginPage />} />
-            <Route path="/mainpage" element={<MainPage />}>
-                <Route index element={<Dashboard />} />
-                <Route path="dashboard" element={<Dashboard />} />
-                <Route path="gueststats" element={<GuestStats/>}/>
-                <Route path="reservations">
-                    <Route index element={<Reservations />} />
-                </Route>
-                <Route path="quick-reservation" element={<QuickReservation />} />
-                <Route path="add-reservation" element={<AddReservation/>} />
-                <Route path="rates" element={<RatesPage />} />
-                <Route path="roomview" element={<RoomView />} />
-                <Route path="stayview" element={<StayView />} />
-                <Route path="create-room" element={<CreateRoom />} />
-                <Route path="create-property" element={<CreateProperty />} />
-            </Route>
-        </Routes>
-    );
+  return (
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/login-page" element={<LoginPage />} />
+
+      <Route
+        path="/mainpage/*"
+        element={
+          <ProtectedRoute>
+            <MainPage />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<Dashboard />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="gueststats" element={<GuestStats />} />
+        <Route path="reservations" element={<Reservations />} />
+        <Route path="quick-reservation" element={<QuickReservation />} />
+        <Route path="add-reservation" element={<AddReservation />} />
+        <Route path="rates" element={<RatesPage />} />
+        <Route path="roomview" element={<RoomView />} />
+        <Route path="stayview" element={<StayView />} />
+        <Route path="create-room" element={<CreateRoom />} />
+      </Route>
+    </Routes>
+  );
 };
