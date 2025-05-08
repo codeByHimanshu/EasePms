@@ -1,4 +1,3 @@
-
 import { LuCircleDollarSign } from "react-icons/lu";
 import { FaCalendar } from "react-icons/fa";
 import { FaClipboardCheck } from "react-icons/fa";
@@ -24,169 +23,148 @@ function Dashboard() {
         return;
       }
       try {
-        const response = await fetch('http://localhost:3000/api/booking/gettotalofallthebooking', {
-          method: 'GET',
-          headers: {
-            "Authorization": `access_token ${token}`,
-            "Content-Type": "application/json"
+        const response = await fetch(
+          "http://localhost:3000/api/booking/gettotalofallthebooking",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `access_token ${token}`,
+              "Content-Type": "application/json",
+            },
           }
-        });
+        );
         const data = await response.json();
         console.log("data = ", data);
         setArrival(data.arri);
         setInhouse(data.inh);
         setDeparture(data.depa);
-        setBookingRoom(data.book)
+        setBookingRoom(data.book);
       } catch (e) {
         console.log(e.message);
       }
     }
     fetchdata();
-  }, [])
+  }, []);
   return (
     <>
-      <div className="flex flex-wrap justify-between gap-4 p-4 bg-white shadow-md rounded-xl animate__animated animate__fadeInDown">
-        <div className="flex-1 min-w-[150px] bg-gradient-to-r from-yellow-400 to-yellow-600 text-black p-8 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105">
-          <h1 className="text-sm font-semibold">Total Booking</h1>
-          <p className="text-2xl font-bold">{bookingroom}</p>
-        </div>
-        <div className="flex-1 min-w-[150px] bg-gradient-to-r from-red-400 to-red-600 text-black p-8 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105">
-          <h1 className="text-sm font-semibold">Total Arrival</h1>
-          <p className="text-2xl font-bold">{arrival}</p>
-        </div>
-        <div className="flex-1 min-w-[150px] bg-gradient-to-r from-yellow-600 to-yellow-800 text-black p-8 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105">
-          <h1 className="text-sm font-semibold">Total Departure</h1>
-          <p className="text-2xl font-bold">{departure}</p>
-        </div>
-        <div className="flex-1 min-w-[150px] bg-gradient-to-r from-gray-900 to-gray-700 text-black p-8 rounded-lg shadow hover:shadow-lg transition-transform transform hover:scale-105">
-          <h1 className="text-sm font-semibold">Total Inhouse</h1>
-          <p className="text-2xl font-bold">{inhouse}</p>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-white shadow-lg rounded-2xl animate__animated animate__fadeInDown">
+        {[
+           {
+            label: 'Total Booking',
+            value: bookingroom,
+            from: 'from-[#667EEA]',
+            to: 'to-[#764BA2]',
+            text: 'text-white'
+          },
+          {
+            label: 'Total Arrival',
+            value: arrival,
+            from: 'from-[#43CEA2]',
+            to: 'to-[#185A9D]',
+            text: 'text-white'
+          },
+          {
+            label: 'Total Departure',
+            value: departure,
+            from: 'from-[#F7971E]',
+            to: 'to-[#FFD200]',
+            text: 'text-black'
+          },
+          {
+            label: 'Total Inhouse',
+            value: inhouse,
+            from: 'from-[#FC466B]',
+            to: 'to-[#3F5EFB]',
+            text: 'text-white'
+          }
+        ].map((item, i) => (
+          <div
+            key={i}
+            className={`bg-gradient-to-r ${item.from} ${item.to} text-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-transform transform hover:scale-105`}
+          >
+            <h1 className="text-lg font-semibold mb-2 tracking-wide">
+              {item.label}
+            </h1>
+            <p className="text-4xl font-extrabold">{item.value}</p>
+          </div>
+        ))}
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-6 mt-6 p-4 bg-white rounded-xl shadow-md animate__animated animate__fadeInUp">
-        <div className="w-full lg:w-1/2 bg-red-50 p-6 rounded-xl shadow space-y-8">
-          <div className="text-lg font-semibold border-b pb-2">Notifications</div>
+      <div className="flex flex-col lg:flex-row gap-8 mt-8 p-6 bg-white rounded-2xl shadow-xl animate__animated animate__fadeInUp font-[500]">
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <div className="flex items-center space-x-3">
-              <div className="text-2xl bg-gray-200 p-2 rounded-xl text-gray-700">
-                <LuCircleDollarSign />
-              </div>
-              <div>
-                <p className="font-medium text-gray-700">0</p>
-                <p className="text-sm text-gray-500">some text</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="text-2xl bg-gray-200 p-2 rounded-xl text-gray-700">
-                <FaCalendar />
-              </div>
-              <div>
-                <p className="font-medium text-gray-700">0</p>
-                <p className="text-sm text-gray-500">some text</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="text-2xl bg-gray-200 p-2 rounded-xl text-gray-700">
-                <FaClipboardCheck />
-              </div>
-              <div>
-                <p className="font-medium text-gray-700">0</p>
-                <p className="text-sm text-gray-500">some text</p>
-              </div>
-            </div>
-          </div>
+  <div className="w-full lg:w-1/2 bg-gradient-to-br from-[#fdfbfb] to-[#ebedee] p-6 rounded-2xl shadow-lg space-y-10">
+    <div className="text-2xl font-bold border-b pb-3 text-gray-800 tracking-wide">
+      Notifications
+    </div>
 
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <div className="flex items-center space-x-3">
-              <div className="text-2xl bg-gray-200 p-2 rounded-xl text-gray-700">
-                <FaBed />
+    {[1, 2, 3].map((_, section) => (
+      <div
+        key={section}
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+      >
+        {[
+          <LuCircleDollarSign />,
+          <FaCalendar />,
+          <FaClipboardCheck />,
+          <FaBed />,
+          <LuSmartphone />,
+          <AiFillMessage />,
+          <FaRegCreditCard />,
+          <AiOutlineLike />,
+          <FaFileAlt />,
+        ]
+          .slice(section * 3, section * 3 + 3)
+          .map((Icon, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-4 p-4 bg-white shadow-md rounded-xl hover:shadow-lg transition-all"
+            >
+              <div className="text-3xl bg-gradient-to-tr from-[#667eea] to-[#764ba2] text-white p-3 rounded-xl">
+                {Icon}
               </div>
               <div>
-                <p className="font-medium text-gray-700">0</p>
-                <p className="text-sm text-gray-500">some text</p>
+                <p className="text-xl font-bold text-gray-700">0</p>
+                <p className="text-base text-gray-500">Some detail</p>
               </div>
             </div>
-            <div className="flex items-center space-x-3">
-              <div className="text-2xl bg-gray-200 p-2 rounded-xl text-gray-700">
-                <LuSmartphone />
-              </div>
-              <div>
-                <p className="font-medium text-gray-700">0</p>
-                <p className="text-sm text-gray-500">some text</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="text-2xl bg-gray-200 p-2 rounded-xl text-gray-700">
-                <AiFillMessage />
-              </div>
-              <div>
-                <p className="font-medium text-gray-700">0</p>
-                <p className="text-sm text-gray-500">some text</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <div className="flex items-center space-x-3">
-              <div className="text-2xl bg-gray-200 p-2 rounded-xl text-gray-700">
-                <FaRegCreditCard />
-              </div>
-              <div>
-                <p className="font-medium text-gray-700">0</p>
-                <p className="text-sm text-gray-500">some text</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="text-2xl bg-gray-200 p-2 rounded-xl text-gray-700">
-                <AiOutlineLike />
-              </div>
-              <div>
-                <p className="font-medium text-gray-700">0</p>
-                <p className="text-sm text-gray-500">some text</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="text-2xl bg-gray-200 p-2 rounded-xl text-gray-700">
-                <FaFileAlt />
-              </div>
-              <div>
-                <p className="font-medium text-gray-700">0</p>
-                <p className="text-sm text-gray-500">some text</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="w-full lg:w-1/2 bg-green-50 p-6 rounded-xl shadow space-y-6">
-          <div className="flex justify-between items-center">
-            <h2 className="text-lg font-semibold">Activity Feed</h2>
-            <select className="border border-gray-300 rounded-md p-1">
-              <option value="">Select Option</option>
-              <option value="all">All Activities</option>
-              <option value="recent">Recent Activities</option>
-            </select>
-          </div>
-
-          <div className="overflow-y-scroll h-64 bg-white rounded-md p-4 shadow-inner space-y-4">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="flex justify-between items-center">
-                <div>
-                  <p className="text-gray-700 font-medium">some text here</p>
-                  <p className="text-xs text-gray-500">2h ago</p>
-                </div>
-                <button className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600 transition-all">
-                  Arrived
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
+          ))}
       </div>
+    ))}
+  </div>
+
+
+  <div className="w-full lg:w-1/2 bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2] p-6 rounded-2xl shadow-lg space-y-8">
+    <div className="flex justify-between items-center">
+      <h2 className="text-2xl font-bold text-gray-800">Activity Feed</h2>
+      <select className="border border-gray-300 rounded-md px-3 py-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+        <option value="">Select Option</option>
+        <option value="all">All Activities</option>
+        <option value="recent">Recent Activities</option>
+      </select>
+    </div>
+
+    <div className="overflow-y-scroll h-64 bg-white rounded-xl p-5 shadow-inner space-y-6">
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          className="flex justify-between items-center border-b pb-3"
+        >
+          <div>
+            <p className="text-lg font-semibold text-gray-800">
+              Guest John has arrived
+            </p>
+            <p className="text-sm text-gray-500">2h ago</p>
+          </div>
+          <button className="bg-gradient-to-tr from-green-500 to-green-700 text-white px-4 py-2 rounded-lg hover:shadow-md transition-all">
+            Arrived
+          </button>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
     </>
-
   );
 }
 export default Dashboard;
