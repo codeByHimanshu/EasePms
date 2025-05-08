@@ -36,7 +36,7 @@ const StayView = () => {
         <div className="p-4 bg-white shadow-lg rounded-lg">
          
 
-
+         
         <h1> i am Stay View Page </h1>
         </div>
     );

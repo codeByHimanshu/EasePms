@@ -23,7 +23,8 @@ function Login() {
         console.log("login successful", data);
         localStorage.setItem("access_token", data.token);
         localStorage.setItem("hotelid", data.hotelid);
-        navigate("/mainpage");
+        localStorage.setItem("username", data.username);
+        navigate("/login-page");
       } else {
         console.log("Error:", data.message);
         setError(data.message || "invalid credentials");
