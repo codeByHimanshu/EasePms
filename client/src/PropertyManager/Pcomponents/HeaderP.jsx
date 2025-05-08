@@ -6,9 +6,6 @@ import { NavLink } from "react-router-dom";
 
 
 export default function HeaderP() {
-
-
-
   return (
     <div className="flex min-h-screen font-[Poppins]">
   

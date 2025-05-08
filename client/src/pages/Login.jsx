@@ -24,7 +24,7 @@ function Login() {
         localStorage.setItem("access_token", data.token);
         localStorage.setItem("hotelid", data.hotelid);
         localStorage.setItem("username", data.username);
-        navigate("/login-page");
+        navigate("/loginpage");
       } else {
         console.log("Error:", data.message);
         setError(data.message || "invalid credentials");
