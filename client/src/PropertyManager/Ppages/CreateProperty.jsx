@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function CreateProperty() {
   const [formData, setFormData] = useState({
@@ -67,10 +67,30 @@ function CreateProperty() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData); // Replace with actual API call
+  
+    try {
+      const response = await fetch('http://localhost:3000/api/createproperty', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to create property');
+      }
+  
+      const result = await response.json();
+      console.log('Property created:', result);
+      // Optional: reset form or navigate elsewhere
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
+  
 
   return (
     <div className="max-w-5xl mx-auto p-6 bg-white shadow-2xl rounded-xl mt-10 text-gray-800 font-sans">
