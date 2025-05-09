@@ -27,7 +27,7 @@ export const AppRoutes = () => {
                     </ProtectedRoute>
                 }
             >
-                <Route index element={<Dashboard />} />
+                <Route index element={<Dashboard />} /> 
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="gueststats" element={<GuestStats />} />
                 <Route path="reservations">
