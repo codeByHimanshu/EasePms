@@ -8,7 +8,6 @@ function MainPage() {
         <div>
         {/* <LoginPage/> */}
           <HeaderP />
-          <Outlet/>
         </div>
        
       </div>
