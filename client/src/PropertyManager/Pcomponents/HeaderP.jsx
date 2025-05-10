@@ -74,7 +74,7 @@ export default function HeaderP() {
         </ul>
       </div>
 
-      {/* Main Content */}
+    
       <div className="flex-1 bg-gray-50 p-6 overflow-y-auto">
         <Outlet />
       </div>
