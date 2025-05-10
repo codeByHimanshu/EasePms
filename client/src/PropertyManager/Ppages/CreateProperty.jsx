@@ -80,12 +80,13 @@ function CreateProperty() {
       });
   
       if (!response.ok) {
-        throw new Error('Failed to create property');
+        throw new Error('Failed create property');
       }
   
       const result = await response.json();
       console.log('Property created:', result);
-      // Optional: reset form or navigate elsewhere
+        
+
     } catch (error) {
       console.error('Error:', error);
     }
