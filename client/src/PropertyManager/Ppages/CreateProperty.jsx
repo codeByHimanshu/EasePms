@@ -69,28 +69,38 @@ function CreateProperty() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem('access_token');
+  
+    if (!token) {
+      alert('You must be logged in to create a property.');
+      return;
+    }
   
     try {
-      const response = await fetch('http://localhost:3000/api/createproperty', {
+      const response = await fetch('http://localhost:3000/api/property/proplisting', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });
   
+      const result = await response.json();
+  
       if (!response.ok) {
-        throw new Error('Failed create property');
+        throw new Error(result.message || 'Failed to create property');
       }
   
-      const result = await response.json();
       console.log('Property created:', result);
-        
+      alert('Property created successfully!');
 
     } catch (error) {
       console.error('Error:', error);
+      alert(`Error: ${error.message}`);
     }
   };
+  
   
 
   return (
