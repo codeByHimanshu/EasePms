@@ -36,6 +36,7 @@ function Login() {
   };
   return (
     <div className="flex h-screen bg-gradient-to-r from-blue-100 to-blue-300">
+    
       <div className="w-full sm:w-2/5 bg-white flex flex-col justify-center items-center shadow-2xl rounded-xl px-10 py-10 m-4 animate__animated animate__fadeInDown">
         <h1 className="text-5xl font-extrabold mb-4 text-blue-600 animate__animated animate__fadeInUp animate__delay-1s">
           Admin Login
