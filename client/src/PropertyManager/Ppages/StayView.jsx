@@ -30,14 +30,9 @@ const StayView = () => {
 
     fetchData();
   }, []);
-
-
-
   return (
     <div className="p-4 bg-white shadow-lg rounded-lg">
-
       <BookingCalendar />
-
       <h1> i am Stay View Page </h1>
     </div>
   );
