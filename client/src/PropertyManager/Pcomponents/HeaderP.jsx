@@ -53,7 +53,7 @@ export default function HeaderP() {
         <ul className="space-y-3 text-[20px] font-bold">
           <li className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-blue-100 transition-all">
             <FaTags className="text-blue-500 text-xl" />
-            <a href="#" className="block w-full">Rates</a>
+                <NavLink to="rates" className="block w-full">Rates</NavLink>
           </li>
           <li className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-blue-100 transition-all">
             <FaEye className="text-blue-500 text-xl" />

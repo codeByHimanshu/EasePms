@@ -18,7 +18,7 @@ function LoginPage() {
 
   return (
     <div className="flex h-screen font-[Poppins]">
-      {/* Left Section */}
+      
       <div className="w-4/5 bg-white flex flex-col justify-center items-center shadow-2xl px-12 py-8 rounded-r-3xl">
         <FaUserShield className="text-indigo-600 text-6xl mb-6 drop-shadow" />
         <h1 className="text-5xl font-extrabold text-indigo-700 mb-4">Welcome Back</h1>

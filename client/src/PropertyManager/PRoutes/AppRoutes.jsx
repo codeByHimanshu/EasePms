@@ -13,13 +13,15 @@ import GuestStats from "../Ppages/GuestStats";
 import CreateRoom from "../Ppages/CreateRoom";
 import AddReservation from "../Ppages/AddReservation";
 import ProtectedRoute from "../../ProtectedRoute";
-import CreateProperty from "../Ppages/CreateProperty";
+import CreateProperty from "../../pages/CreateProperty";
+
 
 export const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/loginpage" element={<LoginPage />} />
+            <Route path="create-property" element={<CreateProperty />} />
             <Route
                 path="/mainpage"
                 element={
@@ -40,7 +42,6 @@ export const AppRoutes = () => {
                 <Route path="roomview" element={<RoomView />} />
                 <Route path="stayview" element={<StayView />} />
                 <Route path="create-room" element={<CreateRoom />} />
-                <Route path="create-property" element={<CreateProperty />} />
             </Route>
         </Routes>
     );
