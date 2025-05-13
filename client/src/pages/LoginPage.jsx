@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { adminEmail } from '../states/state';
@@ -9,16 +9,46 @@ function LoginPage() {
   const email = useRecoilValue(adminEmail);
   const username = localStorage.getItem("username");
   const token = localStorage.getItem("access_token");
+  const hotelid = localStorage.getItem("hotelid"); // Ensure this is saved during login
 
-  useEffect(() => {
-    if (!token) {
-      navigate("/");
-    }
-  }, [token, navigate]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasProperty, setHasProperty] = useState(false);
+
+useEffect(() => {
+  const hotelid = localStorage.getItem("hotelid");
+
+  if (!token) {
+    navigate("/");
+  } else {
+    fetch("http://localhost:3000/api/property/getpropertywithhotelid", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        const propertyArray = response.data;
+
+        // Check if any property's hotelid matches the logged-in user's hotelid
+        const match = Array.isArray(propertyArray) && propertyArray.some(
+          (property) => property.hotelid === hotelid
+        );
+
+        setHasProperty(match);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching property:", err);
+        setHasProperty(false);
+        setIsLoading(false);
+      });
+  }
+}, [token, navigate]);
+
 
   return (
     <div className="flex h-screen font-[Poppins]">
-      
+    
       <div className="w-4/5 bg-white flex flex-col justify-center items-center shadow-2xl px-12 py-8 rounded-r-3xl">
         <FaUserShield className="text-indigo-600 text-6xl mb-6 drop-shadow" />
         <h1 className="text-5xl font-extrabold text-indigo-700 mb-4">Welcome Back</h1>
@@ -34,7 +64,7 @@ function LoginPage() {
         )}
       </div>
 
-      {/* Right Section */}
+
       <div className="w-3/5 bg-gradient-to-br from-indigo-600 to-purple-800 text-white flex flex-col justify-center items-start px-20 py-16 rounded-l-3xl shadow-xl">
         <h1 className="text-5xl font-bold mb-6 drop-shadow-lg">Admin Dashboard</h1>
         <p className="text-lg mb-10 font-light tracking-wide max-w-md leading-relaxed">
@@ -42,22 +72,33 @@ function LoginPage() {
         </p>
 
         {token ? (
-          <div className="flex flex-col space-y-6 w-full">
+          isLoading ? (
+            <p className="text-white mt-6 text-lg">Loading dashboard...</p>
+          ) : hasProperty ? (
+            <div className="flex flex-col space-y-6 w-full">
+              <button
+                className="flex items-center gap-3 bg-white text-indigo-700 py-3 px-6 rounded-xl font-semibold text-lg hover:bg-gray-200 transition-all duration-300 shadow-lg transform hover:scale-105 active:scale-95"
+                onClick={() => navigate('/mainpage')}
+              >
+                <FaHotel className="text-2xl" />
+                Access Property Manager
+              </button>
+              <button
+                className="flex items-center gap-3 bg-white text-indigo-700 py-3 px-6 rounded-xl font-semibold text-lg hover:bg-gray-200 transition-all duration-300 shadow-lg transform hover:scale-105 active:scale-95"
+                onClick={() => navigate('/channel')}
+              >
+                <FaNetworkWired className="text-2xl" />
+                Access Channel Manager
+              </button>
+            </div>
+          ) : (
             <button
-              className="flex items-center gap-3 bg-white text-indigo-700 py-3 px-6 rounded-xl font-semibold text-lg hover:bg-gray-200 transition-all duration-300 shadow-lg transform hover:scale-105 active:scale-95"
-              onClick={() => navigate('/mainpage')}
+              className="mt-4 bg-white text-indigo-700 py-3 px-6 rounded-xl font-semibold text-lg hover:bg-gray-200 transition-all duration-300 shadow-lg transform hover:scale-105 active:scale-95"
+              onClick={() => navigate('/create-property')}
             >
-              <FaHotel className="text-2xl" />
-              Access Property Manager
+              + Create Your Property
             </button>
-            <button
-              className="flex items-center gap-3 bg-white text-indigo-700 py-3 px-6 rounded-xl font-semibold text-lg hover:bg-gray-200 transition-all duration-300 shadow-lg transform hover:scale-105 active:scale-95"
-              onClick={() => navigate('/channel')}
-            >
-              <FaNetworkWired className="text-2xl" />
-              Access Channel Manager
-            </button>
-          </div>
+          )
         ) : (
           <p className="text-white mt-6 text-lg">Please login to access the dashboard.</p>
         )}
