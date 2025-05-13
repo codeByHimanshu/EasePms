@@ -4,7 +4,6 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { parse, startOfWeek, getDay, format } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { enUS } from 'date-fns/locale';
-import { Navigate } from 'react-big-calendar';
 
 const locales = {
     'en-US': enUS,
@@ -49,32 +48,24 @@ export default function BookingCalendar() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    // In a real app, you would fetch from your API:
-    // fetch('/api/bookings')
-    //   .then((res) => res.json())
-    //   .then((data) => setEvents(data));
-    
-    // For demo purposes, use generated data
     const randomBookings = generateRandomBookings();
     setEvents(randomBookings);
   }, []);
-
-  // Custom event styling based on status
   const eventStyleGetter = (event) => {
-    let backgroundColor = '#3174ad'; // default blue
+    let backgroundColor = '#3174ad'; 
     
     switch(event.status) {
       case 'confirmed':
-        backgroundColor = '#4CAF50'; // green
+        backgroundColor = '#4CAF50'; 
         break;
       case 'checked-in':
-        backgroundColor = '#2196F3'; // blue
+        backgroundColor = '#2196F3'; 
         break;
       case 'checked-out':
-        backgroundColor = '#9C27B0'; // purple
+        backgroundColor = '#9C27B0'; 
         break;
       case 'cancelled':
-        backgroundColor = '#F44336'; // red
+        backgroundColor = '#F44336';
         break;
     }
     
@@ -90,7 +81,7 @@ export default function BookingCalendar() {
   };
 
   return (
-    <div style={{ height: '80vh', padding: '20px' }}>
+    <div style={{ height: '100vh', padding: '50px' }}>
       <h2>Hotel Booking Calendar</h2>
       <Calendar
         localizer={localizer}
