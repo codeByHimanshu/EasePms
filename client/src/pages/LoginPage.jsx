@@ -9,7 +9,7 @@ function LoginPage() {
   const email = useRecoilValue(adminEmail);
   const username = localStorage.getItem("username");
   const token = localStorage.getItem("access_token");
-  const hotelid = localStorage.getItem("hotelid"); // Ensure this is saved during login
+  const hotelid = localStorage.getItem("hotelid"); 
 
   const [isLoading, setIsLoading] = useState(true);
   const [hasProperty, setHasProperty] = useState(false);
@@ -47,11 +47,11 @@ useEffect(() => {
 
 
   return (
-    <div className="flex h-screen font-[Poppins]">
+    <div className="flex bg-gradient-to-br from-blue-500 to-blue-300 h-screen font-[Poppins]">
     
-      <div className="w-4/5 bg-white flex flex-col justify-center items-center shadow-2xl px-12 py-8 rounded-r-3xl">
+      <div className="w-3/4  flex flex-col justify-center items-center  px-12 py-8 clip-left2 bg-white">
         <FaUserShield className="text-indigo-600 text-6xl mb-6 drop-shadow" />
-        <h1 className="text-5xl font-extrabold text-indigo-700 mb-4">Welcome Back</h1>
+        <h1 className="text-5xl font-extrabold text-indigo-700 mb-4">Welcome Back</  h1>
         {username ? (
           <>
             <p className="text-xl text-gray-700 mb-3 font-medium">
@@ -65,7 +65,7 @@ useEffect(() => {
       </div>
 
 
-      <div className="w-3/5 bg-gradient-to-br from-indigo-600 to-purple-800 text-white flex flex-col justify-center items-start px-20 py-16 rounded-l-3xl shadow-xl">
+      <div className="w-3/5  text-white flex flex-col justify-center items-start px-20 py-16 ">
         <h1 className="text-5xl font-bold mb-6 drop-shadow-lg">Admin Dashboard</h1>
         <p className="text-lg mb-10 font-light tracking-wide max-w-md leading-relaxed">
           Manage your hotel operations seamlessly. Choose a module to proceed.

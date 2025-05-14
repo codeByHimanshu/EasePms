@@ -66,7 +66,7 @@ function Login() {
         />
 
         <label className="block text-gray-700 text-sm font-medium mb-1" htmlFor="password">
-          Password
+          Password  
         </label>
         <input
           id="password"

@@ -25,4 +25,7 @@ html {
 .clip-left {
   clip-path: polygon(0 0, 100% 0, 50% 100%, 0% 100%);
 }
+.clip-left2 {
+  clip-path: polygon(0 0, 100% 0, 50% 100%, 0% 100%);
+}
 
