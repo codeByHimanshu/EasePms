@@ -50,12 +50,12 @@ useEffect(() => {
     <div className="flex bg-gradient-to-br from-blue-500 to-blue-300 h-screen font-[Poppins]">
     
       <div className="w-3/4  flex flex-col justify-center items-center  px-12 py-8 clip-left2 bg-white">
-        <FaUserShield className="text-indigo-600 text-6xl mb-6 drop-shadow" />
-        <h1 className="text-5xl font-extrabold text-indigo-700 mb-4">Welcome Back</  h1>
+        <FaUserShield className="text-blue-600 text-6xl mb-6 drop-shadow" />
+        <h1 className="text-5xl font-extrabold text-blue-500 mb-4">Welcome Back</  h1>
         {username ? (
           <>
             <p className="text-xl text-gray-700 mb-3 font-medium">
-              Logged in as: <span className="text-indigo-500 font-semibold">{username}</span>
+              Logged in as: <span className="text-blue-500 font-semibold">{username}</span>
             </p>
             <p className="text-gray-500 text-base mb-4">Please choose your desired action:</p>
           </>
@@ -77,14 +77,14 @@ useEffect(() => {
           ) : hasProperty ? (
             <div className="flex flex-col space-y-6 w-full">
               <button
-                className="flex items-center gap-3 bg-white text-indigo-700 py-3 px-6 rounded-xl font-semibold text-lg hover:bg-gray-200 transition-all duration-300 shadow-lg transform hover:scale-105 active:scale-95"
+                className="flex items-center gap-3 bg-white text-blue-500 py-3 px-6 rounded-xl font-semibold text-lg hover:bg-gray-200 transition-all duration-300 shadow-lg transform hover:scale-105 active:scale-95"
                 onClick={() => navigate('/mainpage')}
               >
                 <FaHotel className="text-2xl" />
                 Access Property Manager
               </button>
               <button
-                className="flex items-center gap-3 bg-white text-indigo-700 py-3 px-6 rounded-xl font-semibold text-lg hover:bg-gray-200 transition-all duration-300 shadow-lg transform hover:scale-105 active:scale-95"
+                className="flex items-center gap-3 bg-white text-blue-500 py-3 px-6 rounded-xl font-semibold text-lg hover:bg-gray-200 transition-all duration-300 shadow-lg transform hover:scale-105 active:scale-95"
                 onClick={() => navigate('/channel')}
               >
                 <FaNetworkWired className="text-2xl" />
@@ -93,7 +93,7 @@ useEffect(() => {
             </div>
           ) : (
             <button
-              className="mt-4 bg-white text-indigo-700 py-3 px-6 rounded-xl font-semibold text-lg hover:bg-gray-200 transition-all duration-300 shadow-lg transform hover:scale-105 active:scale-95"
+              className="mt-4 bg-white text-blue-500 py-3 px-6 rounded-xl font-semibold text-lg hover:bg-gray-200 transition-all duration-300 shadow-lg transform hover:scale-105 active:scale-95"
               onClick={() => navigate('/create-property')}
             >
               + Create Your Property

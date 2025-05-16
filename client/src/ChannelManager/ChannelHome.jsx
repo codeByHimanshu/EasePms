@@ -6,7 +6,7 @@ function ChannelHome() {
   return (
     <div>
       <Navbar />
-      <Outlet />
+      {/* <Outlet /> */}
     </div>
   );
 }
