@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import BookingCalendar from "../Pcomponents/BoookingCalendar";
 
 const StayView = () => {
-
   useEffect(() => {
     const token = localStorage.getItem("access_token")
     const fetchData = async () => {
@@ -27,7 +26,6 @@ const StayView = () => {
         console.error("Error fetching data:", error);
       }
     };
-
     fetchData();
   }, []);
   return (
@@ -37,8 +35,5 @@ const StayView = () => {
     </div>
   );
 };
-
-
-
 export default StayView;
 

@@ -43,7 +43,6 @@ const generateRandomBookings = () => {
   
   return bookings;
 };
-
 export default function BookingCalendar() {
   const [events, setEvents] = useState([]);
 
@@ -67,8 +66,7 @@ export default function BookingCalendar() {
       case 'cancelled':
         backgroundColor = '#F44336';
         break;
-    }
-    
+    } 
     return {
       style: {
         backgroundColor,
@@ -78,8 +76,7 @@ export default function BookingCalendar() {
         border: '0px',
       }
     };
-  };
-
+  }
   return (
     <div style={{ height: '100vh', padding: '50px' }}>
       <h2>Hotel Booking Calendar</h2>
@@ -101,5 +98,5 @@ export default function BookingCalendar() {
         views={['month', 'week', 'day', 'agenda']}
       />
     </div>
-  );
+  )
 }
