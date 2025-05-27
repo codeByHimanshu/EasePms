@@ -7,51 +7,48 @@ import { FaUserShield, FaHotel, FaNetworkWired } from 'react-icons/fa';
 function LoginPage() {
   const navigate = useNavigate();
   const email = useRecoilValue(adminEmail);
-  const username = localStorage.getItem("username");
-  const token = localStorage.getItem("access_token");
-  const hotelid = localStorage.getItem("hotelid"); 
-
   const [isLoading, setIsLoading] = useState(true);
   const [hasProperty, setHasProperty] = useState(false);
 
+  const username = localStorage.getItem('username');
+  const token = localStorage.getItem('access_token');
+  const hotelid = localStorage.getItem('hotelid');
+
 useEffect(() => {
-  const hotelid = localStorage.getItem("hotelid");
-
   if (!token) {
-    navigate("/");
-  } else {
-    fetch("http://localhost:3000/api/property/getpropertywithhotelid", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        const propertyArray = response.data;
-
-        // Check if any property's hotelid matches the logged-in user's hotelid
-        const match = Array.isArray(propertyArray) && propertyArray.some(
-          (property) => property.hotelid === hotelid
-        );
-
-        setHasProperty(match);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching property:", err);
-        setHasProperty(false);
-        setIsLoading(false);
-      });
+    navigate('/');
+    return;
   }
-}, [token, navigate]);
 
+  fetch('http://localhost:3000/api/property/getpropertywithhotelid', {
+    headers: {
+      Authorization: `access_token ${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((response) => {
+      const propertyArray = Array.isArray(response.data) ? response.data : [];
+      const match = propertyArray.some((property) => {
+        const propHotelId = typeof property.hotelid === 'object' ? property.hotelid._id : property.hotelid;
+        return String(propHotelId) === String(hotelid);
+      });
+
+      setHasProperty(match);
+      setIsLoading(false);
+    })
+    .catch((err) => {
+      console.error('Error fetching property:', err);
+      setHasProperty(false);
+      setIsLoading(false);
+    });
+}, [token, hotelid, navigate]);
 
   return (
     <div className="flex bg-gradient-to-br from-blue-500 to-blue-300 h-screen font-[Poppins]">
     
-      <div className="w-3/4  flex flex-col justify-center items-center  px-12 py-8 clip-left2 bg-white">
+      <div className="w-3/4 flex flex-col justify-center items-center px-12 py-8 clip-left2 bg-white">
         <FaUserShield className="text-blue-600 text-6xl mb-6 drop-shadow" />
-        <h1 className="text-5xl font-extrabold text-blue-500 mb-4">Welcome Back</  h1>
+        <h1 className="text-5xl font-extrabold text-blue-500 mb-4">Welcome Back</h1>
         {username ? (
           <>
             <p className="text-xl text-gray-700 mb-3 font-medium">
@@ -64,8 +61,8 @@ useEffect(() => {
         )}
       </div>
 
-
-      <div className="w-3/5  text-white flex flex-col justify-center items-start px-20 py-16 ">
+   
+      <div className="w-3/5 text-white flex flex-col justify-center items-start px-20 py-16">
         <h1 className="text-5xl font-bold mb-6 drop-shadow-lg">Admin Dashboard</h1>
         <p className="text-lg mb-10 font-light tracking-wide max-w-md leading-relaxed">
           Manage your hotel operations seamlessly. Choose a module to proceed.

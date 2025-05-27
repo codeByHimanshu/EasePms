@@ -37,7 +37,7 @@ function Login() {
   return (
 <div className="relative h-screen w-full overflow-hidden flex">
  
-  <div className="w-3/4 h-full bg-gradient-to-br from-blue-500 to-blue-300 text-white flex items-center justify-around z-10 clip-left">
+  <div className="w-3/4 h-full  text-white flex items-center justify-around z-10 clip-left">
     <div className="text-center px-10 animate__animated animate__fadeInLeft">
       <h1 className="text-5xl font-bold mb-4">InnSync</h1>
       <p className="text-2xl">India's First Multiple Hotel Management Software</p>
