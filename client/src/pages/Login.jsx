@@ -33,6 +33,13 @@ function Login() {
       setError("something went wrong ");
     }
   };
+
+
+
+
+
+
+  
   return (
 <div className="relative h-screen w-full overflow-hidden flex">
   <div className="w-3/4 h-full bg-gradient-to-br from-blue-500 to-blue-300 text-white flex items-center justify-around z-10 clip-left">
