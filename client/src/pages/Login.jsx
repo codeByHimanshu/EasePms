@@ -16,9 +16,8 @@ function Login() {
         },
         credentials: "include", 
         body: JSON.stringify({ username, password }),
-      });``
+      });
       const data = await response.json();
-
       if (response.ok) {
         console.log("login successful", data);
         localStorage.setItem("access_token", data.token);
@@ -36,7 +35,6 @@ function Login() {
   };
   return (
 <div className="relative h-screen w-full overflow-hidden flex">
- 
   <div className="w-3/4 h-full bg-gradient-to-br from-blue-500 to-blue-300 text-white flex items-center justify-around z-10 clip-left">
     <div className="text-center px-10 animate__animated animate__fadeInLeft">
       <h1 className="text-5xl font-bold mb-4">InnSync</h1>
@@ -46,8 +44,6 @@ function Login() {
         {" "}
       </div>
   </div>
-
- 
   <div className="w-2/3 h-full flex items-center left-0 justify-center bg-white z-20">
     <div className="w-full sm:w-96 px-10 py-10 animate__animated animate__fadeInRight">
       <h1 className="text-4xl font-bold text-blue-600 mb-4">Admin Login</h1>
@@ -91,5 +87,4 @@ function Login() {
 
   );
 }
-
 export default Login;
