@@ -1,129 +1,130 @@
-import React, { useEffect, useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useState } from "react";
+import dayjs from "dayjs";
 
-const RateUpdate = () => {
-  const [roomTypes, setRoomTypes] = useState([]);
-  const [selectedRoomType, setSelectedRoomType] = useState('');
-  const [basePrice, setBasePrice] = useState('');
-  const [loading, setLoading] = useState(false);
+const roomTypes = ["Deluxe", "Standard", "Suite"];
 
-  // Fetch all room types (on mount)
-useEffect(() => {
-  const fetchRoomTypes = async () => {
-    try {
-      const token = localStorage.getItem("access_token");
+const generateDates = (start, end) => {
+  const result = [];
+  let current = dayjs(start);
+  while (current.isBefore(end) || current.isSame(end)) {
+    result.push(current.format("YYYY-MM-DD"));
+    current = current.add(1, "day");
+  }
+  return result;
+};
 
-      const response = await fetch('http://localhost:3000/api/roomtype/getallroomtypes', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(token && { Authorization: `Bearer ${token}` }),
-        },
-      });
+const initializeRates = (dates) => {
+  const rates = {};
+  dates.forEach((date) => {
+    rates[date] = {};
+    roomTypes.forEach((room) => {
+      rates[date][room] = {
+        EP: 3000,
+        CP: 3500,
+      };
+    });
+  });
+  return rates;
+};
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch room types');
-      }
+const RatesPage = () => {
+  const today = dayjs();
+  const [startDate, setStartDate] = useState(today.format("YYYY-MM-DD"));
+  const [endDate, setEndDate] = useState(today.add(6, "day").format("YYYY-MM-DD"));
+  const [dates, setDates] = useState(generateDates(startDate, endDate));
+  const [rates, setRates] = useState(initializeRates(dates));
+  const [bulkRate, setBulkRate] = useState({ EP: "", CP: "", roomType: roomTypes[0] });
 
-      const data = await response.json();
-
-      
-      setRoomTypes(data.roomTypes || data.data || []); 
-    } catch (error) {
-      console.error('Error loading room types:', error);
-      toast.error("Could not load room types");
-    }
+  const handleDateChange = () => {
+    const newDates = generateDates(startDate, endDate);
+    setDates(newDates);
+    setRates(initializeRates(newDates));
   };
 
-  fetchRoomTypes();
-}, []);
-
-
-  // Handle Form Submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!selectedRoomType || !basePrice) {
-      toast.warning('Please fill all fields');
-      return;
-    }
-    if (isNaN(basePrice) || Number(basePrice) < 0) {
-      toast.error('Base price must be a positive number');
-      return;
-    }
-
-    setLoading(true);
-    try {
-      const response = await fetch(`/api/rooms/updaterate/${selectedRoomType}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
+  const handleChange = (date, room, field, value) => {
+    setRates((prev) => ({
+      ...prev,
+      [date]: {
+        ...prev[date],
+        [room]: {
+          ...prev[date][room],
+          [field]: parseInt(value) || 0,
         },
-        body: JSON.stringify({ baseprice: Number(basePrice) })
+      },
+    }));
+  };
+
+  const handleBulkUpdate = () => {
+    const { roomType, EP, CP } = bulkRate;
+    setRates((prevRates) => {
+      const updated = { ...prevRates };
+      dates.forEach((date) => {
+        updated[date][roomType].EP = parseInt(EP) || 0;
+        updated[date][roomType].CP = parseInt(CP) || 0;
       });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to update');
-      }
-
-      toast.success(data.message || 'Rate updated successfully');
-    } catch (err) {
-      console.error(err);
-      toast.error(err.message || 'Something went wrong');
-    } finally {
-      setLoading(false);
-    }
+      return updated;
+    });
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
-      <div className="w-full max-w-lg bg-white p-8 rounded-2xl shadow-xl border border-gray-200">
-        <h2 className="text-2xl font-semibold mb-6 text-gray-800">Update Room Type Rate</h2>
-        
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label className="block text-gray-600 mb-1">Select Room Type</label>
-            <select
-              className="w-full px-4 py-2 border rounded-lg bg-gray-50"
-              value={selectedRoomType}
-              onChange={(e) => setSelectedRoomType(e.target.value)}
-              required
-            >
-              <option value="">-- Choose Room Type --</option>
-              {roomTypes.map((rt) => (
-                <option key={rt._id} value={rt._id}>{rt.name}</option>
-              ))}
-            </select>
-          </div>
+    <div className="p-4">
+      <h2 className="text-2xl font-bold mb-4">Rates Management</h2>
 
-          <div>
-            <label className="block text-gray-600 mb-1">New Base Price (₹)</label>
-            <input
-              type="number"
-              className="w-full px-4 py-2 border rounded-lg bg-gray-50"
-              value={basePrice}
-              onChange={(e) => setBasePrice(e.target.value)}
-              min="0"
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            className={`w-full py-2 rounded-lg text-white font-semibold transition duration-200 ${
-              loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
-            }`}
-            disabled={loading}
-          >
-            {loading ? 'Updating...' : 'Update Rate'}
-          </button>
-        </form>
+      <div className="mb-4 flex gap-2 items-center">
+        <label className="text-sm">Start Date:</label>
+        <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="border px-2 py-1 rounded" />
+        <label className="text-sm">End Date:</label>
+        <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="border px-2 py-1 rounded" />
+        <button onClick={handleDateChange} className="bg-blue-500 text-white px-3 py-1 rounded">Load</button>
       </div>
-      <ToastContainer />
+
+      <div className="mb-6 p-4 border rounded">
+        <h3 className="font-semibold mb-2">Bulk Update Rates</h3>
+        <div className="flex gap-4 items-center">
+          <select value={bulkRate.roomType} onChange={(e) => setBulkRate({ ...bulkRate, roomType: e.target.value })} className="border px-2 py-1 rounded">
+            {roomTypes.map((room) => <option key={room} value={room}>{room}</option>)}
+          </select>
+          <input type="number" placeholder="EP" value={bulkRate.EP} onChange={(e) => setBulkRate({ ...bulkRate, EP: e.target.value })} className="border px-2 py-1 rounded w-24" />
+          <input type="number" placeholder="CP" value={bulkRate.CP} onChange={(e) => setBulkRate({ ...bulkRate, CP: e.target.value })} className="border px-2 py-1 rounded w-24" />
+          <button onClick={handleBulkUpdate} className="bg-green-600 text-white px-4 py-1 rounded">Update</button>
+        </div>
+      </div>
+
+      <div className="overflow-auto max-w-full">
+        <table className="border-collapse border text-sm w-full">
+          <thead className="bg-gray-100">
+            <tr>
+              <th className="border p-2 bg-gray-200">Room Type</th>
+              <th className="border p-2 bg-gray-200">Rate Type</th>
+              {dates.map((date) => (
+                <th key={date} className="border p-2">{dayjs(date).format("DD MMM")}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {roomTypes.map((room) =>
+              ["EP", "CP"].map((rateType) => (
+                <tr key={`${room}-${rateType}`}>
+                  <td className="border p-2">{room}</td>
+                  <td className="border p-2">{rateType}</td>
+                  {dates.map((date) => (
+                    <td key={`${date}-${room}-${rateType}`} className="border p-1">
+                      <input
+                        type="number"
+                        value={rates[date][room][rateType]}
+                        onChange={(e) => handleChange(date, room, rateType, e.target.value)}
+                        className="w-20 text-center border rounded px-1"
+                      />
+                    </td>
+                  ))}
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
 
-export default RateUpdate;
+export default RatesPage;
