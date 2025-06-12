@@ -14,6 +14,7 @@ import CreateRoom from "../Ppages/CreateRoom";
 import AddReservation from "../Ppages/AddReservation";
 import ProtectedRoute from "../../ProtectedRoute";
 import CreateProperty from "../../pages/CreateProperty";
+import CreateRoomType from "../Ppages/CreateRoomType";
 
 
 export const AppRoutes = () => {
@@ -42,6 +43,7 @@ export const AppRoutes = () => {
                 <Route path="roomview" element={<RoomView />} />
                 <Route path="stayview" element={<StayView />} />
                 <Route path="create-room" element={<CreateRoom />} />
+                <Route path="create-room-type" element={<CreateRoomType />} />
             </Route>
         </Routes>
     );

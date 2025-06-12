@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import { FaSearch, FaHotel, FaBed, FaComments, FaClipboardList, FaTags, FaEye, FaChartBar, FaTachometerAlt } from "react-icons/fa";
 import { Outlet } from "react-router-dom";
 
@@ -8,10 +8,8 @@ import { NavLink } from "react-router-dom";
 export default function HeaderP() {
   return (
     <div className="flex min-h-screen font-[Poppins]">
-  
       <div className="w-1/5 min-w-[240px] bg-white shadow-xl text-black z-10 px-6 py-8 flex flex-col flex-shrink-0">
 
-    
         <div className="flex items-center gap-3 mb-10">
           <FaHotel className="text-blue-600 text-4xl" />
           <span className="text-3xl font-extrabold text-green-700 tracking-wide">
@@ -19,7 +17,6 @@ export default function HeaderP() {
           </span>
         </div>
 
-     
         <div className="mb-8 relative">
           <input
             type="text"
@@ -28,7 +25,6 @@ export default function HeaderP() {
           />
           <FaSearch className="absolute left-4 top-3.5 text-gray-500 text-lg" />
         </div>
-
 
         <ul className="mb-8 space-y-3 text-[20px] font-bold">
           <li className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-blue-100 transition-all">
@@ -49,11 +45,10 @@ export default function HeaderP() {
           </li>
         </ul>
 
-  
         <ul className="space-y-3 text-[20px] font-bold">
           <li className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-blue-100 transition-all">
             <FaTags className="text-blue-500 text-xl" />
-                <NavLink to="rates" className="block w-full">Rates</NavLink>
+            <NavLink to="rates" className="block w-full">Rates</NavLink>
           </li>
           <li className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-blue-100 transition-all">
             <FaEye className="text-blue-500 text-xl" />
@@ -67,14 +62,33 @@ export default function HeaderP() {
             <FaTachometerAlt className="text-blue-500 text-xl" />
             <NavLink to="dashboard" className="block w-full">Dashboard</NavLink>
           </li>
-          <li className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-blue-100 transition-all">
-            <FaBed className="text-blue-500 text-xl" />
-            <NavLink to="create-room" className="block w-full">Create Room</NavLink>
+          {/* Room Configuration Dropdown */}
+          <li className="relative group">
+            <div className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-blue-100 transition-all cursor-pointer">
+              <FaBed className="text-blue-500 text-xl" />
+              <span className="block w-full">Room Configuration</span>
+              <svg className="ml-auto w-4 h-4 text-gray-500 group-hover:text-blue-600 transition" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <ul className="hidden group-hover:block absolute left-0 top-full bg-white shadow-lg rounded-lg mt-1 w-full z-20">
+              <li>
+                <NavLink to="create-room" className="flex items-center gap-3 px-5 py-2 hover:bg-blue-50 rounded-t-lg">
+                  <FaBed className="text-blue-500 text-lg" />
+                  Create Room
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="create-room-type" className="flex items-center gap-3 px-5 py-2 hover:bg-blue-50 rounded-b-lg">
+                  <FaBed className="text-blue-500 text-lg" />
+                  Create Room Type
+                </NavLink>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
 
-    
       <div className="flex-1 bg-gray-50 p-6 overflow-y-auto">
         <Outlet />
       </div>

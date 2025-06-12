@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import dayjs from "dayjs";
 
 const roomTypes = ["Deluxe", "Standard", "Suite"];
 
-const generateDates = (start, end) => {
+const generateDates = (start, end) => { 
   const result = [];
   let current = dayjs(start);
   while (current.isBefore(end) || current.isSame(end)) {
@@ -49,7 +49,7 @@ const RatesPage = () => {
         [room]: {
           ...prev[date][room],
           [field]: parseInt(value) || 0,
-        },
+        },    m,    
       },
     }));
   };
